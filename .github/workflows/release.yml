@@ -34,6 +34,7 @@ jobs:
           repository: ${{ env.SOURCE_REPO }}
           ref: main
           path: agent-teams-src
+          token: ${{ secrets.SOURCE_REPO_PAT }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
