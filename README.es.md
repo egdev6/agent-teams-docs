@@ -32,7 +32,7 @@ Estamos en fase beta activa. Tu feedback da forma a la release estable de v1.0.
 | **Dashboard** | Abrir el panel, navegar todas las páginas, revisar la tarjeta de estadísticas | 🔴 Alta |
 | **Agentes** | Usar el wizard para crear un agente, editarlo, recargarlo | 🔴 Alta |
 | **Teams** | Crear un equipo, asignar agentes, ejecutar sync a `.github/agents/` | 🔴 Alta |
-| **Chat Participants** | Usar `@agent-teams.router` y un `@agent-teams.<agentId>` directo en Copilot Chat | 🔴 Alta |
+| **Chat Participants** | Usar `@router` y un `@<agentId>` directo en Copilot Chat | 🔴 Alta |
 | **Perfiles** | Ejecutar `initProfile`, editar el YAML generado, comprobar validación | 🟡 Media |
 | **Skills Browser** | Abrir el navegador de skills, explorar categorías | 🟡 Media |
 | **Sync dry-run** | Ejecutar `team:sync --dry-run` desde CLI y verificar la salida del diff | 🟡 Media |

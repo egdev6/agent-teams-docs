@@ -107,18 +107,18 @@ Picks up any changes made to YAML files since the last load.
 Each loaded agent registers as a dynamic chat participant:
 
 ```
-@agent-teams.my-agent  What is the best way to structure this React component?
+@my-agent  What is the best way to structure this React component?
 ```
 
-Use `@agent-teams.router` to let the extension automatically pick the most relevant agent based on your message and the current file:
+Use `@router` to let the extension automatically pick the most relevant agent based on your message and the current file:
 
 ```
-@agent-teams.router  Help me write a unit test for this function.
+@router  Help me write a unit test for this function.
 ```
 
 The router scores agents by intent keywords, file path patterns, domain vocabulary, and role — then delegates to the top match.
 
-<!-- screenshot: VS Code Copilot Chat panel with @agent-teams.router typed, a question submitted, and the response showing which agent was selected and its answer -->
+<!-- screenshot: VS Code Copilot Chat panel with @router typed, a question submitted, and the response showing which agent was selected and its answer -->
 
 ---
 

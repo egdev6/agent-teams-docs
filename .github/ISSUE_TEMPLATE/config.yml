@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: "📚 Documentation / Documentación"
+    url: https://github.com/egdev6/agent-teams-docs/tree/main/docs
+    about: "Read the docs before opening an issue — your answer may already be there | Lee la documentación antes de abrir un issue"

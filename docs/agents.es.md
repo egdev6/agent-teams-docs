@@ -107,18 +107,18 @@ Recoge los cambios realizados en archivos YAML desde la última carga.
 Cada agente cargado se registra como participante de chat dinámico:
 
 ```
-@agent-teams.my-agent  ¿Cuál es la mejor forma de estructurar este componente React?
+@my-agent  ¿Cuál es la mejor forma de estructurar este componente React?
 ```
 
-Usa `@agent-teams.router` para que la extensión seleccione automáticamente el agente más relevante en función de tu mensaje y del archivo activo:
+Usa `@router` para que la extensión seleccione automáticamente el agente más relevante en función de tu mensaje y del archivo activo:
 
 ```
-@agent-teams.router  Ayúdame a escribir un test unitario para esta función.
+@router  Ayúdame a escribir un test unitario para esta función.
 ```
 
 El router puntúa los agentes por palabras clave de intención, patrones de ruta de archivo, vocabulario de dominio y rol — y delega al que obtiene mayor puntuación.
 
-<!-- screenshot: Panel de Copilot Chat de VS Code con @agent-teams.router escrito, una pregunta enviada y la respuesta mostrando qué agente fue seleccionado y su respuesta -->
+<!-- screenshot: Panel de Copilot Chat de VS Code con @router escrito, una pregunta enviada y la respuesta mostrando qué agente fue seleccionado y su respuesta -->
 
 ---
 

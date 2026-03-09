@@ -32,7 +32,7 @@ Focused areas we want feedback on:
 | **Dashboard** | Open the panel, navigate all pages, check the stats card | 🔴 High |
 | **Agents** | Use the wizard to create an agent, edit it, reload | 🔴 High |
 | **Teams** | Create a team, assign agents, run sync to `.github/agents/` | 🔴 High |
-| **Chat Participants** | Use `@agent-teams.router` and a direct `@agent-teams.<agentId>` in Copilot Chat | 🔴 High |
+| **Chat Participants** | Use `@router` and a direct `@<agentId>` in Copilot Chat | 🔴 High |
 | **Profiles** | Run `initProfile`, edit the generated YAML, check validation | 🟡 Medium |
 | **Skills Browser** | Open the skills browser, browse categories | 🟡 Medium |
 | **Dry-run sync** | Run `team:sync --dry-run` from CLI and verify the diff output | 🟡 Medium |
