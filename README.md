@@ -101,6 +101,15 @@ See the [Installation Guide](docs/installation.md) for full details and troubles
 
 ---
 
+## 👥 Contributors
+
+Thanks to everyone who has contributed to this project!
+
+<!-- CONTRIBUTORS:START -->
+<!-- CONTRIBUTORS:END -->
+
+---
+
 ## 📄 License & Support
 
 **License:** Private © 2026

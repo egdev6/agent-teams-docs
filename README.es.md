@@ -61,7 +61,7 @@ Estamos en fase beta activa. Tu feedback da forma a la release estable de v1.0.
 3. Recarga VS Code.
 4. Abre la Paleta de Comandos (`Ctrl+Shift+P`) → ejecuta **`Agent Teams: Open Dashboard`**.
 
-Consulta la [Guía de Instalación](docs/installation.md) para detalles completos y resolución de problemas.
+Consulta la [Guía de Instalación](docs/installation.es.md) para detalles completos y resolución de problemas.
 
 ---
 
@@ -69,12 +69,12 @@ Consulta la [Guía de Instalación](docs/installation.md) para detalles completo
 
 | Guía | Descripción | Estado |
 |---|---|---|
-| [Instalación](docs/installation.md) | Requisitos, instalación desde VSIX, resolución de problemas | ✅ |
-| [Dashboard](docs/dashboard.md) | Vista general del panel, navegación y acciones rápidas | ✅ |
-| [Agentes](docs/agents.md) | Crear, editar y gestionar agentes; formato YAML | ✅ |
-| [Teams](docs/teams.md) | Crear y configurar equipos; sync a `.github/agents/` | ✅ |
-| [Editor de Perfiles](docs/profiles.md) | Campos del perfil de proyecto, edición, importar/exportar | ✅ |
-| [Skills Browser](docs/skills-browser.md) | Explorar catálogo de skills, categorías, aplicar a agentes | ✅ |
+| [Instalación](docs/installation.es.md) | Requisitos, instalación desde VSIX, resolución de problemas | ✅ |
+| [Dashboard](docs/dashboard.es.md) | Vista general del panel, navegación y acciones rápidas | ✅ |
+| [Agentes](docs/agents.es.md) | Crear, editar y gestionar agentes; formato YAML | ✅ |
+| [Teams](docs/teams.es.md) | Crear y configurar equipos; sync a `.github/agents/` | ✅ |
+| [Editor de Perfiles](docs/profiles.es.md) | Campos del perfil de proyecto, edición, importar/exportar | ✅ |
+| [Skills Browser](docs/skills-browser.es.md) | Explorar catálogo de skills, categorías, aplicar a agentes | ✅ |
 
 ---
 
@@ -98,6 +98,15 @@ Consulta la [Guía de Instalación](docs/installation.md) para detalles completo
 - Kit Marketplace no disponible todavía (planificado)
 - Icono de la extensión pendiente (placeholder en los metadatos del paquete)
 - Metadatos del publisher son un placeholder (`your-publisher-name`)
+
+---
+
+## 👥 Colaboradores
+
+¡Gracias a todas las personas que han contribuido a este proyecto!
+
+<!-- CONTRIBUTORS:START -->
+<!-- CONTRIBUTORS:END -->
 
 ---
 
