@@ -15,7 +15,7 @@ Agents are the core building block of Agent Teams. Each agent is a GitHub Copilo
 2. Follow the steps: name, role, skills, routing keywords, context packs.
 3. The agent spec (`.yml`) is created under `.agent-teams/agents/`.
 
-<!-- screenshot: The Create Agent wizard page inside the dashboard, showing step 1 — fields for agent name and role selector (router / orchestrator / worker) -->
+<img width="1171" height="956" alt="imagen" src="https://github.com/user-attachments/assets/4a9b94aa-4534-435c-919f-8d020889c08c" />
 
 ### From a YAML spec (CLI)
 
@@ -72,7 +72,7 @@ context_packs:
 2. Modify the fields and save.
 3. Changes are written back to the YAML spec file.
 
-<!-- screenshot: The Edit Agent page with an agent spec loaded, showing editable fields for skills (checkbox list) and routing keywords (tag input), with a Save button at the bottom -->
+<img width="1183" height="745" alt="imagen" src="https://github.com/user-attachments/assets/254de2fe-41b3-47f1-930f-d5cd8cb17b85" />
 
 ### Validate Specs
 
