@@ -8,9 +8,13 @@ The Agent Teams dashboard is an embedded React SPA that opens as a VS Code panel
 
 ## Opening the Dashboard
 
+Sidebar
+
+<img width="174" height="60" alt="imagen" src="https://github.com/user-attachments/assets/9f217298-a220-429f-b14f-aa7175e24e1b" />
+
 Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<!-- screenshot: Command Palette with "Agent Teams: Open Dashboard" typed and the result highlighted in the suggestions list -->
+<img width="768" height="127" alt="imagen" src="https://github.com/user-attachments/assets/ccd4c59b-3c1a-4949-b685-5326da9a3a5c" />
 
 ---
 
@@ -25,7 +29,7 @@ The main dashboard page shows a live summary of your workspace:
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
 
-<!-- screenshot: Dashboard main page with all four cards visible: Stats (top-left), Sync Status (top-right), Quick Actions (bottom-left), and the Engram setup banner (bottom, if applicable) -->
+<img width="1668" height="1002" alt="imagen" src="https://github.com/user-attachments/assets/39d3977b-d90e-4aec-8547-df0e24b3d086" />
 
 ---
 
@@ -48,7 +52,7 @@ Use the sidebar icons or the Quick Actions card to move between pages:
 | **Import / Export** | Import or export the global agent catalog |
 | **Agent Wizard** | Step-by-step guided agent creation |
 
-<!-- screenshot: Dashboard with the sidebar navigation expanded on the left, showing all section icons with their labels, and the active page highlighted -->
+<img width="1637" height="291" alt="imagen" src="https://github.com/user-attachments/assets/a6d8ca85-3aa2-4686-9296-d82f6c29ce77" />
 
 ---
 
@@ -61,7 +65,7 @@ The stats card updates automatically when agents or teams change:
 - **Sync status** — `Up to date` or `X changes pending`.
 - **Engram** — `Connected` or `Not configured`.
 
-<!-- screenshot: Close-up of the Stats card showing active team name, agent count number, sync status badge (green "Up to date" or orange "3 changes pending"), and Engram status -->
+<img width="1628" height="119" alt="imagen" src="https://github.com/user-attachments/assets/8da74036-cdb1-4a4a-bb6f-542a1a0830a6" />
 
 ---
 
