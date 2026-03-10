@@ -10,7 +10,7 @@ The Skills Browser lets you explore the skill catalog defined in `skills.registr
 
 Dashboard → sidebar → **Skills**
 
-<!-- screenshot: Dashboard with the Skills icon highlighted in the left sidebar, and the Skills Browser page loaded in the main content area — showing the category filter bar at the top and a grid of skill cards below -->
+<img width="1169" height="812" alt="imagen" src="https://github.com/user-attachments/assets/769f757e-a70a-43b4-bedb-4a44a0354a1f" />
 
 ---
 
@@ -41,9 +41,7 @@ Use the category filter bar at the top of the page to narrow by category. Each s
 - **Security level** — indicates the risk level of the operations the skill enables
 - **Recommended roles** — which agent roles benefit most (`router`, `orchestrator`, `worker`)
 
-<!-- screenshot: Skills Browser page with the "testing" category filter active, showing only testing-related skill cards — each card displays the skill name, category badge, security level (low/medium/high), and recommended role tags -->
-
-<!-- screenshot: A single expanded skill card showing all detail fields: id in monospace, category badge, security level badge (colour-coded), and recommended roles as clickable tags -->
+<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/f8bef8b0-685d-4138-a6b6-03e1fbfa011e" />
 
 ---
 
@@ -55,7 +53,8 @@ Use the category filter bar at the top of the page to narrow by category. Each s
 2. In the **Skills** section, search and check the desired skills.
 3. Save.
 
-<!-- screenshot: The Edit Agent page with the Skills section expanded — a searchable list of skill checkboxes, with "code_analysis" and "testing" checked, and a search box filtering the list -->
+<img width="1171" height="832" alt="imagen" src="https://github.com/user-attachments/assets/4ebec413-7104-482c-81e7-465ec0cb45c2" />
+
 
 ### Via YAML
 
