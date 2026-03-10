@@ -18,7 +18,7 @@ El wizard interactivo solicita:
 
 Se crea un `project.profile.yml` en `.agent-teams/project.profile.yml`.
 
-<!-- screenshot: Los pasos del wizard initProfile dentro de VS Code, mostrando el paso de selección múltiple de tecnologías — una lista de opciones (React, TypeScript, Node.js, Vue, Python, etc.) con algunas marcadas -->
+<img width="898" height="2100" alt="imagen" src="https://github.com/user-attachments/assets/a550e703-c3a1-4d69-9a2b-d5215beb2e71" />
 
 ---
 
@@ -74,8 +74,6 @@ overrides:
 2. Edita tecnologías (checkboxes), rutas (lista clave-valor) y comandos (lista clave-valor).
 3. Guarda — escribe el YAML actualizado en disco.
 
-<!-- screenshot: La página del Profile Editor en el dashboard mostrando tres secciones: una cuadrícula de checkboxes de tecnologías (arriba), una tabla clave-valor de rutas (centro) y una tabla clave-valor de comandos (abajo), con un botón Guardar -->
-
 ### Editar el YAML directamente
 
 Abre `.agent-teams/project.profile.yml` en VS Code. El archivo se valida contra el esquema JSON en cada sync — los errores se notifican en el canal de salida.
@@ -94,8 +92,9 @@ La página **Import / Export** del dashboard gestiona el catálogo global de age
 | **Export** | Guarda el catálogo completo en un archivo JSON a elegir |
 | **Import (additive)** | Fusiona las entradas de un archivo JSON en el catálogo existente |
 | **Import (replace)** | Reemplaza el catálogo completo con los datos importados |
+| **Reset (delete)** | Elimina el catálogo completo en el IDE |
 
-<!-- screenshot: La página de Import/Export en el dashboard mostrando cuatro botones de acción (Capture Workspace, Export, Import Additive, Import Replace), con un resumen del recuento actual del catálogo (p. ej. "12 agentes, 3 equipos, 45 skills") debajo -->
+<img width="1644" height="749" alt="imagen" src="https://github.com/user-attachments/assets/9c032e6a-bfe3-4db2-a891-921937b76fd1" />
 
 Equivalentes en la Paleta de Comandos:
 
