@@ -118,7 +118,7 @@ Use `@router` to let the extension automatically pick the most relevant agent ba
 
 The router scores agents by intent keywords, file path patterns, domain vocabulary, and role — then delegates to the top match.
 
-<!-- screenshot: VS Code Copilot Chat panel with @router typed, a question submitted, and the response showing which agent was selected and its answer -->
+<img width="535" height="366" alt="imagen" src="https://github.com/user-attachments/assets/3bc9dd8b-2b50-4241-b308-bfbafd58892e" />
 
 ---
 
