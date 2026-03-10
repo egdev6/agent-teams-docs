@@ -118,7 +118,8 @@ Usa `@router` para que la extensión seleccione automáticamente el agente más 
 
 El router puntúa los agentes por palabras clave de intención, patrones de ruta de archivo, vocabulario de dominio y rol — y delega al que obtiene mayor puntuación.
 
-<!-- screenshot: Panel de Copilot Chat de VS Code con @router escrito, una pregunta enviada y la respuesta mostrando qué agente fue seleccionado y su respuesta -->
+<img width="535" height="366" alt="imagen" src="https://github.com/user-attachments/assets/3bc9dd8b-2b50-4241-b308-bfbafd58892e" />
+
 
 ---
 
