@@ -16,7 +16,8 @@ Un equipo es una selección curada de agentes — provenientes de kits y/o specs
 3. Selecciona los kits y/o agentes a incluir.
 4. Se crea el archivo `.agent-teams/teams/<id>.yml`.
 
-<!-- screenshot: La página del wizard de creación de equipo dentro del dashboard, mostrando el paso 2 — selección de kits con una lista de kits disponibles y checkboxes para habilitar cada uno -->
+<img width="1160" height="912" alt="imagen" src="https://github.com/user-attachments/assets/97911233-b78c-4ff9-805f-1dc918bbb4fb" />
+
 
 ### Formato YAML del Equipo
 
@@ -61,7 +62,7 @@ overrides:
 2. Modifica kits, agentes u overrides.
 3. Guarda — los cambios actualizan el archivo YAML inmediatamente.
 
-<!-- screenshot: La página de edición de equipo con un equipo cargado, mostrando la lista de agentes con toggles de habilitar/deshabilitar a la izquierda y un editor de overrides (pares clave-valor por agente) a la derecha -->
+<img width="1320" height="329" alt="imagen" src="https://github.com/user-attachments/assets/6663c27e-241e-47da-860b-041a8cd70323" />
 
 ---
 
@@ -91,7 +92,8 @@ La salida muestra cada agente con una de tres acciones:
 | `update` | El archivo de agente existente será actualizado (se muestra el diff) |
 | `skip` | No se detectaron cambios, el archivo se deja como está |
 
-<!-- screenshot: Terminal de VS Code mostrando la salida del sync dry-run — una tabla con columnas para nombre del agente, acción (create / update / skip en distintos colores) y una línea de resumen al final (p. ej. "3 creados, 1 actualizado, 2 omitidos") -->
+<img width="1327" height="179" alt="imagen" src="https://github.com/user-attachments/assets/177e16c7-41ad-4e52-9ec5-61c1896b33f8" />
+
 
 ### Aplicar el sync
 
