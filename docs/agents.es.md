@@ -15,7 +15,7 @@ Los agentes son el bloque fundamental de Agent Teams. Cada agente es un particip
 2. Sigue los pasos: nombre, rol, skills, palabras clave de routing, context packs.
 3. La spec del agente (`.yml`) se crea en `.agent-teams/agents/`.
 
-<!-- screenshot: La página del wizard de creación de agentes dentro del dashboard, mostrando el paso 1 — campos para el nombre del agente y el selector de rol (router / orchestrator / worker) -->
+<img width="1171" height="956" alt="imagen" src="https://github.com/user-attachments/assets/4a9b94aa-4534-435c-919f-8d020889c08c" />
 
 ### Desde una spec YAML (CLI)
 
@@ -72,7 +72,7 @@ context_packs:
 2. Modifica los campos y guarda.
 3. Los cambios se escriben de vuelta en el archivo YAML de la spec.
 
-<!-- screenshot: La página de edición de agente con una spec cargada, mostrando los campos editables de skills (lista de checkboxes) y palabras clave de routing (entrada de etiquetas), con el botón Guardar al fondo -->
+<img width="1183" height="745" alt="imagen" src="https://github.com/user-attachments/assets/254de2fe-41b3-47f1-930f-d5cd8cb17b85" />
 
 ### Validar Specs
 
