@@ -10,7 +10,7 @@ El Skills Browser permite explorar el catálogo de skills definido en `skills.re
 
 Dashboard → panel lateral → **Skills**
 
-<!-- screenshot: Dashboard con el icono de Skills resaltado en el panel lateral izquierdo y la página del Skills Browser cargada en el área de contenido principal — mostrando la barra de filtro de categorías en la parte superior y una cuadrícula de tarjetas de skills debajo -->
+<img width="1169" height="812" alt="imagen" src="https://github.com/user-attachments/assets/3bf1e7d7-3430-4e56-9b96-e02228b72f83" />
 
 ---
 
@@ -41,9 +41,7 @@ Usa la barra de filtro de categorías en la parte superior para filtrar por cate
 - **Nivel de seguridad** — indica el nivel de riesgo de las operaciones que habilita la skill
 - **Roles recomendados** — qué roles de agente se benefician más (`router`, `orchestrator`, `worker`)
 
-<!-- screenshot: Página del Skills Browser con el filtro de categoría "testing" activo, mostrando solo tarjetas de skills relacionadas con testing — cada tarjeta muestra el nombre de la skill, badge de categoría, nivel de seguridad (bajo/medio/alto) y etiquetas de rol recomendado -->
-
-<!-- screenshot: Una tarjeta de skill expandida mostrando todos los campos de detalle: id en monospacio, badge de categoría, badge de nivel de seguridad (con código de color) y roles recomendados como etiquetas -->
+<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/8c868a71-4e50-4f68-b180-6cbb5835faa3" />
 
 ---
 
@@ -55,7 +53,8 @@ Usa la barra de filtro de categorías en la parte superior para filtrar por cate
 2. En la sección **Skills**, busca y marca las skills deseadas.
 3. Guarda.
 
-<!-- screenshot: La página de edición de agente con la sección Skills expandida — una lista de checkboxes de skills con búsqueda integrada, con "code_analysis" y "testing" marcadas y un campo de búsqueda filtrando la lista -->
+<img width="1171" height="832" alt="imagen" src="https://github.com/user-attachments/assets/b33c08b2-5f95-41d9-9121-906d5019576e" />
+
 
 ### Desde YAML
 
