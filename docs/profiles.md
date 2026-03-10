@@ -18,7 +18,7 @@ The interactive wizard asks for:
 
 A `project.profile.yml` is created at `.agent-teams/project.profile.yml`.
 
-<!-- screenshot: The initProfile wizard prompts inside VS Code, showing the technology multi-select step — a list of technology options (React, TypeScript, Node.js, Vue, Python, etc.) with some checked -->
+<img width="898" height="2100" alt="imagen" src="https://github.com/user-attachments/assets/afd420cb-4235-4ea4-aa13-ff7922de95c8" />
 
 ---
 
@@ -74,8 +74,6 @@ overrides:
 2. Edit technologies (checkboxes), paths (key-value list), and commands (key-value list).
 3. Save — writes the updated YAML to disk.
 
-<!-- screenshot: The Profile Editor page in the dashboard showing three sections: a technology checkboxes grid (top), a paths key-value table (middle), and a commands key-value table (bottom), with a Save button -->
-
 ### Editing the YAML directly
 
 Open `.agent-teams/project.profile.yml` in VS Code. The file is validated against the JSON schema on every sync — errors are reported in the output channel.
@@ -94,8 +92,9 @@ The **Import / Export** page in the dashboard manages the global agent catalog s
 | **Export** | Saves the full catalog to a JSON file you choose |
 | **Import (additive)** | Merges entries from a JSON file into the existing catalog |
 | **Import (replace)** | Replaces the entire catalog with the imported data |
+| **Reset (delete)** | Delete the entire catalog in IDE |
 
-<!-- screenshot: The Import/Export page in the dashboard showing four action buttons (Capture Workspace, Export, Import Additive, Import Replace), with a summary of the current catalog count (e.g. "12 agents, 3 teams, 45 skills") below them -->
+<img width="1644" height="749" alt="imagen" src="https://github.com/user-attachments/assets/9c032e6a-bfe3-4db2-a891-921937b76fd1" />
 
 Command Palette equivalents:
 
