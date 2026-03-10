@@ -16,7 +16,7 @@ A team is a curated selection of agents — sourced from kits and/or individual 
 3. Select which kits and/or agents to include.
 4. A `.agent-teams/teams/<id>.yml` file is created.
 
-<!-- screenshot: The Create Team wizard page inside the dashboard, showing step 2 — kit selection with a list of available kits and checkboxes to enable each one -->
+<img width="1160" height="912" alt="imagen" src="https://github.com/user-attachments/assets/97911233-b78c-4ff9-805f-1dc918bbb4fb" />
 
 ### Team YAML Format
 
@@ -61,7 +61,7 @@ overrides:
 2. Modify kits, agents, or overrides.
 3. Save — the changes update the YAML file immediately.
 
-<!-- screenshot: The Edit Team page with a team loaded, showing the agents list with enable/disable toggles on the left and an overrides editor (key-value pairs per agent) on the right -->
+<img width="1320" height="329" alt="imagen" src="https://github.com/user-attachments/assets/6663c27e-241e-47da-860b-041a8cd70323" />
 
 ---
 
@@ -91,7 +91,7 @@ The output shows each agent with one of three actions:
 | `update` | Existing agent file will be updated (diff shown) |
 | `skip` | No changes detected, file left as-is |
 
-<!-- screenshot: VS Code terminal showing the dry-run sync output — a table with columns for agent name, action (create / update / skip in different colours), and a summary line at the bottom (e.g. "3 created, 1 updated, 2 skipped") -->
+<img width="1327" height="179" alt="imagen" src="https://github.com/user-attachments/assets/177e16c7-41ad-4e52-9ec5-61c1896b33f8" />
 
 ### Apply sync
 
