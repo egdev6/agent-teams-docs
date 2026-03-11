@@ -107,7 +107,7 @@ function HomepageHero() {
           </Link>
           <Link
             className="button button--secondary button--lg"
-            href="https://github.com/egdev6/agent-teams"
+            href="https://github.com/egdev6/agent-teams-docs"
           >
             <Translate id="homepage.hero.cta.viewOnGitHub">View on GitHub</Translate>
           </Link>

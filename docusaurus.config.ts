@@ -63,7 +63,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/egdev6/agent-teams',
+          href: 'https://github.com/egdev6/agent-teams-docs',
           label: 'GitHub',
           position: 'right',
         },
@@ -103,7 +103,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/egdev6/agent-teams',
+              href: 'https://github.com/egdev6/agent-teams-docs',
             },
             {
               label: 'Changelog',

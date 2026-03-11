@@ -37,7 +37,7 @@
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "The label of footer link with label=GitHub linking to https://github.com/egdev6/agent-teams"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/egdev6/agent-teams-docs"
   },
   "link.item.label.Changelog": {
     "message": "Registro de cambios",
