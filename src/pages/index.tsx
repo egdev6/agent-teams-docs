@@ -97,7 +97,11 @@ function HomepageHero() {
         <Heading as="h1" className={styles.heroTitle}>
           {siteConfig.title}
         </Heading>
-        <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+        <p className={styles.heroSubtitle}>
+          <Translate id="homepage.hero.tagline">
+            Build, manage, and orchestrate AI agents with GitHub Copilot, Claude code or Codex inside VS Code
+          </Translate>
+        </p>
         <div className={styles.buttons}>
           <Link
             className="button button--primary button--lg"

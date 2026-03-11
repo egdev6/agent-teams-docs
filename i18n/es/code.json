@@ -11,6 +11,10 @@
     "message": "Comenzar",
     "description": "Hero CTA button - Get Started"
   },
+  "homepage.hero.tagline": {
+    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot, Claude Code o Codex dentro de VS Code",
+    "description": "Hero subtitle tagline on the homepage"
+  },
   "homepage.hero.cta.viewOnGitHub": {
     "message": "Ver en GitHub",
     "description": "Hero CTA button - View on GitHub"
