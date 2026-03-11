@@ -10,7 +10,7 @@ El Skills Browser permite explorar y gestionar las skills de los agentes. Las sk
 
 Dashboard → panel lateral → **Skills**
 
-<img width="1169" height="812" alt="imagen" src="https://github.com/user-attachments/assets/3bf1e7d7-3430-4e56-9b96-e02228b72f83" />
+<img width="1169" height="812" alt="imagen" src="/img/docs/skills-browser-overview-es.png" />
 
 El browser tiene dos pestañas:
 
@@ -43,7 +43,7 @@ Explora skills publicadas en el registro comunitario compartido e instálalas di
 - Haz clic en **Install** en cualquier tarjeta para añadirla al `skills.registry.yml` de tu proyecto
 - Usa la paginación para navegar por el catálogo completo
 
-<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/8c868a71-4e50-4f68-b180-6cbb5835faa3" />
+<img width="1184" height="1139" alt="imagen" src="/img/docs/skills-browser-install-es.png" />
 
 ---
 
@@ -74,7 +74,7 @@ Las skills se asignan a los agentes a través del editor de agentes:
 3. Busca y selecciona skills del registro del proyecto o instala nuevas desde la comunidad
 4. Guarda
 
-<img width="1171" height="832" alt="imagen" src="https://github.com/user-attachments/assets/b33c08b2-5f95-41d9-9121-906d5019576e" />
+<img width="1171" height="832" alt="imagen" src="/img/docs/skills-browser-apply-es.png" />
 
 También puedes asignar skills durante la creación inicial del agente — el mismo paso de skills aparece en el wizard de creación.
 
@@ -85,3 +85,4 @@ También puedes asignar skills durante la creación inicial del agente — el mi
 Para añadir una skill que no está en el registro comunitario, agrega una entrada a `skills.registry.yml` en la raíz del workspace siguiendo el formato existente y recarga la extensión:
 
 Paleta de Comandos → **`Agent Teams: Reload Agents`**
+

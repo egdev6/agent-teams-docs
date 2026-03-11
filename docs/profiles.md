@@ -12,7 +12,7 @@ Dashboard → sidebar → **Profile Editor**
 
 If no profile exists yet, the dashboard home page shows a **Configure project profile** prompt. Click it to open the editor directly.
 
-<img width="898" height="2100" alt="imagen" src="https://github.com/user-attachments/assets/afd420cb-4235-4ea4-aa13-ff7922de95c8" />
+<img width="898" height="2100" alt="imagen" src="/img/docs/profiles-wizard.png" />
 
 ---
 
@@ -80,7 +80,7 @@ Click **Save** at the bottom of the editor. The profile is written to `.agent-te
 
 The **Import / Export** page in the dashboard manages the global agent catalog stored in VS Code global storage. This is separate from the project profile — it lets you back up and share your entire agent and team catalog across workspaces.
 
-<img width="1644" height="749" alt="imagen" src="https://github.com/user-attachments/assets/9c032e6a-bfe3-4db2-a891-921937b76fd1" />
+<img width="1644" height="749" alt="imagen" src="/img/docs/profiles-editor.png" />
 
 | Action | Description |
 |---|---|
@@ -135,3 +135,4 @@ overrides:
 | `overrides` | — | Per-agent field overrides applied at project level (lower priority than team overrides) |
 
 ---
+

@@ -10,7 +10,7 @@ The Skills Browser lets you explore and manage agent skills. Skills describe the
 
 Dashboard → sidebar → **Skills**
 
-<img width="1169" height="812" alt="imagen" src="https://github.com/user-attachments/assets/769f757e-a70a-43b4-bedb-4a44a0354a1f" />
+<img width="1169" height="812" alt="imagen" src="/img/docs/skills-browser-overview.png" />
 
 The browser has two tabs:
 
@@ -43,7 +43,7 @@ Browse skills published to the shared community registry and install them direct
 - Click **Install** on any skill card to add it to your project's `skills.registry.yml`
 - Use pagination to browse through the full catalog
 
-<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/f8bef8b0-685d-4138-a6b6-03e1fbfa011e" />
+<img width="1184" height="1139" alt="imagen" src="/img/docs/skills-browser-install.png" />
 
 ---
 
@@ -74,7 +74,7 @@ Skills are assigned to agents through the agent editor:
 3. Search and select skills from the project registry or install new ones from the community
 4. Save
 
-<img width="1171" height="832" alt="imagen" src="https://github.com/user-attachments/assets/4ebec413-7104-482c-81e7-465ec0cb45c2" />
+<img width="1171" height="832" alt="imagen" src="/img/docs/skills-browser-apply.png" />
 
 You can also assign skills during initial agent creation — the same skills step appears in the Create Agent wizard.
 
@@ -87,3 +87,4 @@ To add a skill that isn't in the community registry, append an entry to `skills.
 Command Palette → **`Agent Teams: Reload Agents`**
 
 ---
+

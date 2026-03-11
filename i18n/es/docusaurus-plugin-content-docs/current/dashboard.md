@@ -10,11 +10,11 @@ El dashboard de Agent Teams es una SPA React embebida que se abre como panel de 
 
 Haz clic en el icono de Agent Teams en el panel lateral de VS Code:
 
-<img width="174" height="60" alt="imagen" src="https://github.com/user-attachments/assets/9f217298-a220-429f-b14f-aa7175e24e1b" />
+<img width="174" height="60" alt="imagen" src="/img/docs/dashboard-icon.png" />
 
 O usa la Paleta de Comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<img width="768" height="127" alt="imagen" src="https://github.com/user-attachments/assets/ccd4c59b-3c1a-4949-b685-5326da9a3a5c" />
+<img width="768" height="127" alt="imagen" src="/img/docs/dashboard-command.png" />
 
 ---
 
@@ -29,7 +29,7 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 | **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
 | **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
 
-<img width="1668" height="1002" alt="imagen" src="https://github.com/user-attachments/assets/39d3977b-d90e-4aec-8547-df0e24b3d086" />
+<img width="1668" height="1002" alt="imagen" src="/img/docs/dashboard-overview.png" />
 
 ---
 
@@ -37,7 +37,7 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 
 Usa los iconos del panel lateral o las Acciones Rápidas para moverte entre páginas:
 
-<img width="1637" height="291" alt="imagen" src="https://github.com/user-attachments/assets/a6d8ca85-3aa2-4686-9296-d82f6c29ce77" />
+<img width="1637" height="291" alt="imagen" src="/img/docs/dashboard-actions.png" />
 
 ### Profile Editor
 
@@ -82,7 +82,7 @@ La tarjeta de estadísticas se actualiza automáticamente cuando cambian agentes
 - **Estado del sync** — `Al día` o `X cambios pendientes`.
 - **Engram** — `Conectado` o `No configurado`.
 
-<img width="1628" height="119" alt="imagen" src="https://github.com/user-attachments/assets/8da74036-cdb1-4a4a-bb6f-542a1a0830a6" />
+<img width="1628" height="119" alt="imagen" src="/img/docs/dashboard-status.png" />
 
 ---
 
@@ -102,3 +102,4 @@ Si abres Agent Teams por primera vez en un proyecto, sigue esta secuencia:
 El dashboard reacciona automáticamente a los cambios de estado en VS Code. Si editas un archivo YAML directamente fuera del dashboard, las estadísticas y el estado del sync se actualizan al guardar el archivo.
 
 Para forzar una recarga completa: Paleta de Comandos → **`Agent Teams: Reload Agents`**
+

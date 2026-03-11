@@ -10,7 +10,7 @@ A team is a curated selection of agents — sourced from kits and/or individual 
 
 Dashboard → **Team Manager** → **Create Team**, or use the **Quick Actions** card on the home page.
 
-<img width="1160" height="912" alt="imagen" src="https://github.com/user-attachments/assets/97911233-b78c-4ff9-805f-1dc918bbb4fb" />
+<img width="1160" height="912" alt="imagen" src="/img/docs/teams-overview.png" />
 
 The wizard has three sections:
 
@@ -41,7 +41,7 @@ The edit page provides four actions:
 | **Delete** | Permanently remove this team |
 | **Set as Active** | Mark this team as the active team for sync operations |
 
-<img width="1320" height="329" alt="imagen" src="https://github.com/user-attachments/assets/6663c27e-241e-47da-860b-041a8cd70323" />
+<img width="1320" height="329" alt="imagen" src="/img/docs/teams-creation.png" />
 
 ### Setting the Active Team
 
@@ -63,7 +63,7 @@ Sync resolves the full composition (kit defaults + project profile + team overri
    - `skip` — no changes detected, file left as-is
 2. Click **Sync** to apply all changes
 
-<img width="1327" height="179" alt="imagen" src="https://github.com/user-attachments/assets/177e16c7-41ad-4e52-9ec5-61c1896b33f8" />
+<img width="1327" height="179" alt="imagen" src="/img/docs/teams-sync.png" />
 
 The dashboard detects changes to YAML files automatically via file watching — the sync status card updates whenever you save an agent or team.
 
@@ -120,3 +120,4 @@ overrides:
 | `overrides` | — | Field-level overrides applied to specific agents within this team |
 
 ---
+

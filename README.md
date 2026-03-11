@@ -4,7 +4,7 @@
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 
-Complete system for creating, managing, and orchestrating AI agents with GitHub Copilot inside VS Code. Build reusable agent kits, configure project profiles, and run a 12-page embedded dashboard — all without leaving your editor.
+Complete system for creating, managing, and orchestrating AI agents with GitHub Copilot, Claude code or Codex inside VS Code. Build reusable agent kits, configure project profiles, and run a 12-page embedded dashboard — all without leaving your editor.
 
 ---
 

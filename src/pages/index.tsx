@@ -226,7 +226,7 @@ export default function Home(): React.ReactNode {
   return (
     <Layout
       title={translate({ id: 'homepage.layout.title', message: 'AI Agent Orchestration for VS Code' })}
-      description={translate({ id: 'homepage.layout.description', message: 'Build, manage, and orchestrate AI agents with GitHub Copilot inside VS Code. Create reusable agent kits, configure project profiles, and run an embedded 12-page dashboard.' })}
+      description={translate({ id: 'homepage.layout.description', message: 'Build, manage, and orchestrate AI agents with GitHub Copilot, Claude code or Codex inside VS Code. Create reusable agent kits, configure project profiles, and run an embedded 12-page dashboard.' })}
     >
       <HomepageHero />
       <main>

@@ -12,7 +12,7 @@ Open the dashboard and navigate to **Agent Manager** → **Create Agent**, or us
 
 The wizard guides you through 6 steps:
 
-<img width="1171" height="956" alt="imagen" src="https://github.com/user-attachments/assets/4a9b94aa-4534-435c-919f-8d020889c08c" />
+<img width="1171" height="956" alt="imagen" src="/img/docs/agents-overview.png" />
 
 ### Step 0 — Identity
 
@@ -91,7 +91,7 @@ Dashboard → **Agent Manager** shows all loaded agents grouped by role (Router,
 2. All 6 wizard steps are available for modification
 3. Save — changes are written back to the YAML spec file
 
-<img width="1183" height="745" alt="imagen" src="https://github.com/user-attachments/assets/254de2fe-41b3-47f1-930f-d5cd8cb17b85" />
+<img width="1183" height="745" alt="imagen" src="/img/docs/agents-forms.png" />
 
 ### Sync Agents to `.github/agents/`
 
@@ -131,7 +131,7 @@ Use `@router` to let the extension automatically pick the most relevant agent ba
 
 The router scores agents by intent keywords, file path patterns, domain vocabulary, and role — then delegates to the top match.
 
-<img width="535" height="366" alt="imagen" src="https://github.com/user-attachments/assets/3bc9dd8b-2b50-4241-b308-bfbafd58892e" />
+<img width="535" height="366" alt="imagen" src="/img/docs/agents-status.png" />
 
 ---
 
@@ -175,3 +175,4 @@ context_packs:
 | `context_packs` | — | Context pack IDs to embed in responses |
 
 ---
+

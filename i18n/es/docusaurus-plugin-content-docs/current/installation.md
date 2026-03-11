@@ -26,7 +26,7 @@
 7. Navega hasta el archivo descargado y selecciónalo.
 8. Haz clic en **Reload** cuando se te solicite.
 
-<img width="782" height="345" alt="imagen" src="https://github.com/user-attachments/assets/0baf6a8d-8259-4a63-9a59-6354535b3a9a" />
+<img width="782" height="345" alt="imagen" src="/img/docs/installation-vsix.png" />
 
 ---
 
@@ -40,7 +40,7 @@ Tras la instalación:
 2. Escribe y ejecuta **`Agent Teams: Open Dashboard`**.
 3. El panel de Agent Teams se abre en el lado derecho del editor.
 
-<img width="186" height="57" alt="imagen" src="https://github.com/user-attachments/assets/48c955f3-2f35-4c97-9830-1a4704b81422" />
+<img width="186" height="57" alt="imagen" src="/img/docs/installation-open-dashboard-es.png" />
 
 ---
 
@@ -55,7 +55,7 @@ Para usar Agent Teams en un proyecto, inicializa primero un perfil:
    - Define comandos con nombre (p. ej. `build`, `test`, `lint`).
 3. Se crea el archivo `.agent-teams/project.profile.yml` en la raíz del workspace.
 
-<img width="898" height="2100" alt="imagen" src="https://github.com/user-attachments/assets/e867283a-42bc-4c56-8f5b-790866827368" />
+<img width="898" height="2100" alt="imagen" src="/img/docs/installation-init-profile-es.png" />
 
 ---
 
@@ -81,3 +81,4 @@ Para usar Agent Teams en un proyecto, inicializa primero un perfil:
 
 - Paleta de Comandos → **`Agent Teams: Reload Agents`**.
 - Si el problema persiste, cierra y vuelve a abrir el panel del dashboard.
+
