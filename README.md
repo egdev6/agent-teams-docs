@@ -1,6 +1,14 @@
+<div align="center">
+  
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
+</div>
+
 # Agent Teams
 
-**Version:** 1.0.0 | **Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
+**Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 
@@ -117,3 +125,11 @@ Thanks to everyone who has contributed to this project!
 
 - **Issues:** [github.com/egdev6/agent-teams-docs/issues](https://github.com/egdev6/agent-teams-docs/issues)
 - **Source code:** [github.com/egdev6/agent-teams](https://github.com/egdev6/agent-teams)
+
+
+[stars-shield]: https://img.shields.io/github/stars/egdev6/agent-teams-docs.svg?style=for-the-badge&cacheBust=1
+[stars-url]: https://github.com/egdev6/agent-teams-docs/stargazers
+[issues-shield]: https://img.shields.io/github/issues/egdev6/agent-teams-docs.svg?style=for-the-badge
+[issues-url]: https://github.com/egdev6/agent-teams-docs/issues
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/egdev6
