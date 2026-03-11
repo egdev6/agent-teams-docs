@@ -1,28 +1,98 @@
 # Profile Editor
 
-**Status:** 🧪 Beta | [← Back to Index](../README.md)
+**Status:** 🧪 Beta
 
 A project profile (`.agent-teams/project.profile.yml`) defines the technology context, path mappings, commands, and base agent overrides for a workspace. It feeds into the composition engine when resolving kit placeholders and applying project-level defaults.
 
 ---
 
-## Initializing a Profile
+## Opening the Profile Editor
 
-Command Palette → **`Agent Teams: Init Profile`**
+Dashboard → sidebar → **Profile Editor**
 
-The interactive wizard asks for:
-
-- **Technologies** in use (e.g. React, TypeScript, Node.js) — used in `{{#if technology:*}}` conditionals.
-- **Path mappings** (e.g. `src → src/`, `tests → tests/`) — available as `{{path:src}}` in templates.
-- **Commands** (e.g. `build → pnpm build`) — available as `{{command:build}}` in templates.
-
-A `project.profile.yml` is created at `.agent-teams/project.profile.yml`.
+If no profile exists yet, the dashboard home page shows a **Configure project profile** prompt. Click it to open the editor directly.
 
 <img width="898" height="2100" alt="imagen" src="https://github.com/user-attachments/assets/afd420cb-4235-4ea4-aa13-ff7922de95c8" />
 
 ---
 
-## Profile YAML Format
+## Filling Out the Profile
+
+The editor is divided into seven sections:
+
+### Basic Information
+
+| Field | Description |
+|---|---|
+| **Project ID** | Unique identifier for this project (kebab-case) |
+| **Name** | Human-readable project name |
+| **Version** | Project version string |
+| **Type** | Project type: `frontend`, `backend`, `fullstack`, `monorepo`, or `library` |
+
+### Technologies
+
+List the technologies your project uses. These are used in template conditionals (`{{#if technology:react}}`).
+
+- Click **Add technology** to add an entry manually
+- Click **Detect** to have the extension scan your workspace and suggest technologies automatically
+
+### Paths
+
+Named path mappings used in template variables (`{{path:src}}`).
+
+- Add key-value pairs (e.g. `src → src/`, `tests → tests/`, `components → src/components/`)
+- Click **Detect** to auto-fill paths based on your project structure
+
+### Commands
+
+Named command mappings used in template variables (`{{command:build}}`).
+
+- Add key-value pairs (e.g. `build → pnpm build`, `test → pnpm test`, `lint → pnpm lint`)
+- Click **Detect** to auto-fill based on your `package.json` or other config files
+
+### Context Packs
+
+Select which context packs are active for this project. These are embedded in every agent that belongs to this project unless overridden at team level.
+
+### Sync Targets
+
+Choose which AI tools this project's agents should be synced to:
+
+| Target | Description |
+|---|---|
+| **Claude Code** | Generates agent files for Anthropic Claude Code |
+| **Codex** | Generates agent files for OpenAI Codex |
+| **GitHub Copilot** | Generates `.github/agents/` markdown files for GitHub Copilot |
+
+### Gitignore
+
+Toggle this option to add the `.agent-teams/` configuration directory to your project's `.gitignore`. Useful when you want to keep your agent configuration local to your machine.
+
+---
+
+## Saving the Profile
+
+Click **Save** at the bottom of the editor. The profile is written to `.agent-teams/project.profile.yml`. Changes are picked up automatically on the next sync.
+
+---
+
+## Import / Export
+
+The **Import / Export** page in the dashboard manages the global agent catalog stored in VS Code global storage. This is separate from the project profile — it lets you back up and share your entire agent and team catalog across workspaces.
+
+<img width="1644" height="749" alt="imagen" src="https://github.com/user-attachments/assets/9c032e6a-bfe3-4db2-a891-921937b76fd1" />
+
+| Action | Description |
+|---|---|
+| **Export** | Saves the full catalog to a JSON file you choose |
+| **Import** | Merges entries from a JSON file into the existing catalog (non-destructive) |
+| **Reset** | Permanently deletes the entire catalog — use with caution |
+
+---
+
+## Reference: Profile YAML Format
+
+The dashboard writes and reads this format automatically. You can also open `.agent-teams/project.profile.yml` directly in VS Code.
 
 ```yaml
 id: my-project
@@ -65,45 +135,3 @@ overrides:
 | `overrides` | — | Per-agent field overrides applied at project level (lower priority than team overrides) |
 
 ---
-
-## Editing a Profile
-
-### Using the Dashboard
-
-1. Dashboard → **Profile Editor**.
-2. Edit technologies (checkboxes), paths (key-value list), and commands (key-value list).
-3. Save — writes the updated YAML to disk.
-
-### Editing the YAML directly
-
-Open `.agent-teams/project.profile.yml` in VS Code. The file is validated against the JSON schema on every sync — errors are reported in the output channel.
-
-Changes to the profile are picked up automatically on the next sync or `Reload Agents`.
-
----
-
-## Import / Export
-
-The **Import / Export** page in the dashboard manages the global agent catalog stored in VS Code global storage:
-
-| Action | Description |
-|---|---|
-| **Capture Workspace** | Snapshots the current workspace state (agents + teams + skills) into the catalog |
-| **Export** | Saves the full catalog to a JSON file you choose |
-| **Import (additive)** | Merges entries from a JSON file into the existing catalog |
-| **Import (replace)** | Replaces the entire catalog with the imported data |
-| **Reset (delete)** | Delete the entire catalog in IDE |
-
-<img width="1644" height="749" alt="imagen" src="https://github.com/user-attachments/assets/9c032e6a-bfe3-4db2-a891-921937b76fd1" />
-
-Command Palette equivalents:
-
-```
-Agent Teams: Capture Workspace Catalog
-Agent Teams: Export Catalog
-Agent Teams: Import Catalog
-```
-
----
-
-[← Back to Index](../README.md)

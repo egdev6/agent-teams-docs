@@ -1,0 +1,63 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Deploy to Netlify
+#
+# Builds the Docusaurus site and deploys it to Netlify on every push to main.
+#
+# SETUP (one-time):
+#   1. In your Netlify dashboard, create a new site linked to this repo OR
+#      get the Site ID from Site Settings → General → Site details.
+#   2. Create a Netlify personal access token at:
+#      https://app.netlify.com/user/applications#personal-access-tokens
+#   3. Add both as repository secrets in this repo
+#      (Settings → Secrets and variables → Actions → New repository secret):
+#        - NETLIFY_AUTH_TOKEN  ← your personal access token
+#        - NETLIFY_SITE_ID     ← the site ID (e.g. xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
+# ──────────────────────────────────────────────────────────────────────────────
+
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main
+
+  # Allow manual deploys from the Actions tab.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: build
+          production-branch: main
+          production-deploy: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions — ${{ github.sha }}"
+          enable-pull-request-comment: false
+          enable-commit-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

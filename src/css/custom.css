@@ -1,0 +1,62 @@
+/* Agent Teams — Docusaurus theme overrides */
+
+:root {
+  /* Primary: indigo-violet */
+  --ifm-color-primary: #6366f1;
+  --ifm-color-primary-dark: #4f52ef;
+  --ifm-color-primary-darker: #4346ee;
+  --ifm-color-primary-darkest: #2225e9;
+  --ifm-color-primary-light: #7779f3;
+  --ifm-color-primary-lighter: #8385f4;
+  --ifm-color-primary-lightest: #a5a7f8;
+
+  --ifm-code-font-size: 93%;
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #818cf8;
+  --ifm-color-primary-dark: #6b76f7;
+  --ifm-color-primary-darker: #5e6af6;
+  --ifm-color-primary-darkest: #3441f4;
+  --ifm-color-primary-light: #97a1f9;
+  --ifm-color-primary-lighter: #a4adf9;
+  --ifm-color-primary-lightest: #c7ccfc;
+
+  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.15);
+}
+
+/* Navbar refinement */
+.navbar {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Doc sidebar */
+.menu__link--active:not(.menu__link--sublist) {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  background: rgba(129, 140, 248, 0.12);
+}
+
+/* Code blocks */
+.prism-code {
+  border-radius: 8px;
+}
+
+/* Tables */
+table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+thead tr {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* Admonitions */
+.alert {
+  border-radius: 8px;
+}

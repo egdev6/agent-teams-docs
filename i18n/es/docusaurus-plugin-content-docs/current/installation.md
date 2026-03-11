@@ -1,6 +1,6 @@
 # Guía de Instalación
 
-**Estado:** ✅ Disponible | [← Volver al índice](../README.es.md)
+**Estado:** ✅ Disponible
 
 ---
 
@@ -81,7 +81,3 @@ Para usar Agent Teams en un proyecto, inicializa primero un perfil:
 
 - Paleta de Comandos → **`Agent Teams: Reload Agents`**.
 - Si el problema persiste, cierra y vuelve a abrir el panel del dashboard.
-
----
-
-[← Volver al índice](../README.es.md)

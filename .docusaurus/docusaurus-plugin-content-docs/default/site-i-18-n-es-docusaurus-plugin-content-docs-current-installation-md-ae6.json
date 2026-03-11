@@ -1,0 +1,20 @@
+{
+  "id": "installation",
+  "title": "Guía de Instalación",
+  "description": "Estado: ✅ Disponible",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/installation.md",
+  "sourceDirName": ".",
+  "slug": "/installation",
+  "permalink": "/es/docs/installation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/installation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Dashboard",
+    "permalink": "/es/docs/dashboard"
+  }
+}

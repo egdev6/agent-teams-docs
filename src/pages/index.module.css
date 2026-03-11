@@ -1,0 +1,230 @@
+/* Hero */
+.heroBanner {
+  padding: 5rem 0 4rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 0%, var(--ifm-background-color) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.betaBadge {
+  display: inline-block;
+  background: var(--ifm-color-warning-contrast-background);
+  color: var(--ifm-color-warning-dark);
+  border: 1px solid var(--ifm-color-warning);
+  border-radius: 9999px;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.04em;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 30%, var(--ifm-color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='light'] .heroTitle {
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest) 30%, var(--ifm-color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: var(--ifm-color-secondary);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Features */
+.features {
+  padding: 5rem 0;
+}
+
+.featuresTitle {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1rem;
+}
+
+/* Architecture */
+.architectureSection {
+  padding: 5rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+.architectureSubtitle {
+  text-align: center;
+  color: var(--ifm-color-secondary);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.pipelineWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.pipelineStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  width: 160px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pipelineStep:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+.pipelineIcon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pipelineLabel {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.375rem;
+}
+
+.pipelineDesc {
+  font-size: 0.78rem;
+  color: var(--ifm-color-secondary);
+  line-height: 1.4;
+}
+
+.pipelineArrow {
+  font-size: 1.5rem;
+  color: var(--ifm-color-primary);
+  padding: 0 0.75rem;
+  font-weight: 700;
+}
+
+.architectureCta {
+  text-align: center;
+}
+
+/* Install */
+.installSection {
+  padding: 5rem 0;
+}
+
+.installCard {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 16px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.installSteps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.75rem 0;
+  text-align: left;
+}
+
+.installStep {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+}
+
+.stepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.installReqs {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.85rem;
+  color: var(--ifm-color-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.25rem;
+  }
+
+  .pipeline {
+    gap: 0.5rem;
+  }
+
+  .pipelineStep {
+    width: 130px;
+    padding: 1rem;
+  }
+
+  .pipelineArrow {
+    padding: 0 0.25rem;
+    font-size: 1.2rem;
+  }
+}

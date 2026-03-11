@@ -1,0 +1,24 @@
+{
+  "id": "agents",
+  "title": "Agentes",
+  "description": "Estado: 🧪 Beta",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/agents.md",
+  "sourceDirName": ".",
+  "slug": "/agents",
+  "permalink": "/es/docs/agents",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/agents.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Dashboard",
+    "permalink": "/es/docs/dashboard"
+  },
+  "next": {
+    "title": "Architecture Guide",
+    "permalink": "/es/docs/agent-architecture"
+  }
+}

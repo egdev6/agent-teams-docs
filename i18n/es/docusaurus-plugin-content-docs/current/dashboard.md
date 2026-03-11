@@ -1,0 +1,104 @@
+# Dashboard
+
+**Estado:** 🧪 Beta
+
+El dashboard de Agent Teams es una SPA React embebida que se abre como panel de VS Code. Es la interfaz principal para crear y gestionar agentes, equipos y la configuración del proyecto.
+
+---
+
+## Abrir el Dashboard
+
+Haz clic en el icono de Agent Teams en el panel lateral de VS Code:
+
+<img width="174" height="60" alt="imagen" src="https://github.com/user-attachments/assets/9f217298-a220-429f-b14f-aa7175e24e1b" />
+
+O usa la Paleta de Comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
+
+<img width="768" height="127" alt="imagen" src="https://github.com/user-attachments/assets/ccd4c59b-3c1a-4949-b685-5326da9a3a5c" />
+
+---
+
+## Página de Inicio
+
+La página principal del dashboard muestra un resumen en tiempo real del workspace:
+
+| Tarjeta | Qué muestra |
+|---|---|
+| **Estadísticas** | Equipo activo, total de agentes, estado del sync y estado de la integración con Engram |
+| **Estado del Sync** | Desglose de cambios pendientes (agentes a crear / actualizar / omitir) con botón de sync directo |
+| **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
+| **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
+
+<img width="1668" height="1002" alt="imagen" src="https://github.com/user-attachments/assets/39d3977b-d90e-4aec-8547-df0e24b3d086" />
+
+---
+
+## Navegación
+
+Usa los iconos del panel lateral o las Acciones Rápidas para moverte entre páginas:
+
+<img width="1637" height="291" alt="imagen" src="https://github.com/user-attachments/assets/a6d8ca85-3aa2-4686-9296-d82f6c29ce77" />
+
+### Profile Editor
+
+Edita el perfil de tu proyecto — tecnologías, rutas, comandos, context packs y destinos de sync. La página de inicio muestra un aviso de configuración cuando no existe ningún perfil. Ver [Profile Editor](profiles) para más detalles.
+
+### Team Manager
+
+Lista todos los equipos con su nombre, descripción, número de agentes y estado activo. Desde aquí puedes crear nuevos equipos, activar uno o abrirlo para editarlo. Ver [Teams](teams) para más detalles.
+
+### Agent Manager
+
+Muestra todos los agentes cargados organizados por rol (Router, Orchestrator, Worker). Haz clic en cualquier agente para editarlo, o en **Create Agent** para abrir el wizard. Ver [Agentes](agents) para más detalles.
+
+### Create Agent / Edit Agent
+
+El wizard de creación de agentes en 6 pasos. Cubre identidad, alcance, workflow, skills, reglas y configuración de salida. Una vista previa aparece en el panel lateral derecho durante todo el proceso.
+
+### Create Team / Edit Team
+
+El wizard de creación de equipos. Introduce un nombre, selecciona agentes miembro y previsualiza la configuración. Edit Team añade opciones para establecer el equipo como activo o eliminarlo.
+
+### Skills Browser
+
+Vista en dos pestañas: las skills locales de tu proyecto y el registro comunitario. Explora, busca, filtra por categoría e instala skills de la comunidad directamente. Ver [Skills Browser](skills-browser) para más detalles.
+
+### Context Packs
+
+Gestiona los context packs disponibles en tu workspace. Activa o desactiva packs, ajusta la prioridad, crea nuevos packs e importa archivos markdown como packs. Ver [Context Packs](context-packs) para más detalles.
+
+### Import / Export
+
+Haz copias de seguridad y comparte tu catálogo global de agentes. Exporta a JSON, importa desde un archivo o reinicia el catálogo. Ver [Editor de Perfiles — Importar / Exportar](profiles#importar--exportar) para más detalles.
+
+---
+
+## Tarjeta de Estadísticas
+
+La tarjeta de estadísticas se actualiza automáticamente cuando cambian agentes o equipos:
+
+- **Equipo activo** — el equipo actualmente seleccionado para las operaciones de sync.
+- **Nº de agentes** — total de agentes cargados desde specs y kits.
+- **Estado del sync** — `Al día` o `X cambios pendientes`.
+- **Engram** — `Conectado` o `No configurado`.
+
+<img width="1628" height="119" alt="imagen" src="https://github.com/user-attachments/assets/8da74036-cdb1-4a4a-bb6f-542a1a0830a6" />
+
+---
+
+## Flujo de Configuración Inicial
+
+Si abres Agent Teams por primera vez en un proyecto, sigue esta secuencia:
+
+1. **Configura el perfil del proyecto** — la página de inicio muestra un aviso de configuración. Haz clic para abrir el Profile Editor, rellena tus tecnologías, rutas y comandos, y guarda.
+2. **Crea tus agentes** — ve a Agent Manager → Create Agent y completa el wizard para cada agente que necesites.
+3. **Crea un equipo** — ve a Team Manager → Create Team, añade tus agentes y guarda. Establécelo como equipo activo.
+4. **Sincroniza** — la tarjeta Sync Status en la página de inicio mostrará los cambios pendientes. Haz clic en Sync para generar los archivos `.github/agents/` y activar tus agentes en Copilot Chat.
+
+---
+
+## Actualizar Datos
+
+El dashboard reacciona automáticamente a los cambios de estado en VS Code. Si editas un archivo YAML directamente fuera del dashboard, las estadísticas y el estado del sync se actualizan al guardar el archivo.
+
+Para forzar una recarga completa: Paleta de Comandos → **`Agent Teams: Reload Agents`**

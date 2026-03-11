@@ -1,0 +1,24 @@
+{
+  "id": "dashboard",
+  "title": "Dashboard",
+  "description": "Estado: 🧪 Beta",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/dashboard.md",
+  "sourceDirName": ".",
+  "slug": "/dashboard",
+  "permalink": "/es/docs/dashboard",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/dashboard.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Installation",
+    "permalink": "/es/docs/installation"
+  },
+  "next": {
+    "title": "Agent Manager",
+    "permalink": "/es/docs/agents"
+  }
+}

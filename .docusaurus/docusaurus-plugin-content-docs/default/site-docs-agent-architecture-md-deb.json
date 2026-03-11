@@ -1,0 +1,24 @@
+{
+  "id": "agent-architecture",
+  "title": "Ideal Agent Architecture",
+  "description": "Status: 🧪 Beta",
+  "source": "@site/docs/agent-architecture.md",
+  "sourceDirName": ".",
+  "slug": "/agent-architecture",
+  "permalink": "/docs/agent-architecture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/agent-architecture.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Agent Manager",
+    "permalink": "/docs/agents"
+  },
+  "next": {
+    "title": "Teams",
+    "permalink": "/docs/teams"
+  }
+}

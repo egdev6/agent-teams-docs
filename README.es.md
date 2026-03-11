@@ -1,6 +1,6 @@
 # Agent Teams
 
-**Versión:** 1.0.0 | **Estado:** 🧪 Beta | **Lanzamiento:** Marzo 2026
+**Versión:** 1.0.0 | **Estado:** 🧪 Beta | **Lanzamiento:** Marzo 2026 | [📖 Sitio de Documentación](https://agent-teams.netlify.app)
 
 [🇬🇧 English](README.md) | 🇪🇸 Español
 
@@ -33,9 +33,9 @@ Estamos en fase beta activa. Tu feedback da forma a la release estable de v1.0.
 | **Agentes** | Usar el wizard para crear un agente, editarlo, recargarlo | 🔴 Alta |
 | **Teams** | Crear un equipo, asignar agentes, ejecutar sync a `.github/agents/` | 🔴 Alta |
 | **Chat Participants** | Usar `@router` y un `@<agentId>` directo en Copilot Chat | 🔴 Alta |
-| **Perfiles** | Ejecutar `initProfile`, editar el YAML generado, comprobar validación | 🟡 Media |
-| **Skills Browser** | Abrir el navegador de skills, explorar categorías | 🟡 Media |
-| **Sync dry-run** | Ejecutar `team:sync --dry-run` desde CLI y verificar la salida del diff | 🟡 Media |
+| **Perfiles** | Abrir el Profile Editor, usar auto-detección, rellenar todas las secciones, guardar | 🟡 Media |
+| **Skills Browser** | Abrir el navegador de skills, explorar categorías, instalar una skill de la comunidad | 🟡 Media |
+| **Context Packs** | Activar/desactivar packs, ajustar prioridades, crear un pack nuevo, importar markdown | 🟡 Media |
 
 ### Cómo reportar un bug
 
@@ -70,11 +70,13 @@ Consulta la [Guía de Instalación](docs/installation.es.md) para detalles compl
 | Guía | Descripción | Estado |
 |---|---|---|
 | [Instalación](docs/installation.es.md) | Requisitos, instalación desde VSIX, resolución de problemas | ✅ |
-| [Dashboard](docs/dashboard.es.md) | Vista general del panel, navegación y acciones rápidas | ✅ |
-| [Agentes](docs/agents.es.md) | Crear, editar y gestionar agentes; formato YAML | ✅ |
-| [Teams](docs/teams.es.md) | Crear y configurar equipos; sync a `.github/agents/` | ✅ |
-| [Editor de Perfiles](docs/profiles.es.md) | Campos del perfil de proyecto, edición, importar/exportar | ✅ |
-| [Skills Browser](docs/skills-browser.es.md) | Explorar catálogo de skills, categorías, aplicar a agentes | ✅ |
+| [Dashboard](docs/dashboard.es.md) | Vista general del panel, navegación, flujo de configuración inicial | ✅ |
+| [Agentes](docs/agents.es.md) | Crear agentes con el wizard de 6 pasos, editar, gestionar, sincronizar | ✅ |
+| [Teams](docs/teams.es.md) | Crear y configurar equipos, establecer equipo activo, sincronizar | ✅ |
+| [Editor de Perfiles](docs/profiles.es.md) | Perfil de proyecto, auto-detección de tecnologías, importar/exportar | ✅ |
+| [Skills Browser](docs/skills-browser.es.md) | Explorar e instalar skills, registro comunitario | ✅ |
+| [Context Packs](docs/context-packs.es.md) | Gestionar context packs, prioridades, importar markdown | ✅ |
+| [Arquitectura de Agentes](docs/agent-architecture.es.md) | Pipeline multi-agente ideal: prompt → router → orchestrator → worker | ✅ |
 
 ---
 
@@ -90,7 +92,6 @@ Consulta la [Guía de Instalación](docs/installation.es.md) para detalles compl
 - Motor de templates para Context Packs con variables, condicionales y bucles
 - Skills Registry con 9 categorías y recomendaciones por rol
 - Participantes de chat dinámicos — uno por cada agente cargado — en Copilot Chat
-- CLI completa (binario `agent-teams`) con comandos para profile, team, agent y skills
 
 ### Limitaciones conocidas (Beta)
 

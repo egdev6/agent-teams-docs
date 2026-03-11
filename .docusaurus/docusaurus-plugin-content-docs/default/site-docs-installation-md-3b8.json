@@ -1,0 +1,20 @@
+{
+  "id": "installation",
+  "title": "Installation Guide",
+  "description": "Status: ✅ Available",
+  "source": "@site/docs/installation.md",
+  "sourceDirName": ".",
+  "slug": "/installation",
+  "permalink": "/docs/installation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/installation.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Dashboard",
+    "permalink": "/docs/dashboard"
+  }
+}

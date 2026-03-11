@@ -1,6 +1,6 @@
 # Agent Teams
 
-**Version:** 1.0.0 | **Status:** 🧪 Beta | **Released:** March 2026
+**Version:** 1.0.0 | **Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams.netlify.app)
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 
@@ -33,9 +33,9 @@ Focused areas we want feedback on:
 | **Agents** | Use the wizard to create an agent, edit it, reload | 🔴 High |
 | **Teams** | Create a team, assign agents, run sync to `.github/agents/` | 🔴 High |
 | **Chat Participants** | Use `@router` and a direct `@<agentId>` in Copilot Chat | 🔴 High |
-| **Profiles** | Run `initProfile`, edit the generated YAML, check validation | 🟡 Medium |
-| **Skills Browser** | Open the skills browser, browse categories | 🟡 Medium |
-| **Dry-run sync** | Run `team:sync --dry-run` from CLI and verify the diff output | 🟡 Medium |
+| **Profiles** | Open Profile Editor, use auto-detect, fill all sections, save | 🟡 Medium |
+| **Skills Browser** | Open the skills browser, browse categories, install a community skill | 🟡 Medium |
+| **Context Packs** | Toggle packs, adjust priorities, create a new pack, import markdown | 🟡 Medium |
 
 ### How to Report a Bug
 
@@ -70,11 +70,13 @@ See the [Installation Guide](docs/installation.md) for full details and troubles
 | Guide | Description | Status |
 |---|---|---|
 | [Installation](docs/installation.md) | Requirements, VSIX install, troubleshooting | ✅ |
-| [Dashboard](docs/dashboard.md) | Panel overview, navigation, and quick actions | ✅ |
-| [Agents](docs/agents.md) | Create, edit, and manage agents; YAML spec format | ✅ |
-| [Teams](docs/teams.md) | Create and configure teams; sync to `.github/agents/` | ✅ |
-| [Profile Editor](docs/profiles.md) | Project profile fields, editing, import/export | ✅ |
-| [Skills Browser](docs/skills-browser.md) | Browse skill catalog, categories, apply to agents | ✅ |
+| [Dashboard](docs/dashboard.md) | Panel overview, navigation, first-time setup workflow | ✅ |
+| [Agents](docs/agents.md) | Create agents with the 6-step wizard, edit, manage, sync | ✅ |
+| [Teams](docs/teams.md) | Create and configure teams, set active team, sync | ✅ |
+| [Profile Editor](docs/profiles.md) | Project profile, auto-detect technologies, import/export | ✅ |
+| [Skills Browser](docs/skills-browser.md) | Browse and install skills, community registry | ✅ |
+| [Context Packs](docs/context-packs.md) | Manage context packs, priorities, import markdown | ✅ |
+| [Agent Architecture](docs/agent-architecture.md) | Ideal multi-agent pipeline: prompt → router → orchestrator → worker | ✅ |
 
 ---
 
@@ -90,7 +92,6 @@ See the [Installation Guide](docs/installation.md) for full details and troubles
 - Dynamic Context Pack template engine with variables, conditionals, and loops
 - Skills Registry with 9 categories and role-based recommendations
 - Dynamic chat participants — one per loaded agent — via Copilot Chat
-- Full CLI (`agent-teams` binary) with profile, team, agent, and skills commands
 
 ### Known limitations (Beta)
 

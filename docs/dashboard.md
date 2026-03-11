@@ -1,31 +1,31 @@
 # Dashboard
 
-**Status:** 🧪 Beta | [← Back to Index](../README.md)
+**Status:** 🧪 Beta
 
-The Agent Teams dashboard is an embedded React SPA that opens as a VS Code panel. It provides access to all 12 pages of the extension from a single interface.
+The Agent Teams dashboard is an embedded React SPA that opens as a VS Code panel. It is the primary interface for creating and managing agents, teams, and project configuration.
 
 ---
 
 ## Opening the Dashboard
 
-Sidebar
+Click the Agent Teams icon in the VS Code sidebar:
 
 <img width="174" height="60" alt="imagen" src="https://github.com/user-attachments/assets/9f217298-a220-429f-b14f-aa7175e24e1b" />
 
-Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
+Or use the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
 <img width="768" height="127" alt="imagen" src="https://github.com/user-attachments/assets/ccd4c59b-3c1a-4949-b685-5326da9a3a5c" />
 
 ---
 
-## Overview Page
+## Home Page
 
 The main dashboard page shows a live summary of your workspace:
 
 | Card | What it shows |
 |---|---|
 | **Stats** | Active team name, total agent count, sync status, and Engram integration health |
-| **Sync Status** | Breakdown of pending changes (agents to create / update / skip) with a one-click sync trigger |
+| **Sync Status** | Breakdown of pending changes (agents to create / update / skip) with a one-click sync button |
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
 
@@ -37,22 +37,39 @@ The main dashboard page shows a live summary of your workspace:
 
 Use the sidebar icons or the Quick Actions card to move between pages:
 
-| Page | Description |
-|---|---|
-| **Dashboard** | Stats overview — the home page |
-| **Profile Editor** | Edit the project profile (`.agent-teams/project.profile.yml`) |
-| **Team Manager** | List, create, and manage teams |
-| **Agent Manager** | View all loaded agents |
-| **Create Agent** | Launch the agent creation wizard |
-| **Edit Agent** | Modify an existing agent spec |
-| **Create Team** | Launch the team creation wizard |
-| **Edit Team** | Modify a team and its overrides |
-| **Skills Browser** | Browse the skill catalog |
-| **Context Packs** | View and manage context packs |
-| **Import / Export** | Import or export the global agent catalog |
-| **Agent Wizard** | Step-by-step guided agent creation |
-
 <img width="1637" height="291" alt="imagen" src="https://github.com/user-attachments/assets/a6d8ca85-3aa2-4686-9296-d82f6c29ce77" />
+
+### Profile Editor
+
+Edit your project profile — technologies, paths, commands, context packs, and sync targets. The dashboard home page shows a setup prompt when no profile exists yet. See [Profile Editor](profiles.md) for details.
+
+### Team Manager
+
+Lists all teams with their name, description, agent count, and active status. From here you can create new teams, activate a team, or open one for editing. See [Teams](teams.md) for details.
+
+### Agent Manager
+
+Shows all loaded agents organized by role (Router, Orchestrator, Worker). Click any agent to edit it, or click **Create Agent** to open the wizard. See [Agents](agents.md) for details.
+
+### Create Agent / Edit Agent
+
+The 6-step agent creation wizard. Covers identity, scope, workflow, skills, rules, and output configuration. A live preview appears in the right sidebar throughout the process.
+
+### Create Team / Edit Team
+
+The team creation wizard. Enter a name, select member agents, and preview the configuration. Edit Team adds options to set the team as active or delete it.
+
+### Skills Browser
+
+Two-tab view: your project's local skills and the community registry. Browse, search, filter by category, and install skills from the community directly. See [Skills Browser](skills-browser.md) for details.
+
+### Context Packs
+
+Manage the context packs available in your workspace. Toggle packs on or off, adjust priority, create new packs, and import markdown files as packs. See [Context Packs](context-packs.md) for details.
+
+### Import / Export
+
+Back up and share your global agent catalog. Export to JSON, import from a file, or reset the catalog. See [Profile Editor — Import / Export](profiles.md#import--export) for details.
 
 ---
 
@@ -69,13 +86,21 @@ The stats card updates automatically when agents or teams change:
 
 ---
 
-## Refreshing Data
+## First-Time Setup Workflow
 
-The dashboard reacts to VS Code state changes automatically. If you edit a YAML file directly outside the dashboard:
+If you are opening Agent Teams for the first time in a project, follow this sequence:
 
-- Command Palette → **`Agent Teams: Reload Agents`** to force a full refresh.
-- Or close and reopen the panel.
+1. **Configure the project profile** — the home page shows a setup prompt. Click it to open the Profile Editor, fill in your technologies, paths, and commands, then save.
+2. **Create your agents** — go to Agent Manager → Create Agent and walk through the wizard for each agent you need.
+3. **Create a team** — go to Team Manager → Create Team, add your agents, and save. Set it as the active team.
+4. **Sync** — the home page Sync Status card will show pending changes. Click Sync to generate the `.github/agents/` files and activate your agents in Copilot Chat.
 
 ---
 
-[← Back to Index](../README.md)
+## Refreshing Data
+
+The dashboard reacts to VS Code state changes automatically. If you edit a YAML file directly outside the dashboard, the stats and sync status update on the next file save.
+
+To force a full reload: Command Palette → **`Agent Teams: Reload Agents`**
+
+---

@@ -1,0 +1,24 @@
+{
+  "id": "skills-browser",
+  "title": "Skills Browser",
+  "description": "Estado: 🧪 Beta",
+  "source": "@site/i18n/es/docusaurus-plugin-content-docs/current/skills-browser.md",
+  "sourceDirName": ".",
+  "slug": "/skills-browser",
+  "permalink": "/es/docs/skills-browser",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/egdev6/agent-teams-docs/edit/main/docs/skills-browser.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Profile Editor",
+    "permalink": "/es/docs/profiles"
+  },
+  "next": {
+    "title": "Context Packs",
+    "permalink": "/es/docs/context-packs"
+  }
+}

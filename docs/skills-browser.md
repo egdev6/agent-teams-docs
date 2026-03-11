@@ -1,8 +1,8 @@
 # Skills Browser
 
-**Status:** 🧪 Beta | [← Back to Index](../README.md)
+**Status:** 🧪 Beta
 
-The Skills Browser lets you explore the skill catalog defined in `skills.registry.yml`. Skills describe the capabilities an agent can have — from file operations and code analysis to git and deployment tasks.
+The Skills Browser lets you explore and manage agent skills. Skills describe the capabilities an agent can have — from file operations and code analysis to git and deployment tasks.
 
 ---
 
@@ -11,6 +11,39 @@ The Skills Browser lets you explore the skill catalog defined in `skills.registr
 Dashboard → sidebar → **Skills**
 
 <img width="1169" height="812" alt="imagen" src="https://github.com/user-attachments/assets/769f757e-a70a-43b4-bedb-4a44a0354a1f" />
+
+The browser has two tabs:
+
+| Tab | Description |
+|---|---|
+| **Project Skills** | Skills available in this workspace (`skills.registry.yml`) |
+| **Explore** | Community registry — browse and install skills from the shared catalog |
+
+---
+
+## Project Skills Tab
+
+Shows all skills defined in your local `skills.registry.yml`.
+
+- **Search** — filter by skill name or keyword
+- **Category filter** — narrow by one of the 9 categories
+- **Refresh** — reload the skill catalog from disk
+- **Delete** — remove a skill from the project registry
+
+The header shows how many skills match the current filter out of the total.
+
+---
+
+## Explore Tab (Community Registry)
+
+Browse skills published to the shared community registry and install them directly into your project.
+
+- **Search** — find skills by name or description in the remote registry
+- Each skill card shows its ID, category, description, and a link to its source
+- Click **Install** on any skill card to add it to your project's `skills.registry.yml`
+- Use pagination to browse through the full catalog
+
+<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/f8bef8b0-685d-4138-a6b6-03e1fbfa011e" />
 
 ---
 
@@ -32,52 +65,25 @@ The registry organizes skills into 9 categories:
 
 ---
 
-## Browsing Skills
-
-Use the category filter bar at the top of the page to narrow by category. Each skill card shows:
-
-- **ID** — the identifier used in agent YAML (`skills: [code_analysis]`)
-- **Category** — one of the 9 categories above
-- **Security level** — indicates the risk level of the operations the skill enables
-- **Recommended roles** — which agent roles benefit most (`router`, `orchestrator`, `worker`)
-
-<img width="1184" height="1139" alt="imagen" src="https://github.com/user-attachments/assets/f8bef8b0-685d-4138-a6b6-03e1fbfa011e" />
-
----
-
 ## Applying Skills to an Agent
 
-### Via the dashboard
+Skills are assigned to agents through the agent editor:
 
-1. Dashboard → **Agent Manager** → select agent → **Edit**.
-2. In the **Skills** section, search and check the desired skills.
-3. Save.
+1. Dashboard → **Agent Manager** → select agent → **Edit**
+2. Navigate to **Step 3 — Skills**
+3. Search and select skills from the project registry or install new ones from the community
+4. Save
 
 <img width="1171" height="832" alt="imagen" src="https://github.com/user-attachments/assets/4ebec413-7104-482c-81e7-465ec0cb45c2" />
 
-
-### Via YAML
-
-Add the skill IDs to the `skills` field in the agent spec:
-
-```yaml
-id: my-agent
-skills:
-  - code_analysis
-  - testing
-  - git
-```
+You can also assign skills during initial agent creation — the same skills step appears in the Create Agent wizard.
 
 ---
 
-## Registry File
+## Reference: Adding a Custom Skill
 
-Skills are defined in `skills.registry.yml` at the workspace root. The schema is validated against `packages/core/schemas/skills.registry.schema.json`.
-
-To add a custom skill, append an entry to `skills.registry.yml` following the existing format, then reload the extension:
+To add a skill that isn't in the community registry, append an entry to `skills.registry.yml` at the workspace root following the existing format, then reload the extension:
 
 Command Palette → **`Agent Teams: Reload Agents`**
 
 ---
-
-[← Back to Index](../README.md)

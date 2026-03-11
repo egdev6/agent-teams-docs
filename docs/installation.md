@@ -1,6 +1,6 @@
 # Installation Guide
 
-**Status:** ✅ Available | [← Back to Index](../README.md)
+**Status:** ✅ Available
 
 ---
 
@@ -83,5 +83,3 @@ To use Agent Teams in a project, initialize a profile first:
 - If the issue persists, close and reopen the dashboard panel.
 
 ---
-
-[← Back to Index](../README.md)
