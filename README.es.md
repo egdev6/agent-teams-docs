@@ -124,7 +124,6 @@ Consulta la [Guía de Instalación](docs/installation.es.md) para detalles compl
 **Licencia:** Privado © 2026
 
 - **Issues:** [github.com/egdev6/agent-teams-docs/issues](https://github.com/egdev6/agent-teams-docs/issues)
-- **Código fuente:** [github.com/egdev6/agent-teams](https://github.com/egdev6/agent-teams)
 
 
 [stars-shield]: https://img.shields.io/github/stars/egdev6/agent-teams-docs.svg?style=for-the-badge&cacheBust=1

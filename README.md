@@ -124,7 +124,6 @@ Thanks to everyone who has contributed to this project!
 **License:** Private © 2026
 
 - **Issues:** [github.com/egdev6/agent-teams-docs/issues](https://github.com/egdev6/agent-teams-docs/issues)
-- **Source code:** [github.com/egdev6/agent-teams](https://github.com/egdev6/agent-teams)
 
 
 [stars-shield]: https://img.shields.io/github/stars/egdev6/agent-teams-docs.svg?style=for-the-badge&cacheBust=1
