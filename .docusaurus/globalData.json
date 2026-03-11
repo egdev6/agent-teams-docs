@@ -1,53 +1,53 @@
 {
   "docusaurus-plugin-content-docs": {
     "default": {
-      "path": "/docs",
+      "path": "/es/docs",
       "versions": [
         {
           "name": "current",
-          "label": "Next",
+          "label": "Actual",
           "isLast": true,
-          "path": "/docs",
+          "path": "/es/docs",
           "mainDocId": "installation",
           "docs": [
             {
               "id": "agent-architecture",
-              "path": "/docs/agent-architecture",
+              "path": "/es/docs/agent-architecture",
               "sidebar": "docsSidebar"
             },
             {
               "id": "agents",
-              "path": "/docs/agents",
+              "path": "/es/docs/agents",
               "sidebar": "docsSidebar"
             },
             {
               "id": "context-packs",
-              "path": "/docs/context-packs",
+              "path": "/es/docs/context-packs",
               "sidebar": "docsSidebar"
             },
             {
               "id": "dashboard",
-              "path": "/docs/dashboard",
+              "path": "/es/docs/dashboard",
               "sidebar": "docsSidebar"
             },
             {
               "id": "installation",
-              "path": "/docs/installation",
+              "path": "/es/docs/installation",
               "sidebar": "docsSidebar"
             },
             {
               "id": "profiles",
-              "path": "/docs/profiles",
+              "path": "/es/docs/profiles",
               "sidebar": "docsSidebar"
             },
             {
               "id": "skills-browser",
-              "path": "/docs/skills-browser",
+              "path": "/es/docs/skills-browser",
               "sidebar": "docsSidebar"
             },
             {
               "id": "teams",
-              "path": "/docs/teams",
+              "path": "/es/docs/teams",
               "sidebar": "docsSidebar"
             }
           ],
@@ -55,8 +55,8 @@
           "sidebars": {
             "docsSidebar": {
               "link": {
-                "path": "/docs/installation",
-                "label": "Installation"
+                "path": "/es/docs/installation",
+                "label": "Instalación"
               }
             }
           }

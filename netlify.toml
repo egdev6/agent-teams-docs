@@ -5,8 +5,8 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# SPA fallback — serve index.html for all routes
+# Redirect bare 404s to Docusaurus 404 page
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
+  to = "/404.html"
+  status = 404

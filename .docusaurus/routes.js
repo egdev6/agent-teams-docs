@@ -3,97 +3,62 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/__docusaurus/debug',
-    component: ComponentCreator('/__docusaurus/debug', '5ff'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/config',
-    component: ComponentCreator('/__docusaurus/debug/config', '5ba'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/content',
-    component: ComponentCreator('/__docusaurus/debug/content', 'a2b'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/globalData',
-    component: ComponentCreator('/__docusaurus/debug/globalData', 'c3c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/metadata',
-    component: ComponentCreator('/__docusaurus/debug/metadata', '156'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/registry',
-    component: ComponentCreator('/__docusaurus/debug/registry', '88c'),
-    exact: true
-  },
-  {
-    path: '/__docusaurus/debug/routes',
-    component: ComponentCreator('/__docusaurus/debug/routes', '000'),
-    exact: true
-  },
-  {
-    path: '/docs',
-    component: ComponentCreator('/docs', '9d7'),
+    path: '/es/docs',
+    component: ComponentCreator('/es/docs', '8a8'),
     routes: [
       {
-        path: '/docs',
-        component: ComponentCreator('/docs', '6fa'),
+        path: '/es/docs',
+        component: ComponentCreator('/es/docs', '342'),
         routes: [
           {
-            path: '/docs',
-            component: ComponentCreator('/docs', 'ddd'),
+            path: '/es/docs',
+            component: ComponentCreator('/es/docs', '665'),
             routes: [
               {
-                path: '/docs/agent-architecture',
-                component: ComponentCreator('/docs/agent-architecture', 'b36'),
+                path: '/es/docs/agent-architecture',
+                component: ComponentCreator('/es/docs/agent-architecture', 'b39'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/agents',
-                component: ComponentCreator('/docs/agents', '96f'),
+                path: '/es/docs/agents',
+                component: ComponentCreator('/es/docs/agents', 'db1'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/context-packs',
-                component: ComponentCreator('/docs/context-packs', 'dfc'),
+                path: '/es/docs/context-packs',
+                component: ComponentCreator('/es/docs/context-packs', '121'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/dashboard',
-                component: ComponentCreator('/docs/dashboard', 'ae7'),
+                path: '/es/docs/dashboard',
+                component: ComponentCreator('/es/docs/dashboard', '9c8'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/installation',
-                component: ComponentCreator('/docs/installation', '034'),
+                path: '/es/docs/installation',
+                component: ComponentCreator('/es/docs/installation', '274'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/profiles',
-                component: ComponentCreator('/docs/profiles', 'ce5'),
+                path: '/es/docs/profiles',
+                component: ComponentCreator('/es/docs/profiles', '45d'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/skills-browser',
-                component: ComponentCreator('/docs/skills-browser', '7c5'),
+                path: '/es/docs/skills-browser',
+                component: ComponentCreator('/es/docs/skills-browser', '0ba'),
                 exact: true,
                 sidebar: "docsSidebar"
               },
               {
-                path: '/docs/teams',
-                component: ComponentCreator('/docs/teams', '948'),
+                path: '/es/docs/teams',
+                component: ComponentCreator('/es/docs/teams', 'df1'),
                 exact: true,
                 sidebar: "docsSidebar"
               }
@@ -104,8 +69,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', 'e5f'),
+    path: '/es/',
+    component: ComponentCreator('/es/', 'f57'),
     exact: true
   },
   {

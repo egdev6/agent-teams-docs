@@ -1,5 +1,5 @@
-import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
+import Translate, { translate } from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
@@ -10,68 +10,68 @@ import styles from './index.module.css';
 type FeatureItem = {
   title: string;
   icon: string;
-  description: ReactNode;
+  description: React.ReactNode;
 };
 
 const features: FeatureItem[] = [
   {
-    title: '12-Page Dashboard',
+    title: translate({ id: 'homepage.feature.dashboard.title', message: '12-Page Dashboard' }),
     icon: '🖥️',
     description: (
-      <>
+      <Translate id="homepage.feature.dashboard.desc">
         An embedded React SPA directly inside VS Code. Manage agents, teams,
         skills, and context packs without leaving your editor.
-      </>
+      </Translate>
     ),
   },
   {
-    title: 'Agent Wizard',
+    title: translate({ id: 'homepage.feature.wizard.title', message: 'Agent Wizard' }),
     icon: '🤖',
     description: (
-      <>
+      <Translate id="homepage.feature.wizard.desc">
         Create fully configured agents in 6 guided steps — identity, scope,
         workflow, skills, rules, and output format.
-      </>
+      </Translate>
     ),
   },
   {
-    title: 'Smart Router',
+    title: translate({ id: 'homepage.feature.router.title', message: 'Smart Router' }),
     icon: '🔀',
     description: (
-      <>
-        Use <code>@router</code> and let the system automatically pick the best
-        agent based on your message, intent, and active file.
-      </>
+      <Translate id="homepage.feature.router.desc">
+        Use @router and let the system automatically pick the best agent based
+        on your message, intent, and active file.
+      </Translate>
     ),
   },
   {
-    title: 'Teams & Kits',
+    title: translate({ id: 'homepage.feature.teams.title', message: 'Teams & Kits' }),
     icon: '👥',
     description: (
-      <>
+      <Translate id="homepage.feature.teams.desc">
         Group agents into teams with 4 merge strategies. Bundle reusable
         configurations into kits for portability across projects.
-      </>
+      </Translate>
     ),
   },
   {
-    title: 'Skills Registry',
+    title: translate({ id: 'homepage.feature.skills.title', message: 'Skills Registry' }),
     icon: '🧩',
     description: (
-      <>
+      <Translate id="homepage.feature.skills.desc">
         Browse 9 categories of skills, install from the community registry, and
         attach them to any agent in seconds.
-      </>
+      </Translate>
     ),
   },
   {
-    title: 'Context Packs',
+    title: translate({ id: 'homepage.feature.context.title', message: 'Context Packs' }),
     icon: '📦',
     description: (
-      <>
+      <Translate id="homepage.feature.context.desc">
         Dynamic context injection with variables, conditionals, and loops.
         Attach packs at project, team, or agent level.
-      </>
+      </Translate>
     ),
   },
 ];
@@ -103,13 +103,13 @@ function HomepageHero() {
             className="button button--primary button--lg"
             to="/docs/installation"
           >
-            Get Started
+            <Translate id="homepage.hero.cta.getStarted">Get Started</Translate>
           </Link>
           <Link
             className="button button--secondary button--lg"
             href="https://github.com/egdev6/agent-teams"
           >
-            View on GitHub
+            <Translate id="homepage.hero.cta.viewOnGitHub">View on GitHub</Translate>
           </Link>
         </div>
       </div>
@@ -122,7 +122,7 @@ function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <Heading as="h2" className={styles.featuresTitle}>
-          Everything you need to build an AI agent team
+          <Translate id="homepage.features.title">Everything you need to build an AI agent team</Translate>
         </Heading>
         <div className="row">
           {features.map((props, idx) => (
@@ -139,37 +139,42 @@ function HomepageInstall() {
     <section className={styles.installSection}>
       <div className="container">
         <div className={styles.installCard}>
-          <Heading as="h2">Quick Install</Heading>
+          <Heading as="h2"><Translate id="homepage.install.title">Quick Install</Translate></Heading>
           <p>
-            Download the <code>.vsix</code> from the{' '}
-            <Link href="https://github.com/egdev6/agent-teams-docs/releases">
-              Releases page
-            </Link>{' '}
-            and install it directly in VS Code.
+            <Translate
+              id="homepage.install.desc"
+              values={{
+                releasesLink: (
+                  <Link href="https://github.com/egdev6/agent-teams-docs/releases">
+                    <Translate id="homepage.install.releasesPage">Releases page</Translate>
+                  </Link>
+                ),
+              }}
+            >
+              {'Download the .vsix from the {releasesLink} and install it directly in VS Code.'}
+            </Translate>
           </p>
           <div className={styles.installSteps}>
             <div className={styles.installStep}>
               <span className={styles.stepNumber}>1</span>
               <span>
-                Open <strong>Extensions</strong> panel{' '}
-                <code>Ctrl+Shift+X</code>
+                <Translate id="homepage.install.step1">Open Extensions panel (Ctrl+Shift+X)</Translate>
               </span>
             </div>
             <div className={styles.installStep}>
               <span className={styles.stepNumber}>2</span>
               <span>
-                Click <strong>···</strong> → <strong>Install from VSIX…</strong>
+                <Translate id="homepage.install.step2">Click ··· → Install from VSIX…</Translate>
               </span>
             </div>
             <div className={styles.installStep}>
               <span className={styles.stepNumber}>3</span>
-              <span>Select the downloaded file and reload VS Code</span>
+              <span><Translate id="homepage.install.step3">Select the downloaded file and reload VS Code</Translate></span>
             </div>
           </div>
           <div className={styles.installReqs}>
             <span>
-              Requires <strong>VS Code ≥ 1.85.0</strong> and{' '}
-              <strong>Node.js ≥ 18.0.0</strong>
+              <Translate id="homepage.install.reqs">Requires VS Code ≥ 1.85.0 and Node.js ≥ 18.0.0</Translate>
             </span>
           </div>
         </div>
@@ -183,17 +188,17 @@ function HomepageArchitecture() {
     <section className={styles.architectureSection}>
       <div className="container">
         <Heading as="h2" className={styles.featuresTitle}>
-          Ideal Agent Architecture
+          <Translate id="homepage.arch.title">Ideal Agent Architecture</Translate>
         </Heading>
         <p className={styles.architectureSubtitle}>
-          Agent Teams is designed around a clean 4-layer pipeline
+          <Translate id="homepage.arch.subtitle">Agent Teams is designed around a clean 4-layer pipeline</Translate>
         </p>
         <div className={styles.pipeline}>
           {[
-            { label: 'User Prompt', desc: 'Natural language via @router', icon: '💬' },
-            { label: 'Router', desc: 'Scores & delegates to best agent', icon: '🔀' },
-            { label: 'Orchestrator', desc: 'Decomposes task into steps', icon: '🧠' },
-            { label: 'Workers', desc: 'Domain specialists execute tasks', icon: '⚙️' },
+            { label: translate({ id: 'homepage.arch.step1.label', message: 'User Prompt' }), desc: translate({ id: 'homepage.arch.step1.desc', message: 'Natural language via @router' }), icon: '💬' },
+            { label: translate({ id: 'homepage.arch.step2.label', message: 'Router' }), desc: translate({ id: 'homepage.arch.step2.desc', message: 'Scores & delegates to best agent' }), icon: '🔀' },
+            { label: translate({ id: 'homepage.arch.step3.label', message: 'Orchestrator' }), desc: translate({ id: 'homepage.arch.step3.desc', message: 'Decomposes task into steps' }), icon: '🧠' },
+            { label: translate({ id: 'homepage.arch.step4.label', message: 'Workers' }), desc: translate({ id: 'homepage.arch.step4.desc', message: 'Domain specialists execute tasks' }), icon: '⚙️' },
           ].map((step, i, arr) => (
             <div key={step.label} className={styles.pipelineWrapper}>
               <div className={styles.pipelineStep}>
@@ -209,7 +214,7 @@ function HomepageArchitecture() {
         </div>
         <div className={styles.architectureCta}>
           <Link className="button button--outline button--primary" to="/docs/agent-architecture">
-            Read Architecture Guide →
+            <Translate id="homepage.arch.cta">Read Architecture Guide →</Translate>
           </Link>
         </div>
       </div>
@@ -217,11 +222,11 @@ function HomepageArchitecture() {
   );
 }
 
-export default function Home(): ReactNode {
+export default function Home(): React.ReactNode {
   return (
     <Layout
-      title="AI Agent Orchestration for VS Code"
-      description="Build, manage, and orchestrate AI agents with GitHub Copilot inside VS Code. Create reusable agent kits, configure project profiles, and run an embedded 12-page dashboard."
+      title={translate({ id: 'homepage.layout.title', message: 'AI Agent Orchestration for VS Code' })}
+      description={translate({ id: 'homepage.layout.description', message: 'Build, manage, and orchestrate AI agents with GitHub Copilot inside VS Code. Create reusable agent kits, configure project profiles, and run an embedded 12-page dashboard.' })}
     >
       <HomepageHero />
       <main>

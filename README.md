@@ -1,6 +1,6 @@
 # Agent Teams
 
-**Version:** 1.0.0 | **Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams.netlify.app)
+**Version:** 1.0.0 | **Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 

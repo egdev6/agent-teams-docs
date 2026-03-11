@@ -1,30 +1,39 @@
 /* Agent Teams — Docusaurus theme overrides */
 
 :root {
-  /* Primary: indigo-violet */
-  --ifm-color-primary: #6366f1;
-  --ifm-color-primary-dark: #4f52ef;
-  --ifm-color-primary-darker: #4346ee;
-  --ifm-color-primary-darkest: #2225e9;
-  --ifm-color-primary-light: #7779f3;
-  --ifm-color-primary-lighter: #8385f4;
-  --ifm-color-primary-lightest: #a5a7f8;
+  /* Primary: Crimson — matches --color-brand-primary in globals.css */
+  --ifm-color-primary: #db143c;
+  --ifm-color-primary-dark: #c41136;
+  --ifm-color-primary-darker: #b60f32;
+  --ifm-color-primary-darkest: #8c0b26;
+  --ifm-color-primary-light: #e63358;
+  --ifm-color-primary-lighter: #ea4566;
+  --ifm-color-primary-lightest: #f07a92;
 
   --ifm-code-font-size: 93%;
-  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
-  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.1);
+  --ifm-font-family-base: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(219, 20, 60, 0.1);
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #818cf8;
-  --ifm-color-primary-dark: #6b76f7;
-  --ifm-color-primary-darker: #5e6af6;
-  --ifm-color-primary-darkest: #3441f4;
-  --ifm-color-primary-light: #97a1f9;
-  --ifm-color-primary-lighter: #a4adf9;
-  --ifm-color-primary-lightest: #c7ccfc;
+  /* Lighter crimson for readability on dark backgrounds */
+  --ifm-color-primary: #ff4d6d;
+  --ifm-color-primary-dark: #ff2d56;
+  --ifm-color-primary-darker: #ff1f4c;
+  --ifm-color-primary-darkest: #e8002e;
+  --ifm-color-primary-light: #ff6d86;
+  --ifm-color-primary-lighter: #ff7d94;
+  --ifm-color-primary-lightest: #ffadb9;
 
-  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.15);
+  /* Dark backgrounds — matches globals.css palette */
+  --ifm-background-color: #0a0a0a;
+  --ifm-background-surface-color: #111111;
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-footer-background-color: #0a0a0a;
+  --ifm-color-emphasis-200: #262626;
+  --ifm-color-emphasis-300: #262626;
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 77, 109, 0.15);
 }
 
 /* Navbar refinement */
@@ -34,16 +43,20 @@
 
 /* Doc sidebar */
 .menu__link--active:not(.menu__link--sublist) {
-  background: rgba(99, 102, 241, 0.08);
+  background: rgba(219, 20, 60, 0.08);
 }
 
 [data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-  background: rgba(129, 140, 248, 0.12);
+  background: rgba(255, 77, 109, 0.12);
 }
 
 /* Code blocks */
 .prism-code {
   border-radius: 8px;
+}
+
+[data-theme='dark'] .prism-code {
+  background-color: #111111 !important;
 }
 
 /* Tables */

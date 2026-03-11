@@ -7,8 +7,8 @@ export default {
   "title": "Agent Teams",
   "tagline": "Build, manage, and orchestrate AI agents with GitHub Copilot inside VS Code",
   "favicon": "img/favicon.ico",
-  "url": "https://agent-teams.netlify.app",
-  "baseUrl": "/",
+  "url": "https://agent-teams-docs.netlify.app",
+  "baseUrl": "/es/",
   "organizationName": "egdev6",
   "projectName": "agent-teams-docs",
   "onBrokenLinks": "warn",
@@ -55,7 +55,7 @@ export default {
     "navbar": {
       "title": "Agent Teams",
       "logo": {
-        "alt": "Agent Teams Logo",
+        "alt": "Logo de Agent Teams",
         "src": "img/logo.svg",
         "srcDark": "img/logo.svg"
       },
@@ -64,7 +64,7 @@ export default {
           "type": "docSidebar",
           "sidebarId": "docsSidebar",
           "position": "left",
-          "label": "Docs"
+          "label": "Documentación"
         },
         {
           "href": "https://github.com/egdev6/agent-teams",
@@ -84,31 +84,31 @@ export default {
       "style": "dark",
       "links": [
         {
-          "title": "Documentation",
+          "title": "Documentación",
           "items": [
             {
-              "label": "Installation",
+              "label": "Instalación",
               "to": "/docs/installation"
             },
             {
-              "label": "Dashboard",
+              "label": "Panel de control",
               "to": "/docs/dashboard"
             },
             {
-              "label": "Agents",
+              "label": "Agentes",
               "to": "/docs/agents"
             },
             {
-              "label": "Agent Architecture",
+              "label": "Arquitectura de agentes",
               "to": "/docs/agent-architecture"
             }
           ]
         },
         {
-          "title": "Community",
+          "title": "Comunidad",
           "items": [
             {
-              "label": "GitHub Issues",
+              "label": "Issues en GitHub",
               "href": "https://github.com/egdev6/agent-teams-docs/issues"
             },
             {
@@ -118,20 +118,20 @@ export default {
           ]
         },
         {
-          "title": "More",
+          "title": "Más",
           "items": [
             {
               "label": "GitHub",
               "href": "https://github.com/egdev6/agent-teams"
             },
             {
-              "label": "Changelog",
+              "label": "Registro de cambios",
               "href": "https://github.com/egdev6/agent-teams-docs/blob/main/CHANGELOG.md"
             }
           ]
         }
       ],
-      "copyright": "Copyright © 2026 Enrique Gomez. MIT License."
+      "copyright": "Copyright © 2026 Enrique Gomez. Licencia MIT."
     },
     "prism": {
       "theme": {

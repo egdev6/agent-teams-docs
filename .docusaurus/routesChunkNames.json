@@ -1,97 +1,54 @@
 {
-  "/__docusaurus/debug-5ff": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
+  "/es/docs-8a8": {
+    "__comp": "5e95c892",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "aba21aa0"
     }
   },
-  "/__docusaurus/debug/config-5ba": {
-    "__comp": "__comp---theme-debug-config-23-a-2ff",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
+  "/es/docs-342": {
+    "__comp": "a7bd4aaa",
+    "__props": "9d39d3e7"
   },
-  "/__docusaurus/debug/content-a2b": {
-    "__comp": "__comp---theme-debug-contentba-8-ce7",
+  "/es/docs-665": {
+    "__comp": "a94703ab"
+  },
+  "/es/docs/agent-architecture-b39": {
+    "__comp": "17896441",
+    "content": "1c3fa89f"
+  },
+  "/es/docs/agents-db1": {
+    "__comp": "17896441",
+    "content": "e257477f"
+  },
+  "/es/docs/context-packs-121": {
+    "__comp": "17896441",
+    "content": "9c71529f"
+  },
+  "/es/docs/dashboard-9c8": {
+    "__comp": "17896441",
+    "content": "f64658b6"
+  },
+  "/es/docs/installation-274": {
+    "__comp": "17896441",
+    "content": "ae6a0017"
+  },
+  "/es/docs/profiles-45d": {
+    "__comp": "17896441",
+    "content": "568af53b"
+  },
+  "/es/docs/skills-browser-0ba": {
+    "__comp": "17896441",
+    "content": "3aa9a08f"
+  },
+  "/es/docs/teams-df1": {
+    "__comp": "17896441",
+    "content": "af3bd845"
+  },
+  "/es/-f57": {
+    "__comp": "1df93b7f",
     "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
+      "plugin": "a7456010"
     },
-    "__props": "__props---docusaurus-debug-content-3-c-0-be2"
-  },
-  "/__docusaurus/debug/globalData-c3c": {
-    "__comp": "__comp---theme-debug-global-dataede-0fa",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/metadata-156": {
-    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/registry-88c": {
-    "__comp": "__comp---theme-debug-registry-679-501",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/__docusaurus/debug/routes-000": {
-    "__comp": "__comp---theme-debug-routes-946-699",
-    "__context": {
-      "plugin": "plugin---docusaurus-debugb-38-ad3"
-    }
-  },
-  "/docs-9d7": {
-    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
-    "__context": {
-      "plugin": "plugin---docsaba-d7c"
-    }
-  },
-  "/docs-6fa": {
-    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
-    "__props": "__props---docs-005-788"
-  },
-  "/docs-ddd": {
-    "__comp": "__comp---theme-doc-roota-94-67a"
-  },
-  "/docs/agent-architecture-b36": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-agent-architecturedeb-83d"
-  },
-  "/docs/agents-96f": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-agents-320-57c"
-  },
-  "/docs/context-packs-dfc": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-context-packs-61-b-7fb"
-  },
-  "/docs/dashboard-ae7": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-dashboard-7-f-3-171"
-  },
-  "/docs/installation-034": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-installation-3-b-8-7c6"
-  },
-  "/docs/profiles-ce5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-profiles-70-f-119"
-  },
-  "/docs/skills-browser-7c5": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-skills-browser-0-fc-52d"
-  },
-  "/docs/teams-948": {
-    "__comp": "__comp---theme-doc-item-178-a40",
-    "content": "content---docs-teams-4-be-b89"
-  },
-  "/-e5f": {
-    "__comp": "__comp---site-src-pages-index-tsx-1-df-d3e",
-    "__context": {
-      "plugin": "plugin---a-74-9d6"
-    },
-    "config": "config---5-e-9-4f3"
+    "config": "5e9f5e1a"
   }
 }

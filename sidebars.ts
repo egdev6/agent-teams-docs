@@ -13,6 +13,21 @@ const sidebars: SidebarsConfig = {
       label: 'Dashboard',
     },
     {
+      type: 'doc',
+      id: 'profiles',
+      label: 'Profile Editor',
+    },
+    {
+      type: 'doc',
+      id: 'teams',
+      label: 'Teams',
+    },
+    {
+      type: 'doc',
+      id: 'context-packs',
+      label: 'Context Packs',
+    },
+    {
       type: 'category',
       label: 'Agents',
       collapsed: false,
@@ -23,23 +38,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      id: 'teams',
-      label: 'Teams',
-    },
-    {
-      type: 'doc',
-      id: 'profiles',
-      label: 'Profile Editor',
-    },
-    {
-      type: 'doc',
       id: 'skills-browser',
       label: 'Skills Browser',
-    },
-    {
-      type: 'doc',
-      id: 'context-packs',
-      label: 'Context Packs',
     },
   ],
 };

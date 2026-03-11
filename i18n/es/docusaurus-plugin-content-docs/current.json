@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "Actual",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Agents": {
+    "message": "Agentes",
+    "description": "The label for category 'Agents' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.doc.Installation": {
+    "message": "Instalación",
+    "description": "The label for the doc item 'Installation' in sidebar 'docsSidebar', linking to the doc installation"
+  },
+  "sidebar.docsSidebar.doc.Dashboard": {
+    "message": "Panel de control",
+    "description": "The label for the doc item 'Dashboard' in sidebar 'docsSidebar', linking to the doc dashboard"
+  },
+  "sidebar.docsSidebar.doc.Agent Manager": {
+    "message": "Gestor de agentes",
+    "description": "The label for the doc item 'Agent Manager' in sidebar 'docsSidebar', linking to the doc agents"
+  },
+  "sidebar.docsSidebar.doc.Architecture Guide": {
+    "message": "Guía de arquitectura",
+    "description": "The label for the doc item 'Architecture Guide' in sidebar 'docsSidebar', linking to the doc agent-architecture"
+  },
+  "sidebar.docsSidebar.doc.Teams": {
+    "message": "Equipos",
+    "description": "The label for the doc item 'Teams' in sidebar 'docsSidebar', linking to the doc teams"
+  },
+  "sidebar.docsSidebar.doc.Profile Editor": {
+    "message": "Editor de perfiles",
+    "description": "The label for the doc item 'Profile Editor' in sidebar 'docsSidebar', linking to the doc profiles"
+  },
+  "sidebar.docsSidebar.doc.Skills Browser": {
+    "message": "Explorador de habilidades",
+    "description": "The label for the doc item 'Skills Browser' in sidebar 'docsSidebar', linking to the doc skills-browser"
+  },
+  "sidebar.docsSidebar.doc.Context Packs": {
+    "message": "Paquetes de contexto",
+    "description": "The label for the doc item 'Context Packs' in sidebar 'docsSidebar', linking to the doc context-packs"
+  }
+}

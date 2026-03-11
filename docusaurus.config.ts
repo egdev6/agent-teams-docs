@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'Build, manage, and orchestrate AI agents with GitHub Copilot inside VS Code',
   favicon: 'img/favicon.ico',
 
-  url: 'https://agent-teams.netlify.app',
+  url: 'https://agent-teams-docs.netlify.app',
   baseUrl: '/',
 
   organizationName: 'egdev6',

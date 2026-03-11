@@ -5,7 +5,7 @@
     "es"
   ],
   "path": "i18n",
-  "currentLocale": "en",
+  "currentLocale": "es",
   "localeConfigs": {
     "en": {
       "label": "English",
@@ -14,7 +14,7 @@
       "calendar": "gregory",
       "path": "en",
       "translate": false,
-      "url": "https://agent-teams.netlify.app",
+      "url": "https://agent-teams-docs.netlify.app",
       "baseUrl": "/"
     },
     "es": {
@@ -24,7 +24,7 @@
       "calendar": "gregory",
       "path": "es",
       "translate": true,
-      "url": "https://agent-teams.netlify.app",
+      "url": "https://agent-teams-docs.netlify.app",
       "baseUrl": "/es/"
     }
   }
