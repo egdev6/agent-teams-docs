@@ -10,11 +10,11 @@ El dashboard de Agent Teams es una SPA React embebida que se abre como panel de 
 
 Haz clic en el icono de Agent Teams en el panel lateral de VS Code:
 
-<img width="174" height="60" alt="imagen" src="/img/docs/dashboard-icon.png" />
+<img width="174" alt="imagen" src="/img/docs/dashboard-icon.png" style={{ height: "auto" }} />
 
 O usa la Paleta de Comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<img width="768" height="127" alt="imagen" src="/img/docs/dashboard-command.png" />
+<img width="768" alt="imagen" src="/img/docs/dashboard-command.png" style={{ height: "auto" }} />
 
 ---
 
@@ -29,7 +29,7 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 | **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
 | **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
 
-<img width="1668" height="1002" alt="imagen" src="/img/docs/dashboard-overview.png" />
+<img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
 
 ---
 
@@ -37,7 +37,7 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 
 Usa los iconos del panel lateral o las Acciones Rápidas para moverte entre páginas:
 
-<img width="1637" height="291" alt="imagen" src="/img/docs/dashboard-actions.png" />
+<img width="1637" alt="imagen" src="/img/docs/dashboard-actions.png" style={{ height: "auto" }} />
 
 ### Profile Editor
 
@@ -82,7 +82,7 @@ La tarjeta de estadísticas se actualiza automáticamente cuando cambian agentes
 - **Estado del sync** — `Al día` o `X cambios pendientes`.
 - **Engram** — `Conectado` o `No configurado`.
 
-<img width="1628" height="119" alt="imagen" src="/img/docs/dashboard-status.png" />
+<img width="1628" alt="imagen" src="/img/docs/dashboard-status.png" style={{ height: "auto" }} />
 
 ---
 
@@ -102,4 +102,5 @@ Si abres Agent Teams por primera vez en un proyecto, sigue esta secuencia:
 El dashboard reacciona automáticamente a los cambios de estado en VS Code. Si editas un archivo YAML directamente fuera del dashboard, las estadísticas y el estado del sync se actualizan al guardar el archivo.
 
 Para forzar una recarga completa: Paleta de Comandos → **`Agent Teams: Reload Agents`**
+
 

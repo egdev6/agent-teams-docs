@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Agent Teams',
   tagline: 'Build, manage, and orchestrate AI agents with GitHub Copilot, Claude code or Codex inside VS Code',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.svg',
 
   url: 'https://agent-teams-docs.netlify.app',
   baseUrl: '/',

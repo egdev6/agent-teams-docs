@@ -12,7 +12,7 @@ Abre el dashboard y navega a **Agent Manager** → **Create Agent**, o usa la ta
 
 El wizard te guía a través de 6 pasos:
 
-<img width="1171" height="956" alt="imagen" src="/img/docs/agents-overview.png" />
+<img width="1171" alt="imagen" src="/img/docs/agents-overview.png" style={{ height: "auto" }} />
 
 ### Paso 0 — Identidad
 
@@ -91,7 +91,7 @@ Dashboard → **Agent Manager** muestra todos los agentes cargados agrupados por
 2. Los 6 pasos del wizard están disponibles para modificación
 3. Guarda — los cambios se escriben de vuelta en el archivo YAML de la spec
 
-<img width="1183" height="745" alt="imagen" src="/img/docs/agents-forms.png" />
+<img width="1183" alt="imagen" src="/img/docs/agents-forms.png" style={{ height: "auto" }} />
 
 ### Sincronizar Agentes a `.github/agents/`
 
@@ -131,7 +131,7 @@ Usa `@router` para que la extensión seleccione automáticamente el agente más 
 
 El router puntúa los agentes por palabras clave de intención, patrones de ruta de archivo, vocabulario de dominio y rol — y delega al que obtiene mayor puntuación.
 
-<img width="535" height="366" alt="imagen" src="/img/docs/agents-status.png" />
+<img width="535" alt="imagen" src="/img/docs/agents-status.png" style={{ height: "auto" }} />
 
 ---
 
@@ -173,4 +173,5 @@ context_packs:
 | `routing.keywords` | — | Palabras que activan el routing hacia este agente |
 | `routing.paths` | — | Patrones glob para routing basado en archivo |
 | `context_packs` | — | IDs de context packs a incluir en las respuestas |
+
 

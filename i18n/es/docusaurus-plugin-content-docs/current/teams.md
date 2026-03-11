@@ -10,7 +10,7 @@ Un equipo es una selección curada de agentes — provenientes de kits y/o specs
 
 Dashboard → **Team Manager** → **Create Team**, o usa la tarjeta de **Acciones Rápidas** en la página de inicio.
 
-<img width="1160" height="912" alt="imagen" src="/img/docs/teams-overview.png" />
+<img width="1160" alt="imagen" src="/img/docs/teams-overview.png" style={{ height: "auto" }} />
 
 El wizard tiene tres secciones:
 
@@ -41,7 +41,7 @@ La página de edición ofrece cuatro acciones:
 | **Delete** | Elimina permanentemente este equipo |
 | **Set as Active** | Marca este equipo como equipo activo para las operaciones de sync |
 
-<img width="1320" height="329" alt="imagen" src="/img/docs/teams-creation.png" />
+<img width="1320" alt="imagen" src="/img/docs/teams-creation.png" style={{ height: "auto" }} />
 
 ### Establecer el Equipo Activo
 
@@ -63,7 +63,7 @@ El sync resuelve la composición completa (valores por defecto del kit + perfil 
    - `skip` — no se detectaron cambios, el archivo se deja como está
 2. Haz clic en **Sync** para aplicar todos los cambios
 
-<img width="1327" height="179" alt="imagen" src="/img/docs/teams-sync.png" />
+<img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
 
 El dashboard detecta cambios en los archivos YAML automáticamente mediante observación de archivos — la tarjeta de sync status se actualiza cada vez que guardas un agente o equipo.
 
@@ -118,4 +118,5 @@ overrides:
 | `kits` | — | Lista de IDs de kits a incluir, cada uno con un flag `enabled` |
 | `agents` | — | Overrides por agente con flag `enabled` |
 | `overrides` | — | Overrides a nivel de campo aplicados a agentes específicos dentro del equipo |
+
 

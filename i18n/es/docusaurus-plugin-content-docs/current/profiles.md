@@ -12,7 +12,7 @@ Dashboard → panel lateral → **Profile Editor**
 
 Si no existe ningún perfil todavía, la página de inicio del dashboard muestra un aviso **Configura el perfil del proyecto**. Haz clic en él para abrir el editor directamente.
 
-<img width="898" height="2100" alt="imagen" src="/img/docs/profiles-wizard-es.png" />
+<img width="898" alt="imagen" src="/img/docs/profiles-wizard-es.png" style={{ height: "auto" }} />
 
 ---
 
@@ -80,7 +80,7 @@ Haz clic en **Save** al final del editor. El perfil se escribe en `.agent-teams/
 
 La página **Import / Export** del dashboard gestiona el catálogo global de agentes almacenado en el almacenamiento global de VS Code. Esto es independiente del perfil de proyecto — te permite hacer copias de seguridad y compartir todo tu catálogo de agentes y equipos entre workspaces.
 
-<img width="1644" height="749" alt="imagen" src="/img/docs/profiles-editor.png" />
+<img width="1644" alt="imagen" src="/img/docs/profiles-editor.png" style={{ height: "auto" }} />
 
 | Acción | Descripción |
 |---|---|
@@ -133,4 +133,5 @@ overrides:
 | `commands` | — | Mapeos de comandos con nombre para variables de template (`{{command:build}}`) |
 | `context_packs` | — | Context packs por defecto aplicados a todos los agentes del proyecto |
 | `overrides` | — | Overrides a nivel de campo por agente aplicados en el proyecto (menor prioridad que los overrides del equipo) |
+
 

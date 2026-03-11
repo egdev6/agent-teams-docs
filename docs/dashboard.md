@@ -10,11 +10,11 @@ The Agent Teams dashboard is an embedded React SPA that opens as a VS Code panel
 
 Click the Agent Teams icon in the VS Code sidebar:
 
-<img width="174" height="60" alt="imagen" src="/img/docs/dashboard-icon.png" />
+<img width="174" alt="imagen" src="/img/docs/dashboard-icon.png" style={{ height: "auto" }} />
 
 Or use the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<img width="768" height="127" alt="imagen" src="/img/docs/dashboard-command.png" />
+<img width="768" alt="imagen" src="/img/docs/dashboard-command.png" style={{ height: "auto" }} />
 
 ---
 
@@ -29,7 +29,7 @@ The main dashboard page shows a live summary of your workspace:
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
 
-<img width="1668" height="1002" alt="imagen" src="/img/docs/dashboard-overview.png" />
+<img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
 
 ---
 
@@ -37,7 +37,7 @@ The main dashboard page shows a live summary of your workspace:
 
 Use the sidebar icons or the Quick Actions card to move between pages:
 
-<img width="1637" height="291" alt="imagen" src="/img/docs/dashboard-actions.png" />
+<img width="1637" alt="imagen" src="/img/docs/dashboard-actions.png" style={{ height: "auto" }} />
 
 ### Profile Editor
 
@@ -82,7 +82,7 @@ The stats card updates automatically when agents or teams change:
 - **Sync status** — `Up to date` or `X changes pending`.
 - **Engram** — `Connected` or `Not configured`.
 
-<img width="1628" height="119" alt="imagen" src="/img/docs/dashboard-status.png" />
+<img width="1628" alt="imagen" src="/img/docs/dashboard-status.png" style={{ height: "auto" }} />
 
 ---
 
@@ -104,4 +104,5 @@ The dashboard reacts to VS Code state changes automatically. If you edit a YAML 
 To force a full reload: Command Palette → **`Agent Teams: Reload Agents`**
 
 ---
+
 

@@ -10,7 +10,7 @@ A team is a curated selection of agents — sourced from kits and/or individual 
 
 Dashboard → **Team Manager** → **Create Team**, or use the **Quick Actions** card on the home page.
 
-<img width="1160" height="912" alt="imagen" src="/img/docs/teams-overview.png" />
+<img width="1160" alt="imagen" src="/img/docs/teams-overview.png" style={{ height: "auto" }} />
 
 The wizard has three sections:
 
@@ -41,7 +41,7 @@ The edit page provides four actions:
 | **Delete** | Permanently remove this team |
 | **Set as Active** | Mark this team as the active team for sync operations |
 
-<img width="1320" height="329" alt="imagen" src="/img/docs/teams-creation.png" />
+<img width="1320" alt="imagen" src="/img/docs/teams-creation.png" style={{ height: "auto" }} />
 
 ### Setting the Active Team
 
@@ -63,7 +63,7 @@ Sync resolves the full composition (kit defaults + project profile + team overri
    - `skip` — no changes detected, file left as-is
 2. Click **Sync** to apply all changes
 
-<img width="1327" height="179" alt="imagen" src="/img/docs/teams-sync.png" />
+<img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
 
 The dashboard detects changes to YAML files automatically via file watching — the sync status card updates whenever you save an agent or team.
 
@@ -120,4 +120,5 @@ overrides:
 | `overrides` | — | Field-level overrides applied to specific agents within this team |
 
 ---
+
 
