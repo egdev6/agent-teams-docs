@@ -19,6 +19,12 @@ The Agent Designer reads your workspace context — existing agents, installed s
 
 ## How to use it
 
+Before invoking `@agent-designer`, install it from this repository's marketplace by copying the packaged files into your project's `.agent-teams` folder:
+
+1. Copy `marketplace/agents/agent-designer.yml` into `.agent-teams/agents/`
+2. Copy `marketplace/skills/agent-spec-authoring/` into `.agent-teams/skills/`
+3. Reload Agent Teams or reopen the dashboard so the new agent and skill are detected
+
 ### Step 1 — Invoke the agent in Copilot Chat or Claude
 
 Address the agent directly with `@agent-designer` (Copilot) or mention it by name in your Claude conversation:

@@ -22,6 +22,12 @@ El Diseñador de Agentes lee el contexto de tu espacio de trabajo — agentes ex
 
 ## Cómo usarlo
 
+Antes de invocar `@agent-designer`, instálalo desde el marketplace de este repositorio copiando los archivos empaquetados dentro de la carpeta `.agent-teams` de tu proyecto:
+
+1. Copia `marketplace/agents/agent-designer.yml` en `.agent-teams/agents/`
+2. Copia `marketplace/skills/agent-spec-authoring/` en `.agent-teams/skills/`
+3. Recarga Agent Teams o vuelve a abrir el dashboard para que detecte el nuevo agente y la nueva habilidad
+
 ### Paso 1 — Invoca al agente en Copilot Chat o Claude
 
 Dirígete al agente directamente con `@agent-designer` (Copilot) o menciónalo por nombre en tu conversación con Claude:
