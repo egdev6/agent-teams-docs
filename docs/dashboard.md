@@ -77,12 +77,52 @@ Back up and share your global agent catalog. Export to JSON, import from a file,
 
 The stats card updates automatically when agents or teams change:
 
-- **Active team** — the team currently selected for sync operations.
-- **Agent count** — total agents loaded from specs and kits.
-- **Sync status** — `Up to date` or `X changes pending`.
-- **Engram** — `Connected` or `Not configured`.
+| Card | What it shows |
+|---|---|
+| **Profile Status** | Whether the project profile is active, not configured, or in error |
+| **Team Selected** | The team currently selected for sync operations |
+| **Engram** | `Active`, `Not installed`, or `Not configured` |
+| **Skills** | Count of skills installed in `.agent-teams/skills/` |
+| **Total Teams** | Number of teams registered in the global catalog |
+| **Total Agents** | Number of agents registered in the global catalog |
 
 <img width="1628" alt="imagen" src="/img/docs/dashboard-status.png" style={{ height: "auto" }} />
+
+---
+
+## Catalog Sync
+
+When you open the dashboard, Agent Teams automatically compares the entities present in `.agent-teams/` (agents and teams on disk) with the **global catalog** — the persistent index stored outside the project.
+
+### Auto-capture of new entities
+
+If Agent Teams finds agents or teams on disk that are **not yet registered** in the catalog, it validates their structure and acts accordingly:
+
+- **Valid entities** are captured to the catalog automatically and silently. The stat counts update in the same refresh cycle. No action is required from you.
+- **Entities with errors** are flagged with a warning badge on the corresponding stat card.
+
+> **Persistence:** Entities captured this way are stored in the catalog as explicit imports (`source: import`). This means they survive future workspace operations — even if you delete the YAML file from disk, the catalog retains the last known data.
+
+### Warning badge
+
+If one or more entities have a structural problem that prevents capture, a small numbered badge appears on the **Total Agents** or **Total Teams** stat card.
+
+| Badge state | Meaning |
+|---|---|
+| No badge | All on-disk entities are registered or have been auto-captured |
+| `1`, `2`, … | That many files could not be captured due to validation errors |
+
+Hover over the badge to see a tooltip listing each affected file ID and the specific validation error (e.g. `missing required field: role`).
+
+### Resolving a validation error
+
+1. Open the flagged file in `.agent-teams/agents/` or `.agent-teams/teams/`.
+2. Fix the reported field (see [Required fields](agent-designer.md#required-fields) for agents or ensure `id` and `name` are present for teams).
+3. Save the file — the dashboard refreshes automatically, re-validates, and captures the corrected entity.
+
+### Duplicate IDs
+
+Agent Teams identifies each entity by its `id` field (or `_metadata.id` for agents). If two files share the same `id`, only the first one encountered is used — the duplicate is silently ignored. Rename the `id` in one of the files to register both independently.
 
 ---
 

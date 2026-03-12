@@ -41,6 +41,15 @@ const sidebars: SidebarsConfig = {
       id: 'skills-browser',
       label: 'Skills Browser',
     },
+    {
+      type: 'category',
+      label: 'AI Tooling',
+      className: 'sidebar-new-badge',
+      collapsed: false,
+      items: [
+        { type: 'doc', id: 'agent-designer', label: 'Agent Designer' },
+      ],
+    },
   ],
 };
 

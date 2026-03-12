@@ -73,3 +73,25 @@ thead tr {
 .alert {
   border-radius: 8px;
 }
+
+/* Sidebar "New" badge */
+.sidebar-new-badge > .menu__list-item-collapsible> .menu__link > span::after {
+  width:auto;
+  content: 'New';
+  background-color: #16a34a;
+  color: #fff;
+  border-radius: 3px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-left: 20px;
+  vertical-align: middle;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  transform: rotate(0deg);
+}
+
+[data-theme='dark'] .sidebar-new-badge > .menu__list-item-collapsible > .menu__link > span::after {
+  background-color: #22c55e;
+  color: #0a0a0a;
+}
