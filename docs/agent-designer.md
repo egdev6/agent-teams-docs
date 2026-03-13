@@ -147,7 +147,7 @@ The Agent Designer's accuracy comes from the **`agent-spec-authoring`** skill in
 |---|---|---|
 | `id` | string | Slug: `^[a-z0-9-]+$`. Must be unique in the workspace. |
 | `name` | string | Human-readable, 3–80 characters. |
-| `role` | string | `worker` \| `orchestrator` \| `router` |
+| `role` | string | `worker` \| `orchestrator` \| `router` \| `aggregator` |
 | `description` | string | 1–3 sentences, 10–600 characters. |
 
 ### Role semantics
@@ -155,8 +155,9 @@ The Agent Designer's accuracy comes from the **`agent-spec-authoring`** skill in
 | Role | When to use |
 |---|---|
 | `worker` | Executes a focused task within a defined scope |
-| `orchestrator` | Decomposes a goal and delegates sub-tasks to workers |
-| `router` | Receives requests and routes them to the best-matched agent |
+| `orchestrator` | Decomposes a goal and delegates sub-tasks to workers within a domain |
+| `router` | Receives requests and routes them to the best-matched agent via dispatch tools |
+| `aggregator` | Merges results from parallel orchestrators and surfaces cross-domain conflicts |
 
 ### Common optional fields
 

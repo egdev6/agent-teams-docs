@@ -152,7 +152,7 @@ La precisión del Diseñador de Agentes proviene de la habilidad **`agent-spec-a
 |---|---|---|
 | `id` | string | Slug: `^[a-z0-9-]+$`. Debe ser único en el espacio de trabajo. |
 | `name` | string | Legible por humanos, 3–80 caracteres. |
-| `role` | string | `worker` \| `orchestrator` \| `router` |
+| `role` | string | `worker` \| `orchestrator` \| `router` \| `aggregator` |
 | `description` | string | 1–3 frases, 10–600 caracteres. |
 
 ### Semántica de roles
@@ -160,8 +160,9 @@ La precisión del Diseñador de Agentes proviene de la habilidad **`agent-spec-a
 | Rol | Cuándo usarlo |
 |---|---|
 | `worker` | Ejecuta una tarea enfocada dentro de un alcance definido |
-| `orchestrator` | Descompone un objetivo y delega sub-tareas a workers |
-| `router` | Recibe solicitudes y las enruta al agente más adecuado |
+| `orchestrator` | Descompone un objetivo y delega sub-tareas a workers dentro de un dominio |
+| `router` | Recibe solicitudes y las enruta al agente más adecuado mediante herramientas de despacho |
+| `aggregator` | Fusiona los resultados de orchestrators en paralelo y reporta conflictos entre dominios |
 
 ### Campos opcionales comunes
 

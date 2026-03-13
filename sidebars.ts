@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Agents',
+      className: 'sidebar-new-badge',
       collapsed: false,
       items: [
         { type: 'doc', id: 'agents', label: 'Agent Manager' },

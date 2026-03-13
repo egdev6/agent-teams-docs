@@ -19,12 +19,14 @@ El wizard te guía a través de 6 pasos:
 | Campo | Descripción |
 |---|---|
 | **Nombre** | Nombre mostrado en Copilot Chat |
-| **Rol** | `router`, `orchestrator` o `worker` (ver [Roles](#roles-de-agente)) |
+| **Rol** | `router`, `orchestrator`, `worker` o `aggregator` (ver [Roles](#roles-de-agente)) |
 | **Descripción** | Qué hace el agente — se muestra en la lista de participantes del chat |
 | **Dominio** | Dominio principal (p. ej. `frontend`, `backend`, `testing`) |
-| **Subdominio** | Especialización opcional dentro del dominio |
+| **Subdominio** | Especialización opcional dentro del dominio (oculto para `router` y `orchestrator`) |
 
 ### Paso 1 — Alcance
+
+> **Nota:** Este paso está oculto para los agentes `router` — los routers reciben todos los mensajes de `@router` y no necesitan filtros de alcance.
 
 Define cuándo este agente es activado por el `@router`.
 
@@ -45,6 +47,8 @@ Define cuándo este agente es activado por el `@router`.
 
 ### Paso 3 — Skills
 
+> **Nota:** Este paso está oculto para los agentes `router` — los routers usan herramientas de despacho (`agent-teams-handoff`, `agent-teams-dispatch-parallel`) en lugar de skills de dominio.
+
 Explora y añade skills de dos fuentes:
 
 - **Skills del proyecto** — skills definidas en tu `skills.registry.yml` local
@@ -53,6 +57,8 @@ Explora y añade skills de dos fuentes:
 Cada tarjeta de skill muestra su ID, categoría, nivel de seguridad y roles recomendados. Selecciona las skills relevantes para el propósito de este agente.
 
 ### Paso 4 — Reglas
+
+> **Nota:** Los permisos y restricciones están ocultos para los agentes `router` — su comportamiento está gobernado enteramente por las herramientas de despacho.
 
 | Sección | Descripción |
 |---|---|
@@ -65,6 +71,8 @@ Cada tarjeta de skill muestra su ID, categoría, nivel de seguridad y roles reco
 | **Handoffs — Escala a** | A qué agentes o roles escalar cuando está bloqueado |
 
 ### Paso 5 — Salida y Contexto
+
+> **Nota:** Los campos Máx. elementos y Nunca incluir están ocultos para los agentes `router` — los routers producen una acción de despacho, no una respuesta de texto estructurada.
 
 | Campo | Descripción |
 |---|---|
@@ -109,9 +117,10 @@ Cuando los agentes están listos, sincronízalos para generar los archivos markd
 
 | Rol | Propósito |
 |---|---|
-| `router` | Recibe todos los mensajes de `@router` y delega al agente más adecuado |
-| `orchestrator` | Coordina tareas multi-paso entre varios agentes worker |
+| `router` | Recibe todos los mensajes de `@router` y delega mediante `agent-teams-handoff` (dominio único) o `agent-teams-dispatch-parallel` (multi-dominio) |
+| `orchestrator` | Coordina tareas multi-paso entre varios agentes worker dentro de un dominio |
 | `worker` | Gestiona una tarea de dominio específica y enfocada |
+| `aggregator` | Recoge los resultados de orchestrators en paralelo, detecta conflictos y devuelve una respuesta unificada |
 
 ---
 
@@ -143,7 +152,7 @@ El dashboard escribe y lee este formato automáticamente. También puedes editar
 id: my-agent
 name: My Agent
 description: Descripción breve de lo que hace este agente
-role: worker          # router | orchestrator | worker
+role: worker          # router | orchestrator | worker | aggregator
 
 skills:
   - code_analysis
@@ -168,7 +177,7 @@ context_packs:
 | `id` | ✅ | Identificador único (kebab-case) |
 | `name` | ✅ | Nombre mostrado en Copilot Chat |
 | `description` | ✅ | Qué hace el agente |
-| `role` | ✅ | `router`, `orchestrator` o `worker` |
+| `role` | ✅ | `router`, `orchestrator`, `worker` o `aggregator` |
 | `skills` | — | Lista de IDs de skills del registro |
 | `routing.keywords` | — | Palabras que activan el routing hacia este agente |
 | `routing.paths` | — | Patrones glob para routing basado en archivo |

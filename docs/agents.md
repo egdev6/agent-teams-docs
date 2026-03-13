@@ -19,12 +19,14 @@ The wizard guides you through 6 steps:
 | Field | Description |
 |---|---|
 | **Name** | Display name shown in Copilot Chat |
-| **Role** | `router`, `orchestrator`, or `worker` (see [Roles](#agent-roles)) |
+| **Role** | `router`, `orchestrator`, `worker`, or `aggregator` (see [Roles](#agent-roles)) |
 | **Description** | What the agent does — shown in the chat participant list |
 | **Domain** | Primary domain (e.g. `frontend`, `backend`, `testing`) |
-| **Subdomain** | Optional specialization within the domain |
+| **Subdomain** | Optional specialization within the domain (hidden for `router` and `orchestrator`) |
 
 ### Step 1 — Scope
+
+> **Note:** This step is hidden for `router` agents — routers receive all `@router` messages and do not need scope filters.
 
 Defines when this agent is activated by the `@router`.
 
@@ -45,6 +47,8 @@ Defines when this agent is activated by the `@router`.
 
 ### Step 3 — Skills
 
+> **Note:** This step is hidden for `router` agents — routers use dispatch tools (`agent-teams-handoff`, `agent-teams-dispatch-parallel`) rather than domain skills.
+
 Browse and add skills from two sources:
 
 - **Project skills** — skills defined in your local `skills.registry.yml`
@@ -53,6 +57,8 @@ Browse and add skills from two sources:
 Each skill card shows its ID, category, security level, and recommended roles. Select the skills relevant to this agent's purpose.
 
 ### Step 4 — Rules
+
+> **Note:** Permissions and Constraints are hidden for `router` agents — their behavior is governed entirely by the dispatch tools.
 
 | Section | Description |
 |---|---|
@@ -65,6 +71,8 @@ Each skill card shows its ID, category, security level, and recommended roles. S
 | **Handoffs — Escalates to** | Which agents or roles to escalate to when stuck |
 
 ### Step 5 — Output & Context
+
+> **Note:** Max items and Never include are hidden for `router` agents — routers produce a dispatch action, not a structured text response.
 
 | Field | Description |
 |---|---|
@@ -109,9 +117,10 @@ When agents are ready, sync them to generate the final markdown files used by Gi
 
 | Role | Purpose |
 |---|---|
-| `router` | Receives all `@router` messages and delegates to the best-fit agent |
-| `orchestrator` | Coordinates multi-step tasks across several worker agents |
+| `router` | Receives all `@router` messages and delegates via `agent-teams-handoff` (single) or `agent-teams-dispatch-parallel` (multi-domain) |
+| `orchestrator` | Coordinates multi-step tasks across several worker agents within a domain |
 | `worker` | Handles a specific, focused domain task |
+| `aggregator` | Collects results from parallel orchestrators, detects conflicts, and returns a unified response |
 
 ---
 
@@ -143,7 +152,7 @@ The dashboard writes and reads this format automatically. You can also edit the 
 id: my-agent
 name: My Agent
 description: Short description of what this agent does
-role: worker          # router | orchestrator | worker
+role: worker          # router | orchestrator | worker | aggregator
 
 skills:
   - code_analysis
@@ -168,7 +177,7 @@ context_packs:
 | `id` | ✅ | Unique identifier (kebab-case) |
 | `name` | ✅ | Display name shown in Copilot Chat |
 | `description` | ✅ | What the agent does |
-| `role` | ✅ | `router`, `orchestrator`, or `worker` |
+| `role` | ✅ | `router`, `orchestrator`, `worker`, or `aggregator` |
 | `skills` | — | List of skill IDs from the registry |
 | `routing.keywords` | — | Words that trigger routing to this agent |
 | `routing.paths` | — | Glob patterns for file-based routing |

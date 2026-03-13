@@ -22,6 +22,7 @@ skills:
 workflow:
   - Read workspace context to identify existing agents, available skills, and technology stack.
   - Analyze the description to determine the agent's purpose, domain, and role.
+  - Apply role-specific field restrictions (documented in the agent-spec-authoring skill) — router omits scope/constraints/subdomain and has a restricted output block; orchestrator omits subdomain and scope.path_globs/excludes.
   - Infer relevant expertise areas for the identified domain and tech stack.
   - Classify intents in snake_case that represent the agent's distinct capabilities.
   - Build the complete YAML following the schema documented in the agent-spec-authoring skill.
@@ -36,6 +37,9 @@ constraints:
     - "Always include the 4 required fields: id, name, role, description."
     - Reference only skills available in the current workspace.
     - Adapt domain, expertise, and intents to the project's technology stack.
+    - "For router: omit scope, constraints, and subdomain entirely; set domain to global."
+    - "For orchestrator: omit subdomain; if scope is needed include only topics — never path_globs or excludes."
+    - "For router output: include only template and optionally mode/format_instructions — never max_items or never_include."
   never:
     - Invent field names not present in the AgentSpec schema.
     - Emit JSON instead of YAML.

@@ -6,10 +6,16 @@ Esta guía explica la arquitectura recomendada para construir un sistema multi-a
 
 ---
 
-## El Pipeline de Cuatro Capas
+## El Pipeline
 
 ```
-Prompt del Usuario  →  Router  →  Orchestrator  →  Worker(s)  →  Tarea Completada
+Dominio único:
+  Prompt del Usuario  →  Router  →  Orchestrator  →  Worker(s)  →  Tarea Completada
+
+Múltiples dominios (despacho en paralelo):
+  Prompt del Usuario  →  Router  →  Orchestrator A ┐
+                                     Orchestrator B ┤ → Workers → Aggregator → Tarea Completada
+                                     Orchestrator C ┘
 ```
 
 Cada capa transforma la entrada de una forma específica antes de pasarla a la siguiente. Ninguna capa se salta pasos ni asume responsabilidades fuera de su ámbito.
@@ -43,12 +49,13 @@ El router es el controlador de tráfico. Recibe cada mensaje de `@router`, lo an
 - Analizar palabras clave de intención (p. ej. `refactor`, `write`, `review`, `fix`)
 - Comparar la ruta del archivo activo con los patrones glob de los agentes
 - Puntuar agentes por vocabulario de dominio, áreas de expertise y rol
-- Delegar en un único **orchestrator** (para tareas multi-paso) o directamente en un **worker** (para tareas simples)
+- Para tareas de dominio único: usar `agent-teams-handoff` para abrir un chat con un orchestrator específico
+- Para tareas multi-dominio: usar `agent-teams-dispatch-parallel` para despachar en paralelo a múltiples orchestrators
 
 **Lo que el router NO debe hacer:**
 - Ejecutar ninguna tarea por sí mismo
 - Hacer suposiciones sobre detalles de implementación
-- Delegar en más de un agente simultáneamente
+- Llamar a los orchestrators como herramientas de sub-agente directamente — siempre usar las herramientas de despacho (`agent-teams-handoff` o `agent-teams-dispatch-parallel`)
 
 **Ejemplo de decisión de routing:**
 
@@ -120,7 +127,28 @@ Los workers son los agentes que realmente ejecutan el trabajo. Cada worker es un
 
 ---
 
+## Capa 5 — Aggregator
+
+El aggregator se usa exclusivamente en flujos de **despacho en paralelo**. Cuando el router despacha una tarea a múltiples orchestrators simultáneamente, el aggregator recibe todos sus resultados una vez que cada subtarea está completa, los fusiona y devuelve una respuesta unificada al usuario.
+
+**Responsabilidades:**
+- Cargar el resultado de cada orchestrator desde Engram usando el ID de tarea
+- Detectar conflictos (p. ej. dos orchestrators modificando el mismo archivo)
+- Informar los conflictos claramente antes de presentar el resultado unificado
+- Persistir el resultado fusionado en Engram bajo `task:{taskId}:result`
+
+**Lo que el aggregator NO debe hacer:**
+- Ejecutar subtareas por sí mismo
+- Proceder antes de que todas las subtareas paralelas hayan señalizado su finalización
+- Ignorar conflictos en silencio — todas las superposiciones de archivos entre dominios deben reportarse
+
+> El aggregator se configura como `role: aggregator`. Solo es necesario cuando el equipo usa despacho en paralelo. Un aggregator por equipo es suficiente.
+
+---
+
 ## Ejemplo Completo: Flujo de Extremo a Extremo
+
+### Dominio único
 
 ```
 Usuario:
@@ -129,7 +157,7 @@ Usuario:
 Router:
   → Puntúa los agentes
   → Selecciona: backend-orchestrator (intención=refactor, archivo=src/auth/, dominio=backend)
-  → Delega la petición completa
+  → Llama a agent-teams-handoff → abre chat con backend-orchestrator
 
 Orchestrator (backend-orchestrator):
   → Descompone la tarea en 4 pasos
@@ -143,9 +171,37 @@ Orchestrator (backend-orchestrator):
 Tarea completada.
 ```
 
+### Múltiples dominios (despacho en paralelo)
+
+```
+Usuario:
+  @router  Añade un endpoint /payments con formulario frontend y cobertura de tests completa.
+
+Router:
+  → Identifica 3 dominios independientes: backend, frontend, testing
+  → Llama a agent-teams-dispatch-parallel con subtareas para cada orchestrator
+  → Abre 3 chats en paralelo simultáneamente
+
+Orchestrators (en paralelo):
+  backend-orchestrator  → implementa el endpoint REST
+  frontend-orchestrator → construye el componente del formulario de pago
+  testing-orchestrator  → escribe tests end-to-end y unitarios
+
+  Cada orchestrator llama a agent-teams-complete-subtask al terminar
+
+Aggregator:
+  → Carga los 3 resultados desde Engram
+  → Detecta conflictos (p. ej. backend y frontend tocaron api-client.ts)
+  → Reporta conflictos y presenta el resultado unificado
+
+Tarea completada.
+```
+
 ---
 
 ## Diagrama de Arquitectura
+
+### Dominio único
 
 ```
 ┌──────────────────────┐
@@ -153,7 +209,7 @@ Tarea completada.
 └──────────┬───────────┘
            │  mensaje @router
            ▼
-┌─────────────┐        puntúa y enruta
+┌─────────────┐        agent-teams-handoff
 │    Router    │ ──────────────────────────────┐
 └─────────────┘                                │
                                                ▼
@@ -177,6 +233,41 @@ Tarea completada.
                                └──────────────────┘
 ```
 
+### Múltiples dominios (despacho en paralelo)
+
+```
+┌──────────────────────┐
+│  Prompt del Usuario   │
+└──────────┬───────────┘
+           │  mensaje @router
+           ▼
+┌─────────────┐   agent-teams-dispatch-parallel
+│    Router    │ ─────────────────────────────────────────────┐
+└─────────────┘                                               │
+                         ┌──────────────────────┬─────────────────────┐
+                         ▼                      ▼                      ▼
+              ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
+              │  Orchestrator A  │   │  Orchestrator B  │   │  Orchestrator C  │
+              └────────┬────────┘   └────────┬────────┘   └────────┬────────┘
+                       │ workers              │ workers              │ workers
+                       ▼                      ▼                      ▼
+                [complete-subtask]     [complete-subtask]     [complete-subtask]
+                       │                      │                      │
+                       └──────────────────────┴──────────────────────┘
+                                              │  todas las subtareas completadas
+                                              ▼
+                                    ┌──────────────────┐
+                                    │    Aggregator    │
+                                    │ (fusiona result., │
+                                    │ detecta conflictos)│
+                                    └────────┬─────────┘
+                                             │
+                                             ▼
+                                    ┌──────────────────┐
+                                    │  Tarea Hecha ✓   │
+                                    └──────────────────┘
+```
+
 ---
 
 ## Principios de Diseño
@@ -188,6 +279,8 @@ Tarea completada.
 | **Los orchestrators coordinan, los workers ejecutan** | Nunca mezcles planificación y ejecución en el mismo agente |
 | **Handoffs explícitos** | Cada agente declara `handoffs.delegates_to` y `handoffs.receives_from` |
 | **Escalado antes que fallo** | Los workers escalan al orchestrator cuando se bloquean — nunca fallan en silencio |
+| **Herramientas de despacho para multi-dominio** | Los routers usan `agent-teams-handoff` o `agent-teams-dispatch-parallel` — nunca llaman directamente a los orchestrators |
+| **El aggregator cierra el ciclo** | Los flujos en paralelo siempre terminan con un aggregator que fusiona resultados y reporta conflictos |
 
 ---
 
@@ -222,6 +315,21 @@ handoffs:
     - backend-orchestrator
 ```
 
+```yaml
+# results-aggregator.yml
+id: results-aggregator
+name: Results Aggregator
+role: aggregator
+handoffs:
+  receives_from:
+    - backend-orchestrator
+    - frontend-orchestrator
+    - testing-orchestrator
+  delegates_to: []
+  escalates_to:
+    - human
+```
+
 ---
 
 ## Anti-Patrones Comunes
@@ -230,8 +338,11 @@ handoffs:
 |---|---|---|
 | El usuario se salta el router | No se aplica lógica de routing, se elige el agente incorrecto | Usar siempre `@router` como punto de entrada |
 | El router ejecuta tareas | El router se convierte en un cuello de botella y punto único de fallo | El router solo enruta — nunca actúa |
+| El router llama a orchestrators directamente como herramientas | Omite el traspaso de contexto y el seguimiento de tareas vía Engram | Usar siempre `agent-teams-handoff` o `agent-teams-dispatch-parallel` |
 | El orchestrator escribe código | Mezcla coordinación y ejecución, difícil de depurar | Mover la ejecución a un worker dedicado |
 | Un worker delega en otro worker | Crea dependencias ocultas y llamadas circulares | Toda la delegación debe pasar por el orchestrator |
 | Un único agente "que hace todo" | No escalable, saturación de contexto, salida impredecible | Dividir por dominio en múltiples workers especializados |
+| Despacho en paralelo sin aggregator | Los resultados nunca se fusionan; los conflictos no se detectan | Añadir un agente con `role: aggregator` al equipo |
+| El aggregator inicia antes de que todas las subtareas terminen | Lee el estado incompleto de Engram y produce una salida incorrecta | `agent-teams-complete-subtask` garantiza que el aggregator solo se abre cuando todas las subtareas señalizan su finalización |
 
 ---

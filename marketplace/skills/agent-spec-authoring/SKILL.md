@@ -176,6 +176,38 @@ Choose the role that matches the agent's primary responsibility:
 
 ---
 
+## Role-Specific Field Constraints
+
+Some schema fields are valid only for certain roles. These restrictions are enforced by the generator — using a forbidden field for a given role will produce an invalid spec.
+
+| Field | `worker` | `orchestrator` | `router` |
+|-------|----------|----------------|----------|
+| `subdomain` | optional | **omit** | **omit** |
+| `scope.topics` | optional | optional | **omit** |
+| `scope.path_globs` | optional | **omit** | **omit** |
+| `scope.excludes` | optional | **omit** | **omit** |
+| `constraints` | optional | optional | **omit** |
+| `output.max_items` | optional | optional | **omit** |
+| `output.never_include` | optional | optional | **omit** |
+
+### Rules by role
+
+**`worker`** — all optional fields are available. Use the full schema.
+
+**`orchestrator`**
+- Omit `subdomain`.
+- If `scope` is needed, include **only** `topics`; never include `path_globs` or `excludes`.
+- `constraints`, `output.max_items`, and `output.never_include` are fully available.
+
+**`router`**
+- Omit `subdomain`.
+- Omit `scope` entirely.
+- Omit `constraints` entirely.
+- In `output`: include **only** `template` and, optionally, `mode` and `format_instructions`; never include `max_items` or `never_include`.
+- Set `domain` to `global` (routers are platform-wide by design).
+
+---
+
 ## Workspace Context Usage
 
 Before generating a spec, read the available workspace context to ensure coherence:

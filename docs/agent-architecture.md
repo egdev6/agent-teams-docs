@@ -6,10 +6,16 @@ This guide explains the recommended architecture for building a multi-agent syst
 
 ---
 
-## The Four-Layer Pipeline
+## The Pipeline
 
 ```
-User Prompt  →  Router  →  Orchestrator  →  Worker(s)  →  Task Done
+Single domain:
+  User Prompt  →  Router  →  Orchestrator  →  Worker(s)  →  Task Done
+
+Multiple domains (parallel dispatch):
+  User Prompt  →  Router  →  Orchestrator A ┐
+                                Orchestrator B ┤ → Workers → Aggregator → Task Done
+                                Orchestrator C ┘
 ```
 
 Each layer transforms the input in a specific way before passing it to the next. No layer skips steps or takes on responsibilities outside its scope.
@@ -43,12 +49,13 @@ The router is the traffic controller. It receives every `@router` message, analy
 - Parse intent keywords (e.g. `refactor`, `write`, `review`, `fix`)
 - Match the active file's path against agent glob patterns
 - Score agents by domain vocabulary, expertise areas, and role
-- Hand off to a single **orchestrator** (for multi-step tasks) or directly to a **worker** (for simple tasks)
+- For single-domain tasks: use `agent-teams-handoff` to open a targeted chat with one orchestrator
+- For multi-domain tasks: use `agent-teams-dispatch-parallel` to fan out to multiple orchestrators simultaneously
 
 **What the router must NOT do:**
 - Execute any task itself
 - Make assumptions about implementation details
-- Delegate to more than one agent simultaneously
+- Call orchestrators as direct sub-agent tools — always use the dispatch tools (`agent-teams-handoff` or `agent-teams-dispatch-parallel`)
 
 **Example routing decision:**
 
@@ -120,7 +127,28 @@ Workers are the agents that actually do the work. Each worker is a domain specia
 
 ---
 
+## Layer 5 — Aggregator
+
+The aggregator is used exclusively in **parallel dispatch** flows. When the router fans out a task to multiple orchestrators simultaneously, the aggregator receives all their results once every subtask is complete, merges them, and returns a unified response to the user.
+
+**Responsibilities:**
+- Load each orchestrator's result from Engram using the task ID
+- Detect conflicts (e.g. two orchestrators modifying the same file)
+- Report conflicts clearly before presenting the unified outcome
+- Persist the merged result to Engram under `task:{taskId}:result`
+
+**What the aggregator must NOT do:**
+- Execute subtasks itself
+- Proceed before all parallel subtasks have signalled completion
+- Silently discard conflicts — all cross-domain file overlaps must be reported
+
+> The aggregator is configured as `role: aggregator`. It is only needed when your team uses parallel dispatch. One aggregator per team is sufficient.
+
+---
+
 ## Full Example: End-to-End Flow
+
+### Single domain
 
 ```
 User:
@@ -129,7 +157,7 @@ User:
 Router:
   → Scores agents
   → Selects: backend-orchestrator (intent=refactor, file=src/auth/, domain=backend)
-  → Delegates full request
+  → Calls agent-teams-handoff → opens chat with backend-orchestrator
 
 Orchestrator (backend-orchestrator):
   → Decomposes task into 4 steps
@@ -143,9 +171,37 @@ Orchestrator (backend-orchestrator):
 Task done.
 ```
 
+### Multiple domains (parallel dispatch)
+
+```
+User:
+  @router  Add a new /payments endpoint with frontend form and full test coverage.
+
+Router:
+  → Identifies 3 independent domains: backend, frontend, testing
+  → Calls agent-teams-dispatch-parallel with subtasks for each orchestrator
+  → Opens 3 parallel chats simultaneously
+
+Orchestrators (in parallel):
+  backend-orchestrator  → implements the REST endpoint
+  frontend-orchestrator → builds the payment form component
+  testing-orchestrator  → writes end-to-end and unit tests
+
+  Each orchestrator calls agent-teams-complete-subtask when done
+
+Aggregator:
+  → Loads all 3 results from Engram
+  → Detects conflicts (e.g. both backend and frontend touched api-client.ts)
+  → Reports conflicts and presents unified outcome
+
+Task done.
+```
+
 ---
 
 ## Architecture Diagram
+
+### Single domain
 
 ```
 ┌─────────────┐
@@ -153,7 +209,7 @@ Task done.
 └──────┬──────┘
        │  @router message
        ▼
-┌─────────────┐        scores & routes
+┌─────────────┐        agent-teams-handoff
 │    Router    │ ──────────────────────────────┐
 └─────────────┘                                │
                                                ▼
@@ -177,6 +233,41 @@ Task done.
                                └──────────────────┘
 ```
 
+### Multiple domains (parallel dispatch)
+
+```
+┌─────────────┐
+│  User Prompt │
+└──────┬──────┘
+       │  @router message
+       ▼
+┌─────────────┐   agent-teams-dispatch-parallel
+│    Router    │ ─────────────────────────────────────────────┐
+└─────────────┘                                               │
+                                       ┌──────────────────────┼──────────────────────┐
+                                       ▼                      ▼                      ▼
+                            ┌─────────────────┐   ┌─────────────────┐   ┌─────────────────┐
+                            │  Orchestrator A  │   │  Orchestrator B  │   │  Orchestrator C  │
+                            └────────┬────────┘   └────────┬────────┘   └────────┬────────┘
+                                     │ workers              │ workers              │ workers
+                                     ▼                      ▼                      ▼
+                              [complete-subtask]     [complete-subtask]     [complete-subtask]
+                                     │                      │                      │
+                                     └──────────────────────┴──────────────────────┘
+                                                            │  all subtasks done
+                                                            ▼
+                                                  ┌──────────────────┐
+                                                  │    Aggregator    │
+                                                  │ (merges results, │
+                                                  │ flags conflicts) │
+                                                  └────────┬─────────┘
+                                                           │
+                                                           ▼
+                                                  ┌──────────────────┐
+                                                  │   Task Done ✓    │
+                                                  └──────────────────┘
+```
+
 ---
 
 ## Design Principles
@@ -188,6 +279,8 @@ Task done.
 | **Orchestrators coordinate, workers execute** | Never mix planning and doing in the same agent |
 | **Explicit handoffs** | Each agent declares `handoffs.delegates_to` and `handoffs.receives_from` |
 | **Escalation over failure** | Workers escalate to the orchestrator when blocked — they never fail silently |
+| **Dispatch tools for multi-domain** | Routers use `agent-teams-handoff` or `agent-teams-dispatch-parallel` — never call orchestrators directly |
+| **Aggregator closes the loop** | Parallel flows always end with an aggregator that merges results and surfaces conflicts |
 
 ---
 
@@ -222,6 +315,21 @@ handoffs:
     - backend-orchestrator
 ```
 
+```yaml
+# results-aggregator.yml
+id: results-aggregator
+name: Results Aggregator
+role: aggregator
+handoffs:
+  receives_from:
+    - backend-orchestrator
+    - frontend-orchestrator
+    - testing-orchestrator
+  delegates_to: []
+  escalates_to:
+    - human
+```
+
 ---
 
 ## Common Anti-Patterns
@@ -230,8 +338,11 @@ handoffs:
 |---|---|---|
 | User bypasses router | No routing logic applied, wrong agent picked | Always use `@router` as the entry point |
 | Router executes tasks | Router becomes a bottleneck and a single point of failure | Router only routes — never acts |
+| Router calls orchestrators directly as tools | Bypasses context passing and task tracking via Engram | Always use `agent-teams-handoff` or `agent-teams-dispatch-parallel` |
 | Orchestrator writes code | Mixes coordination and execution, hard to debug | Move execution to a dedicated worker |
 | Worker delegates to another worker | Creates hidden dependencies and circular calls | All delegation must go through the orchestrator |
 | Single "do everything" agent | Unscalable, context bloat, unpredictable output | Split by domain into multiple focused workers |
+| Parallel dispatch without an aggregator | Results are never merged; conflicts go undetected | Add a `role: aggregator` agent to your team |
+| Aggregator starts before all subtasks complete | Reads incomplete Engram state, produces wrong output | `agent-teams-complete-subtask` ensures the aggregator opens only after all subtasks signal completion |
 
 ---
