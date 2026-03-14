@@ -1,5 +1,6 @@
 [build]
-  # Build is handled by GitHub Actions — skip Netlify's auto-build.
+  # Build and deploy is handled by GitHub Actions.
+  # Netlify auto-builds are skipped to avoid duplicate deploys.
   ignore = "exit 0"
   publish = "build"
 
