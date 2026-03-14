@@ -1,9 +1,10 @@
 [build]
-  command = "npm run build"
+  command = "pnpm run build"
   publish = "build"
 
 [build.environment]
   NODE_VERSION = "20"
+  PNPM_VERSION = "10"
 
 # Long-lived cache for hashed static assets (JS, CSS, fonts, images)
 [[headers]]
