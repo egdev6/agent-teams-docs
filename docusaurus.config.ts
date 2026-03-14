@@ -42,6 +42,19 @@ export default async function createConfig(): Promise<Config> {
   // Prevents Docusaurus locale switcher from generating href="//" at the root
   trailingSlash: false,
 
+  // Disable webpack's filesystem cache to prevent the build process from
+  // hanging after completion (IdleFileCachePlugin keeps Node.js open handles).
+  plugins: [
+    function disableWebpackCache() {
+      return {
+        name: 'disable-webpack-cache',
+        configureWebpack() {
+          return { cache: false };
+        },
+      };
+    },
+  ],
+
   headTags: [
     // Fallback meta description for pages without explicit description
     {
