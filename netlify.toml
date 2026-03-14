@@ -1,10 +1,7 @@
 [build]
-  command = "pnpm run build"
+  # Build is handled by GitHub Actions — skip Netlify's auto-build.
+  ignore = "exit 0"
   publish = "build"
-
-[build.environment]
-  NODE_VERSION = "20"
-  PNPM_VERSION = "10"
 
 # Long-lived cache for hashed static assets (JS, CSS, fonts, images)
 [[headers]]
