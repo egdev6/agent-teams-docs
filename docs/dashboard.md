@@ -1,3 +1,7 @@
+---
+description: The Agent Teams dashboard is an embedded React SPA in VS Code with 12 dedicated views for agents, teams, skills, context packs, and project profiles. Browse and edit live state without opening files manually.
+---
+
 # Dashboard
 
 **Status:** 🧪 Beta

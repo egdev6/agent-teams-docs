@@ -1,3 +1,7 @@
+---
+description: The Agent Designer is a built-in tooling agent that generates a valid AgentSpec YAML from a natural-language description. Go from blank to a fully configured agent in seconds.
+---
+
 # Agent Designer
 
 **Status:** ✅ Available

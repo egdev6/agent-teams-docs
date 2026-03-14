@@ -1,3 +1,7 @@
+---
+description: How to install Agent Teams in VS Code — download the .vsix from the Releases page and install it directly, or use the VS Code marketplace.
+---
+
 # Installation Guide
 
 **Status:** ✅ Available

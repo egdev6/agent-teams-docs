@@ -1,3 +1,7 @@
+---
+description: Agents are the core building block of Agent Teams. Each agent is a GitHub Copilot chat participant with a defined role, skills, routing rules, and optional context packs.
+---
+
 # Agents
 
 **Status:** 🧪 Beta

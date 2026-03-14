@@ -1,3 +1,7 @@
+---
+description: Teams bundle agents, skills, and config into portable kit files. Drop a team kit into any project and the full agent team loads instantly with 4 merge strategies — no reconfiguration needed.
+---
+
 # Teams
 
 **Status:** 🧪 Beta

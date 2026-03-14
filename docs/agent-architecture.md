@@ -1,3 +1,7 @@
+---
+description: Learn the recommended 4-layer agent architecture in Agent Teams — Router, Orchestrator, Workers, and Context — for building scalable, maintainable AI pipelines in VS Code.
+---
+
 # Ideal Agent Architecture
 
 **Status:** 🧪 Beta

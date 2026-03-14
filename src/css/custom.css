@@ -1,3 +1,6 @@
+/* Use variable font for all weights in one request — reduces CLS from font swap */
+@import '@fontsource-variable/space-grotesk';
+
 /* Agent Teams — Docusaurus theme overrides */
 
 :root {
@@ -11,43 +14,277 @@
   --ifm-color-primary-lightest: #f07a92;
 
   --ifm-code-font-size: 93%;
-  --ifm-font-family-base: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-base: 'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-heading: 'Space Grotesk Variable', 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --ifm-heading-font-weight: 700;
+  --ifm-font-weight-base: 500;
   --docusaurus-highlighted-code-line-bg: rgba(219, 20, 60, 0.1);
+
+  /* Animation variables */
+  --ifm-transition-fast: 150ms ease-in-out;
+  --ifm-transition-slow: 300ms ease-in-out;
+  --ifm-hover-scale: 1.02;
+  --base-glow: 0 4px 20px rgba(219, 20, 60, 0.15);
+  --active-glow: 0 8px 30px rgba(219, 20, 60, 0.3);
 }
 
 [data-theme='dark'] {
-  /* Lighter crimson for readability on dark backgrounds */
-  --ifm-color-primary: #ff4d6d;
-  --ifm-color-primary-dark: #ff2d56;
-  --ifm-color-primary-darker: #ff1f4c;
-  --ifm-color-primary-darkest: #e8002e;
-  --ifm-color-primary-light: #ff6d86;
-  --ifm-color-primary-lighter: #ff7d94;
-  --ifm-color-primary-lightest: #ffadb9;
+  /* MÁS VIBRANTE: Vivid Red for better contrast */
+  --ifm-color-primary: #ff0036;
+  --ifm-color-primary-dark: #e60030;
+  --ifm-color-primary-darker: #cc002b;
+  --ifm-color-primary-darkest: #990020;
+  --ifm-color-primary-light: #ff335e;
+  --ifm-color-primary-lighter: #ff4d72;
+  --ifm-color-primary-lightest: #ff809b;
 
-  /* Dark backgrounds — matches globals.css palette */
-  --ifm-background-color: #0a0a0a;
-  --ifm-background-surface-color: #111111;
-  --ifm-navbar-background-color: #0a0a0a;
-  --ifm-footer-background-color: #0a0a0a;
-  --ifm-color-emphasis-200: #262626;
+  /* GRISES MÁS OSCUROS */
+  --ifm-background-color: #000000;
+  --ifm-background-surface-color: #0a0a0a;
+  --ifm-navbar-background-color: #000000;
+  --ifm-footer-background-color: #000000;
+  
+  --ifm-color-emphasis-100: #111111;
+  --ifm-color-emphasis-200: #1a1a1a; /* Darker borders */
   --ifm-color-emphasis-300: #262626;
+  --ifm-color-secondary: #cccccc; /* Accessible secondary text — ~7:1 contrast on black */
 
-  --docusaurus-highlighted-code-line-bg: rgba(255, 77, 109, 0.15);
+  --ifm-menu-color: #888888;
+  --ifm-menu-color-active: #ff0036;
+  --ifm-menu-color-background-active: rgba(255, 0, 54, 0.1);
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.05);
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 0, 54, 0.15);
+  
+  --base-glow: 0 4px 20px rgba(255, 0, 54, 0.15);
+  --active-glow: 0 8px 30px rgba(255, 0, 54, 0.3);
 }
 
 /* Navbar refinement */
 .navbar {
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: rgba(27, 27, 29,0.6) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-/* Doc sidebar */
-.menu__link--active:not(.menu__link--sublist) {
-  background: rgba(219, 20, 60, 0.08);
+/* Explicit dimensions prevent layout shift (CLS) from unsized image */
+.navbar__logo img {
+  width: 32px;
+  height: 32px;
 }
 
+[data-theme='light'] .navbar {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ── Language selector button (trigger) ───────────────────────── */
+#locale-switcher {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  overflow: hidden;
+  margin-left: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#locale-switcher:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] #locale-switcher:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.locale-switcher__flag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 0 5px 10px;
+  font-size: 1rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+#locale-switcher .navbar__item.dropdown {
+  padding: 0;
+}
+
+#locale-switcher .navbar__link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 5px 8px 5px 5px !important;
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  color: #e0e0e0 !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+#locale-switcher .navbar__link:hover {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+[data-theme='light'] #locale-switcher {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+[data-theme='light'] #locale-switcher .navbar__link {
+  color: #333 !important;
+}
+
+[data-theme='light'] #locale-switcher .navbar__link:hover {
+  color: #000 !important;
+}
+
+/* Hide Docusaurus globe icon — replaced by flag emoji */
+#locale-switcher .navbar__link svg {
+  display: none !important;
+}
+
+/* Mobile sidebar: restore normal flow for locale switcher */
+.navbar-sidebar #locale-switcher {
+  display: flex;
+  border: none;
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.navbar-sidebar .locale-switcher__flag {
+  padding: 0 4px 0 0;
+}
+
+/* ── Language dropdown popup ──────────────────────────────────── */
+.navbar__item.dropdown .dropdown__menu {
+  background: #0a0a0a;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  padding: 4px;
+  min-width: 150px;
+}
+
+[data-theme='light'] .navbar__item.dropdown .dropdown__menu {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.navbar__item.dropdown .dropdown__menu .dropdown__link {
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 7px 12px;
+  transition: background 0.15s ease, color 0.15s ease;
+  color: var(--ifm-color-secondary);
+}
+
+/* Country flags via lang attribute */
+.dropdown__menu .dropdown__link[lang="en"]::before {
+  content: '🇬🇧';
+  margin-right: 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.dropdown__menu .dropdown__link[lang="es"]::before {
+  content: '🇪🇸';
+  margin-right: 8px;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.navbar__item.dropdown .dropdown__menu .dropdown__link:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+}
+
+[data-theme='light'] .navbar__item.dropdown .dropdown__menu .dropdown__link:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+.navbar__item.dropdown .dropdown__menu .dropdown__link--active {
+  color: var(--ifm-color-primary) !important;
+  background: rgba(255, 0, 54, 0.08);
+}
+
+/* --- SIDEBAR MODERN STYLE (Like HeroUI) --- */
+.theme-doc-sidebar-container {
+  border-right: none !important;
+  background: var(--ifm-background-color) !important;
+}
+
+.theme-doc-sidebar-menu {
+  padding: 1rem 0 !important;
+  font-size: 0.95rem;
+}
+
+.menu__list-item-collapsible {
+  border-radius: 8px;
+}
+
+.menu__link {
+  border-radius: 8px !important;
+  transition: all 0.2s ease;
+  margin-top: 0.15rem;
+  padding: 0.45rem 1rem !important;
+}
+
+[data-theme='dark'] .menu__link {
+  color: var(--ifm-color-secondary);
+}
+
+/* Fade-in sections for scroll animations */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 560ms cubic-bezier(.2,.8,.2,1), transform 560ms cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+}
+.fade-in-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Small utility for highlighted card CTA */
+.button--link {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  padding: 0;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  background: var(--ifm-menu-color-background-hover) !important;
+  color: #fff !important;
+}
+
+[data-theme='dark'] .menu__link--active, 
 [data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-  background: rgba(255, 77, 109, 0.12);
+  background: var(--ifm-menu-color-background-active) !important;
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+}
+
+/* Right TOC */
+.theme-doc-toc-desktop {
+  border-left: 1px solid var(--ifm-color-emphasis-200) !important;
+}
+
+/* Footer modern style */
+.footer {
+  background-color: var(--ifm-background-color) !important;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 /* Code blocks */
@@ -56,7 +293,8 @@
 }
 
 [data-theme='dark'] .prism-code {
-  background-color: #111111 !important;
+  background-color: #0a0a0a !important; /* Slightly distinct from black bg */
+  border: 1px solid var(--ifm-color-emphasis-200);
 }
 
 /* Tables */
@@ -93,5 +331,334 @@ thead tr {
 
 [data-theme='dark'] .sidebar-new-badge > .menu__list-item-collapsible > .menu__link > span::after {
   background-color: #22c55e;
-  color: #0a0a0a;
+  color: #000;
+}
+
+/* ── Mobile navbar sidebar ──────────────────────────────────────── */
+
+/* Backdrop overlay with fade */
+.navbar-sidebar__backdrop {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.navbar-sidebar--show .navbar-sidebar__backdrop {
+  opacity: 1;
+}
+
+/* Sidebar panel with fade + slide */
+.navbar-sidebar {
+  background: rgba(27, 27, 29,1) !important;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: 4px 0 40px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+[data-theme='light'] .navbar-sidebar {
+  background: #ffffff !important;
+  box-shadow: 4px 0 40px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-sidebar--show .navbar-sidebar {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 1000;
+  height: 100dvh;
+}
+
+/* Brand row inside mobile sidebar */
+.navbar-sidebar__brand {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.75rem 1rem;
+}
+
+/* Nav items inside mobile sidebar */
+.navbar-sidebar__items .menu__link {
+  border-radius: 8px;
+  padding: 0.6rem 1rem !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+[data-theme='dark'] .navbar-sidebar__items .menu__link {
+  color: #adadad;
+}
+
+[data-theme='dark'] .navbar-sidebar__items .menu__link:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #fff !important;
+}
+
+[data-theme='dark'] .navbar-sidebar__items .menu__link--active {
+  color: var(--ifm-color-primary) !important;
+  background: rgba(255, 0, 54, 0.08) !important;
+}
+
+/* Hide announcement bar on mobile */
+@media (max-width: 768px) {
+  div[class*='announcementBar'] {
+    display: none !important;
+  }
+}
+
+/* Announcement bar styling */
+div[class*='announcementBar'] {
+  border-bottom: 1px solid rgba(255, 0, 54, 0.35);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+div[class*='announcementBar'] a {
+  color: #ff4d6d !important;
+  font-weight: 700;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(255, 77, 109, 0.4);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+div[class*='announcementBar'] a:hover {
+  color: #ff8099 !important;
+  border-bottom-color: rgba(255, 128, 153, 0.7);
+}
+
+/* Hide GitHub stars badge in mobile sidebar */
+.navbar-sidebar .navbar-github-stars {
+  display: none !important;
+}
+
+/* ── Docs pages: grid background ─────────────────────────────── */
+.main-wrapper {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--ifm-background-color);
+}
+
+/* ── Docs markdown typography ─────────────────────────────────── */
+.markdown {
+  font-family: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 500;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-family: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+[data-theme='light'] .main-wrapper {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--ifm-background-color);
+}
+
+/* Sidebar and article inherit background so grid shows through */
+.theme-doc-sidebar-container,
+.docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module {
+  background: transparent !important;
+}
+
+/* ── Global neon buttons — matches homepage style ─────────────── */
+.button {
+  border-radius: 9999px !important;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.button--primary {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #ff1a4b 0%, #cc0030 100%) !important;
+  border: none !important;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 60, 90, 0.5),
+    0 0 16px 4px  rgba(255, 0, 54, 0.45),
+    0 0 40px 6px  rgba(255, 0, 54, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+.button--primary:hover {
+  background: linear-gradient(135deg, #ff3366 0%, #e0003a 100%) !important;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 80, 110, 0.7),
+    0 0 22px 4px  rgba(255, 0, 54, 0.65),
+    0 0 55px 8px  rgba(255, 0, 54, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.button--secondary {
+  color: #ffffff !important;
+  background: rgba(255, 0, 54, 0.06) !important;
+  border: 1.5px solid rgba(255, 0, 54, 0.5) !important;
+  box-shadow:
+    0 0 8px 2px   rgba(255, 0, 54, 0.15),
+    0 0 24px 4px  rgba(255, 0, 54, 0.07),
+    inset 0 0 10px rgba(255, 0, 54, 0.04) !important;
+}
+
+.button--secondary:hover {
+  background: rgba(255, 0, 54, 0.12) !important;
+  border-color: rgba(255, 60, 90, 0.8) !important;
+  box-shadow:
+    0 0 14px 4px  rgba(255, 0, 54, 0.3),
+    0 0 38px 8px  rgba(255, 0, 54, 0.12),
+    inset 0 0 14px rgba(255, 0, 54, 0.07) !important;
+}
+
+[data-theme='light'] .button--secondary {
+  color: #cc0030 !important;
+  border-color: rgba(219, 20, 60, 0.5) !important;
+}
+
+[data-theme='light'] .button--secondary:hover {
+  color: #8c0b26 !important;
+  border-color: rgba(219, 20, 60, 0.8) !important;
+}
+
+/* ── Docs pagination nav (Prev / Next) ────────────────────────── */
+.pagination-nav__link {
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #ff1a4b 0%, #cc0030 100%) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 60, 90, 0.5),
+    0 0 16px 4px  rgba(255, 0, 54, 0.45),
+    0 0 40px 6px  rgba(255, 0, 54, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.pagination-nav__link:hover {
+  background: linear-gradient(135deg, #ff3366 0%, #e0003a 100%) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 80, 110, 0.7),
+    0 0 22px 4px  rgba(255, 0, 54, 0.65),
+    0 0 55px 8px  rgba(255, 0, 54, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pagination-nav__sublabel {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.pagination-nav__label {
+  color: #ffffff !important;
+}
+
+/* ── GitHub Stars navbar badge ────────────────────────────────── */
+.navbar-github-stars {
+  display: inline-flex;
+  align-items: stretch;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  overflow: hidden;
+  text-decoration: none !important;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar-github-stars:hover {
+  border-color: rgba(255, 185, 0, 0.55);
+  box-shadow: 0 0 0 3px rgba(255, 185, 0, 0.12);
+}
+
+.navbar-github-stars__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e0e0 !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-github-stars:hover .navbar-github-stars__left {
+  background: rgba(255, 185, 0, 0.08);
+  color: #ffd700 !important;
+}
+
+.navbar-github-stars__icon {
+  color: #fbbf24;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.navbar-github-stars:hover .navbar-github-stars__icon {
+  color: #ffd700;
+}
+
+.navbar-github-stars__divider {
+  width: 1px;
+  background: var(--ifm-color-emphasis-300);
+  transition: background 0.2s ease;
+}
+
+.navbar-github-stars:hover .navbar-github-stars__divider {
+  background: rgba(255, 185, 0, 0.4);
+}
+
+.navbar-github-stars__count {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  background: rgba(255, 185, 0, 0.07);
+  color: #fbbf24 !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.navbar-github-stars:hover .navbar-github-stars__count {
+  background: rgba(255, 185, 0, 0.14);
+  color: #ffd700 !important;
+}
+
+[data-theme='light'] .navbar-github-stars {
+  border-color: rgba(0, 0, 0, 0.18);
+}
+
+[data-theme='light'] .navbar-github-stars__left {
+  background: rgba(0, 0, 0, 0.03);
+  color: #333 !important;
+}
+
+[data-theme='light'] .navbar-github-stars:hover .navbar-github-stars__left {
+  background: rgba(180, 130, 0, 0.07);
+  color: #7a5500 !important;
+}
+
+[data-theme='light'] .navbar-github-stars__icon {
+  color: #d97706;
+}
+
+[data-theme='light'] .navbar-github-stars__count {
+  background: rgba(180, 130, 0, 0.07);
+  color: #d97706 !important;
+}
+
+[data-theme='light'] .navbar-github-stars:hover .navbar-github-stars__count {
+  background: rgba(180, 130, 0, 0.14);
+  color: #92670a !important;
 }

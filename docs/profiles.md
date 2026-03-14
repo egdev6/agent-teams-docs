@@ -1,3 +1,7 @@
+---
+description: Project profiles define the technology context, path mappings, commands, and base agent overrides for a workspace. Configure your project once, and all agents inherit the right defaults automatically.
+---
+
 # Profile Editor
 
 **Status:** 🧪 Beta

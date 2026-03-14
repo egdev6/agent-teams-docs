@@ -1,3 +1,7 @@
+---
+description: The Skills Browser lets you explore and install agent skills directly inside VS Code. Browse community skills across 9+ domains and assign them to any agent in one click — no code needed.
+---
+
 # Skills Browser
 
 **Status:** 🧪 Beta

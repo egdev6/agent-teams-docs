@@ -1,3 +1,7 @@
+---
+description: Context packs are reusable knowledge chunks injected into agent prompts using template syntax. Share conventions, API references, and coding standards across multiple agents without duplication.
+---
+
 # Context Packs
 
 **Status:** 🧪 Beta

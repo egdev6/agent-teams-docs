@@ -38,5 +38,13 @@
   "sidebar.docsSidebar.doc.Context Packs": {
     "message": "Paquetes de contexto",
     "description": "The label for the doc item 'Context Packs' in sidebar 'docsSidebar', linking to the doc context-packs"
+  },
+  "sidebar.docsSidebar.category.AI Tooling": {
+    "message": "AI Tooling",
+    "description": "The label for category 'AI Tooling' in sidebar 'docsSidebar'"
+  },
+  "sidebar.docsSidebar.doc.Agent Designer": {
+    "message": "Agent Designer",
+    "description": "The label for the doc item 'Agent Designer' in sidebar 'docsSidebar', linking to the doc agent-designer"
   }
 }

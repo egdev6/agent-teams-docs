@@ -1,147 +1,153 @@
 {
   "homepage.layout.title": {
-    "message": "Orquestación de Agentes IA para VS Code",
-    "description": "The page title for the homepage"
+    "message": "Orquestación de Agentes IA para VS Code"
   },
   "homepage.layout.description": {
-    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot dentro de VS Code. Crea kits de agentes reutilizables, configura perfiles de proyecto y ejecuta un panel embebido de 12 páginas.",
-    "description": "The meta description for the homepage"
+    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot dentro de VS Code. Crea kits de agentes reutilizables, configura perfiles de proyecto y ejecuta un panel embebido de 12 páginas."
+  },
+  "homepage.hero.title": {
+    "message": "Orquesta"
+  },
+  "homepage.hero.titleHighlight": {
+    "message": "Agentes IA en VS Code"
   },
   "homepage.hero.cta.getStarted": {
-    "message": "Comenzar",
-    "description": "Hero CTA button - Get Started"
+    "message": "Comenzar"
   },
   "homepage.hero.tagline": {
-    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot, Claude Code o Codex dentro de VS Code",
-    "description": "Hero subtitle tagline on the homepage"
+    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot, Claude Code o Codex dentro de VS Code"
   },
   "homepage.hero.cta.viewOnGitHub": {
-    "message": "Ver en GitHub",
-    "description": "Hero CTA button - View on GitHub"
+    "message": "Ver en GitHub"
   },
   "homepage.features.title": {
-    "message": "Todo lo que necesitas para construir un equipo de agentes IA",
-    "description": "Features section heading"
+    "message": "Todo lo que necesitas para construir un equipo de agentes IA en VS Code"
   },
   "homepage.feature.dashboard.title": {
-    "message": "Panel de 12 páginas",
-    "description": "Feature card title - Dashboard"
+    "message": "Panel de 12 páginas"
   },
   "homepage.feature.dashboard.desc": {
-    "message": "Una SPA React embebida dentro de VS Code. Gestiona agentes, equipos, habilidades y paquetes de contexto sin salir de tu editor.",
-    "description": "Feature card description - Dashboard"
+    "message": "Gestiona todo tu flujo de IA desde un panel embebido: agentes, equipos, habilidades y paquetes de contexto, sin salir de VS Code."
   },
   "homepage.feature.wizard.title": {
-    "message": "Asistente de agentes",
-    "description": "Feature card title - Agent Wizard"
+    "message": "Asistente de agentes"
   },
   "homepage.feature.wizard.desc": {
-    "message": "Crea agentes completamente configurados en 6 pasos guiados: identidad, alcance, flujo de trabajo, habilidades, reglas y formato de salida.",
-    "description": "Feature card description - Agent Wizard"
+    "message": "De cero a un agente listo para producción en minutos: identidad, alcance, flujos de trabajo, habilidades y reglas, todo preconfigurado."
   },
   "homepage.feature.router.title": {
-    "message": "Router inteligente",
-    "description": "Feature card title - Smart Router"
+    "message": "Router inteligente"
   },
   "homepage.feature.router.desc": {
-    "message": "Usa @router y deja que el sistema elija automáticamente el mejor agente según tu mensaje, intención y archivo activo.",
-    "description": "Feature card description - Smart Router"
+    "message": "Deja de adivinar qué agente usar. El router puntúa tu prompt y delega automáticamente al agente más adecuado según el contexto."
   },
   "homepage.feature.teams.title": {
-    "message": "Equipos y Kits",
-    "description": "Feature card title - Teams & Kits"
+    "message": "Equipos y Kits"
   },
   "homepage.feature.teams.desc": {
-    "message": "Agrupa agentes en equipos con 4 estrategias de fusión. Empaqueta configuraciones reutilizables en kits para portabilidad entre proyectos.",
-    "description": "Feature card description - Teams & Kits"
+    "message": "Agrupa agentes en equipos y empaqueta configuraciones en kits portables, reutilizables en cualquier proyecto sin reconfigurar nada."
   },
   "homepage.feature.skills.title": {
-    "message": "Registro de habilidades",
-    "description": "Feature card title - Skills Registry"
+    "message": "Registro de habilidades"
   },
   "homepage.feature.skills.desc": {
-    "message": "Explora 9 categorías de habilidades, instálalas desde el registro de la comunidad y asígnalas a cualquier agente en segundos.",
-    "description": "Feature card description - Skills Registry"
+    "message": "Extiende cualquier agente al instante con habilidades de la comunidad. Sin código: explora, asigna y listo."
   },
   "homepage.feature.context.title": {
-    "message": "Paquetes de contexto",
-    "description": "Feature card title - Context Packs"
+    "message": "Paquetes de contexto"
   },
   "homepage.feature.context.desc": {
-    "message": "Inyección de contexto dinámica con variables, condicionales y bucles. Asocia paquetes a nivel de proyecto, equipo o agente.",
-    "description": "Feature card description - Context Packs"
+    "message": "Da a tus agentes contexto dinámico y enriquecido, no solo instrucciones estáticas. Variables, condicionales y bucles para plantillas inteligentes."
+  },
+  "homepage.poweredby.label": {
+    "message": "Desarrollado con"
+  },
+  "homepage.tech.engram.desc": {
+    "message": "Memoria persistente — el estado sobrevive sesiones y reinicios de contexto"
+  },
+  "homepage.tech.vscode.desc": {
+    "message": "Host de extensiones — editores, comandos y paneles webview"
+  },
+  "homepage.tech.skills.desc": {
+    "message": "Biblioteca de instrucciones — archivos SKILL.md para especialización instantánea de agentes"
   },
   "homepage.install.title": {
-    "message": "Instalación rápida",
-    "description": "Install section heading"
+    "message": "Instalación rápida"
   },
   "homepage.install.desc": {
-    "message": "Descarga el .vsix desde la {releasesLink} e instálalo directamente en VS Code.",
-    "description": "Install section description"
+    "message": "Descarga el .vsix desde la {releasesLink} e instálalo directamente en VS Code."
   },
   "homepage.install.releasesPage": {
-    "message": "página de versiones",
-    "description": "Link label for Releases page"
+    "message": "página de versiones"
   },
   "homepage.install.step1": {
-    "message": "Abre el panel Extensiones (Ctrl+Shift+X)",
-    "description": "Install step 1"
+    "message": "Abre el panel Extensiones (Ctrl+Shift+X)"
   },
   "homepage.install.step2": {
-    "message": "Haz clic en ··· → Instalar desde VSIX…",
-    "description": "Install step 2"
+    "message": "Haz clic en ··· → Instalar desde VSIX…"
   },
   "homepage.install.step3": {
-    "message": "Selecciona el archivo descargado y recarga VS Code",
-    "description": "Install step 3"
+    "message": "Selecciona el archivo descargado y recarga VS Code"
   },
   "homepage.install.reqs": {
-    "message": "Requiere VS Code ≥ 1.85.0 y Node.js ≥ 18.0.0",
-    "description": "Install requirements"
+    "message": "Requiere VS Code ≥ 1.85.0 y Node.js ≥ 18.0.0"
   },
   "homepage.arch.title": {
-    "message": "Arquitectura ideal de agentes",
-    "description": "Architecture section heading"
+    "message": "Arquitectura ideal de agentes"
   },
   "homepage.arch.subtitle": {
-    "message": "Agent Teams está diseñado alrededor de un flujo limpio de 4 capas",
-    "description": "Architecture section subtitle"
+    "message": "Agent Teams está diseñado alrededor de un flujo limpio de 4 capas"
   },
   "homepage.arch.step1.label": {
-    "message": "Prompt del usuario",
-    "description": "Architecture pipeline step 1 label"
+    "message": "Prompt del usuario"
   },
   "homepage.arch.step1.desc": {
-    "message": "Lenguaje natural mediante @router",
-    "description": "Architecture pipeline step 1 description"
+    "message": "Lenguaje natural mediante @router"
   },
   "homepage.arch.step2.label": {
-    "message": "Router",
-    "description": "Architecture pipeline step 2 label"
+    "message": "Router"
   },
   "homepage.arch.step2.desc": {
-    "message": "Evalúa y delega al mejor agente",
-    "description": "Architecture pipeline step 2 description"
+    "message": "Evalúa y delega al mejor agente"
   },
   "homepage.arch.step3.label": {
-    "message": "Orquestador",
-    "description": "Architecture pipeline step 3 label"
+    "message": "Orquestador"
   },
   "homepage.arch.step3.desc": {
-    "message": "Descompone la tarea en pasos",
-    "description": "Architecture pipeline step 3 description"
+    "message": "Descompone la tarea en pasos"
   },
   "homepage.arch.step4.label": {
-    "message": "Workers",
-    "description": "Architecture pipeline step 4 label"
+    "message": "Workers"
   },
   "homepage.arch.step4.desc": {
-    "message": "Especialistas de dominio ejecutan las tareas",
-    "description": "Architecture pipeline step 4 description"
+    "message": "Especialistas de dominio ejecutan las tareas"
+  },
+  "homepage.arch.step1.detail": {
+    "message": "Escribe @router + cualquier tarea en lenguaje natural. Puedes referenciar un archivo, describir un objetivo vago o nombrar un dominio — el pipeline se encarga del resto. No necesitas conocer ningún agente."
+  },
+  "homepage.arch.step1.detailTitle": {
+    "message": "Punto de entrada único"
+  },
+  "homepage.arch.step2.detail": {
+    "message": "Puntúa cada agente por palabras clave de intención, vocabulario de dominio y la ruta del archivo activo. Delega tareas de un solo dominio mediante handoff y abre múltiples dominios en paralelo — sin ejecutar nada por sí mismo."
+  },
+  "homepage.arch.step2.detailTitle": {
+    "message": "Despachador consciente del contexto"
+  },
+  "homepage.arch.step3.detail": {
+    "message": "Descompone la tarea delegada en una secuencia ordenada de sub-tareas, asigna cada una al worker correcto y agrega los resultados. Nunca escribe código ni llama APIs directamente — la coordinación es su único trabajo."
+  },
+  "homepage.arch.step3.detailTitle": {
+    "message": "Planificador, no ejecutor"
+  },
+  "homepage.arch.step4.detail": {
+    "message": "Cada worker es dueño de exactamente un dominio: backend, testing, docs, etc. Usa solo las herramientas y habilidades de su spec, devuelve un resultado estructurado y escala si la sub-tarea cae fuera de su alcance."
+  },
+  "homepage.arch.step4.detailTitle": {
+    "message": "Alcance estrecho, profundidad total"
   },
   "homepage.arch.cta": {
-    "message": "Leer la guía de arquitectura →",
-    "description": "Architecture section CTA button"
+    "message": "Leer la guía de arquitectura →"
   },
   "theme.ErrorPageContent.title": {
     "message": "Esta página ha fallado.",
@@ -469,5 +475,23 @@
   "theme.tags.tagsPageTitle": {
     "message": "Etiquetas",
     "description": "The title of the tag list page"
+  },
+  "homepage.hero.title": {
+    "message": "Orquesta"
+  },
+  "homepage.hero.titleHighlight": {
+    "message": "Agentes IA en VS Code"
+  },
+  "homepage.hero.latestRelease": {
+    "message": "Latest Release"
+  },
+  "homepage.releases.v110": {
+    "message": "Gran rediseño de interfaz, Smart Router y la nueva API de Orquestación."
+  },
+  "homepage.releases.download": {
+    "message": "Download"
+  },
+  "homepage.releases.v105": {
+    "message": "Agregado de soporte base para Claude Code y Context Packs."
   }
 }
