@@ -277,7 +277,133 @@ function HomepagePoweredBy() {
   );
 }
 
+type PipelineStepData = {
+  label: string;
+  desc: string;
+  detailTitle: string;
+  detail: string;
+  icon: React.ReactNode;
+};
+
+function PipelineStepCard({ step }: { step: PipelineStepData }) {
+  return (
+    <div className={styles.pipelineStep}>
+      <div className={styles.pipelineStepLeft}>
+        <div className={styles.pipelineIconContainer}>{step.icon}</div>
+        <div className={styles.pipelineLabel}>{step.label}</div>
+        <div className={styles.pipelineDesc}>{step.desc}</div>
+      </div>
+      <div className={styles.pipelineStepRight}>
+        <div className={styles.pipelineDetailLabel}>{step.detailTitle}</div>
+        <div className={styles.pipelineDetailDesc}>{step.detail}</div>
+      </div>
+    </div>
+  );
+}
+
 function HomepageArchitecture() {
+  const mainArchitectureSteps = [
+    {
+      label: translate({ id: 'homepage.arch.step1.label', message: 'User Prompt' }),
+      desc: translate({ id: 'homepage.arch.step1.desc', message: 'Natural language via @router' }),
+      detailTitle: translate({ id: 'homepage.arch.step1.detailTitle', message: 'Single entry point' }),
+      detail: translate({ id: 'homepage.arch.step1.detail', message: 'Write @router + any task in plain language. You can reference a file, describe a vague goal, or name a domain — the pipeline handles the rest. No agent knowledge required.' }),
+      icon: <MessageSquareText size={32} />,
+    },
+    {
+      label: translate({ id: 'homepage.arch.step2.label', message: 'Router' }),
+      desc: translate({ id: 'homepage.arch.step2.desc', message: 'Scores & delegates to best agent' }),
+      detailTitle: translate({ id: 'homepage.arch.step2.detailTitle', message: 'Intent-aware dispatcher' }),
+      detail: translate({ id: 'homepage.arch.step2.detail', message: 'Scores every agent by intent keywords, domain vocabulary, and the active file path. Delegates single-domain tasks via handoff and fans out parallel domains simultaneously — without executing anything itself.' }),
+      icon: <GitMerge size={32} />,
+    },
+    {
+      label: translate({ id: 'homepage.arch.step3.label', message: 'Orchestrator' }),
+      desc: translate({ id: 'homepage.arch.step3.desc', message: 'Decomposes task into steps' }),
+      detailTitle: translate({ id: 'homepage.arch.step3.detailTitle', message: 'Planner, not executor' }),
+      detail: translate({ id: 'homepage.arch.step3.detail', message: 'Breaks the delegated task into an ordered sequence of subtasks, assigns each to the right worker, and aggregates results. It never writes code or calls APIs directly — coordination is its only job.' }),
+      icon: <BrainCircuit size={32} />,
+    },
+    {
+      label: translate({ id: 'homepage.arch.step4.label', message: 'Workers' }),
+      desc: translate({ id: 'homepage.arch.step4.desc', message: 'Domain specialists execute tasks' }),
+      detailTitle: translate({ id: 'homepage.arch.step4.detailTitle', message: 'Narrow scope, full depth' }),
+      detail: translate({ id: 'homepage.arch.step4.detail', message: 'Each worker owns exactly one domain — backend, testing, docs, and so on. It uses only the tools and skills defined in its spec, returns a structured result, and escalates if the subtask falls outside its scope.' }),
+      icon: <Blocks size={32} />,
+    },
+  ];
+
+  const architectureExamples = [
+    {
+      title: translate({ id: 'homepage.arch.examples.orchestrated.title', message: 'Orchestrator → Worker' }),
+      subtitle: translate({
+        id: 'homepage.arch.examples.orchestrated.subtitle',
+        message: 'Planned handoff for multi-step work',
+      }),
+      steps: [
+        {
+          label: translate({ id: 'homepage.arch.step1.label', message: 'User Prompt' }),
+          desc: translate({ id: 'homepage.arch.step1.desc', message: 'Natural language via @router' }),
+          detailTitle: translate({ id: 'homepage.arch.examples.orchestrated.user.detailTitle', message: 'Complex request enters the system' }),
+          detail: translate({
+            id: 'homepage.arch.examples.orchestrated.user.detail',
+            message: 'This pattern starts when the user asks for something that needs planning, decomposition, or coordination before execution.',
+          }),
+          icon: <MessageSquareText size={32} />,
+        },
+        {
+          label: translate({ id: 'homepage.arch.examples.orchestrated.orchestrator.label', message: 'Orchestrator' }),
+          desc: translate({ id: 'homepage.arch.examples.orchestrated.orchestrator.desc', message: 'Plans and delegates the work' }),
+          detailTitle: translate({ id: 'homepage.arch.examples.orchestrated.orchestrator.detailTitle', message: 'Planner in the middle' }),
+          detail: translate({
+            id: 'homepage.arch.examples.orchestrated.orchestrator.detail',
+            message: 'The orchestrator decides the sequence, splits the task into steps, and hands execution to the worker best suited for the job.',
+          }),
+          icon: <BrainCircuit size={32} />,
+        },
+        {
+          label: translate({ id: 'homepage.arch.examples.orchestrated.worker.label', message: 'Worker' }),
+          desc: translate({ id: 'homepage.arch.examples.orchestrated.worker.desc', message: 'Executes the delegated subtask' }),
+          detailTitle: translate({ id: 'homepage.arch.examples.orchestrated.worker.detailTitle', message: 'Specialist execution' }),
+          detail: translate({
+            id: 'homepage.arch.examples.orchestrated.worker.detail',
+            message: 'A worker with narrow scope performs the actual implementation, analysis, or update and returns the result upstream.',
+          }),
+          icon: <Blocks size={32} />,
+        },
+      ],
+    },
+    {
+      title: translate({ id: 'homepage.arch.examples.direct.title', message: 'Only Worker' }),
+      subtitle: translate({
+        id: 'homepage.arch.examples.direct.subtitle',
+        message: 'Direct execution for narrow tasks',
+      }),
+      steps: [
+        {
+          label: translate({ id: 'homepage.arch.step1.label', message: 'User Prompt' }),
+          desc: translate({ id: 'homepage.arch.step1.desc', message: 'Natural language via @router' }),
+          detailTitle: translate({ id: 'homepage.arch.examples.direct.user.detailTitle', message: 'Small, direct request' }),
+          detail: translate({
+            id: 'homepage.arch.examples.direct.user.detail',
+            message: 'This flow is ideal when the task already maps cleanly to one specialist and does not need orchestration.',
+          }),
+          icon: <MessageSquareText size={32} />,
+        },
+        {
+          label: translate({ id: 'homepage.arch.examples.direct.worker.label', message: 'Worker' }),
+          desc: translate({ id: 'homepage.arch.examples.direct.worker.desc', message: 'Handles it end-to-end' }),
+          detailTitle: translate({ id: 'homepage.arch.examples.direct.worker.detailTitle', message: 'Single specialist path' }),
+          detail: translate({
+            id: 'homepage.arch.examples.direct.worker.detail',
+            message: 'The worker receives the request directly, executes it within its domain, and returns the final result without extra coordination layers.',
+          }),
+          icon: <Blocks size={32} />,
+        },
+      ],
+    },
+  ];
+
   return (
     <section className={styles.architectureSection}>
       <div className="container">
@@ -291,51 +417,15 @@ function HomepageArchitecture() {
             <Translate id="homepage.arch.subtitle">Agent Teams is designed around a clean 4-layer pipeline</Translate>
           </p>
         </FadeInItem>
-        <div className={styles.pipeline}>
-          {[
-            {
-              label: translate({ id: 'homepage.arch.step1.label', message: 'User Prompt' }),
-              desc: translate({ id: 'homepage.arch.step1.desc', message: 'Natural language via @router' }),
-              detailTitle: translate({ id: 'homepage.arch.step1.detailTitle', message: 'Single entry point' }),
-              detail: translate({ id: 'homepage.arch.step1.detail', message: 'Write @router + any task in plain language. You can reference a file, describe a vague goal, or name a domain — the pipeline handles the rest. No agent knowledge required.' }),
-              icon: <MessageSquareText size={32} />,
-            },
-            {
-              label: translate({ id: 'homepage.arch.step2.label', message: 'Router' }),
-              desc: translate({ id: 'homepage.arch.step2.desc', message: 'Scores & delegates to best agent' }),
-              detailTitle: translate({ id: 'homepage.arch.step2.detailTitle', message: 'Intent-aware dispatcher' }),
-              detail: translate({ id: 'homepage.arch.step2.detail', message: 'Scores every agent by intent keywords, domain vocabulary, and the active file path. Delegates single-domain tasks via handoff and fans out parallel domains simultaneously — without executing anything itself.' }),
-              icon: <GitMerge size={32} />,
-            },
-            {
-              label: translate({ id: 'homepage.arch.step3.label', message: 'Orchestrator' }),
-              desc: translate({ id: 'homepage.arch.step3.desc', message: 'Decomposes task into steps' }),
-              detailTitle: translate({ id: 'homepage.arch.step3.detailTitle', message: 'Planner, not executor' }),
-              detail: translate({ id: 'homepage.arch.step3.detail', message: 'Breaks the delegated task into an ordered sequence of subtasks, assigns each to the right worker, and aggregates results. It never writes code or calls APIs directly — coordination is its only job.' }),
-              icon: <BrainCircuit size={32} />,
-            },
-            {
-              label: translate({ id: 'homepage.arch.step4.label', message: 'Workers' }),
-              desc: translate({ id: 'homepage.arch.step4.desc', message: 'Domain specialists execute tasks' }),
-              detailTitle: translate({ id: 'homepage.arch.step4.detailTitle', message: 'Narrow scope, full depth' }),
-              detail: translate({ id: 'homepage.arch.step4.detail', message: 'Each worker owns exactly one domain — backend, testing, docs, and so on. It uses only the tools and skills defined in its spec, returns a structured result, and escalates if the subtask falls outside its scope.' }),
-              icon: <Blocks size={32} />,
-            },
-          ].map((step, i, arr) => (
+        <div
+          className={styles.pipeline}
+          style={{ '--pipeline-step-count': String(mainArchitectureSteps.length) } as React.CSSProperties}
+        >
+          {mainArchitectureSteps.map((step, i, arr) => (
             <React.Fragment key={step.label}>
               <FadeInItem delay={160 + i * 120} style={{ display: 'contents' }}>
               <div className={styles.pipelineWrapper}>
-                <div className={styles.pipelineStep}>
-                  <div className={styles.pipelineStepLeft}>
-                    <div className={styles.pipelineIconContainer}>{step.icon}</div>
-                    <div className={styles.pipelineLabel}>{step.label}</div>
-                    <div className={styles.pipelineDesc}>{step.desc}</div>
-                  </div>
-                  <div className={styles.pipelineStepRight}>
-                    <div className={styles.pipelineDetailLabel}>{step.detailTitle}</div>
-                    <div className={styles.pipelineDetailDesc}>{step.detail}</div>
-                  </div>
-                </div>
+                <PipelineStepCard step={step} />
               </div>
               </FadeInItem>
               {i < arr.length - 1 && (
@@ -344,6 +434,43 @@ function HomepageArchitecture() {
             </React.Fragment>
           ))}
         </div>
+        <FadeInItem delay={620} style={{ height: 'auto' }}>
+          <div className={styles.architectureExamples}>
+            <Heading as="h3" className={styles.architectureExamplesTitle}>
+              <Translate id="homepage.arch.examples.title">Other valid patterns</Translate>
+            </Heading>
+            <p className={styles.architectureExamplesSubtitle}>
+              <Translate id="homepage.arch.examples.subtitle">
+                Not every setup needs the full 4-layer flow. These lighter patterns are useful too.
+              </Translate>
+            </p>
+            <div className={styles.architectureExamplesList}>
+              {architectureExamples.map((example, exampleIndex) => (
+                <div key={example.title} className={styles.architectureExampleGroup}>
+                  <div className={styles.architectureExampleHeader}>
+                    <div className={styles.architectureExampleTitle}>{example.title}</div>
+                    <p className={styles.architectureExampleDesc}>{example.subtitle}</p>
+                  </div>
+                  <div
+                    className={styles.pipeline}
+                    style={{ '--pipeline-step-count': String(example.steps.length) } as React.CSSProperties}
+                  >
+                    {example.steps.map((step, stepIndex, arr) => (
+                      <React.Fragment key={`${example.title}-${step.label}`}>
+                        <FadeInItem delay={680 + exampleIndex * 120 + stepIndex * 80} style={{ display: 'contents' }}>
+                          <div className={styles.pipelineWrapper}>
+                            <PipelineStepCard step={step} />
+                          </div>
+                        </FadeInItem>
+                        {stepIndex < arr.length - 1 && <div className={styles.pipelineArrow}>→</div>}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </FadeInItem>
         <FadeInItem delay={700} style={{ height: 'auto', marginTop: '80px' }}>
           <div className={styles.architectureCta}>
             <div className={styles.buttons}>

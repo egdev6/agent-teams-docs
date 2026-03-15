@@ -58,6 +58,7 @@ export default function VersionBanner() {
 
   return (
     <div
+      className="version-banner"
       style={{
         backgroundColor: '#0d0d0d',
         color: '#ffffff',

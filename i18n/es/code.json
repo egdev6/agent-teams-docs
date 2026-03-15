@@ -149,6 +149,84 @@
   "homepage.arch.cta": {
     "message": "Leer la guía de arquitectura →"
   },
+  "homepage.arch.examples.title": {
+    "message": "Otros patrones válidos"
+  },
+  "homepage.arch.examples.subtitle": {
+    "message": "No todos los equipos necesitan el flujo completo de 4 capas. Estos patrones más ligeros también son útiles."
+  },
+  "homepage.arch.examples.orchestrated.title": {
+    "message": "Orquestador → Worker"
+  },
+  "homepage.arch.examples.orchestrated.subtitle": {
+    "message": "Delegación planificada para trabajo multi-paso"
+  },
+  "homepage.arch.examples.orchestrated.user.label": {
+    "message": "Usuario"
+  },
+  "homepage.arch.examples.orchestrated.user.desc": {
+    "message": "Envía una petición amplia o multi-paso"
+  },
+  "homepage.arch.examples.orchestrated.user.detailTitle": {
+    "message": "Petición compleja entra al sistema"
+  },
+  "homepage.arch.examples.orchestrated.user.detail": {
+    "message": "Este patrón arranca cuando el usuario pide algo que necesita planificación, descomposición o coordinación antes de ejecutarse."
+  },
+  "homepage.arch.examples.orchestrated.orchestrator.label": {
+    "message": "Orquestador"
+  },
+  "homepage.arch.examples.orchestrated.orchestrator.desc": {
+    "message": "Planifica y delega el trabajo"
+  },
+  "homepage.arch.examples.orchestrated.orchestrator.detailTitle": {
+    "message": "Planificador intermedio"
+  },
+  "homepage.arch.examples.orchestrated.orchestrator.detail": {
+    "message": "El orquestador decide la secuencia, divide la tarea en pasos y entrega la ejecución al worker más adecuado para el trabajo."
+  },
+  "homepage.arch.examples.orchestrated.worker.label": {
+    "message": "Worker"
+  },
+  "homepage.arch.examples.orchestrated.worker.desc": {
+    "message": "Ejecuta la subtarea delegada"
+  },
+  "homepage.arch.examples.orchestrated.worker.detailTitle": {
+    "message": "Ejecución especializada"
+  },
+  "homepage.arch.examples.orchestrated.worker.detail": {
+    "message": "Un worker de alcance estrecho realiza la implementación, análisis o actualización real, y devuelve el resultado hacia arriba."
+  },
+  "homepage.arch.examples.direct.title": {
+    "message": "Solo Worker"
+  },
+  "homepage.arch.examples.direct.subtitle": {
+    "message": "Ejecución directa para tareas de dominio único"
+  },
+  "homepage.arch.examples.direct.user.label": {
+    "message": "Usuario"
+  },
+  "homepage.arch.examples.direct.user.desc": {
+    "message": "Pide una tarea de dominio concreto"
+  },
+  "homepage.arch.examples.direct.user.detailTitle": {
+    "message": "Petición pequeña y directa"
+  },
+  "homepage.arch.examples.direct.user.detail": {
+    "message": "Este flujo es ideal cuando la tarea ya encaja con un especialista y no necesita orquestación."
+  },
+  "homepage.arch.examples.direct.worker.label": {
+    "message": "Worker"
+  },
+  "homepage.arch.examples.direct.worker.desc": {
+    "message": "Lo gestiona de principio a fin"
+  },
+  "homepage.arch.examples.direct.worker.detailTitle": {
+    "message": "Ruta de especialista único"
+  },
+  "homepage.arch.examples.direct.worker.detail": {
+    "message": "El worker recibe la petición directamente, la ejecuta dentro de su dominio y devuelve el resultado final sin capas adicionales de coordinación."
+  },
   "theme.ErrorPageContent.title": {
     "message": "Esta página ha fallado.",
     "description": "The title of the fallback page when the page crashed"

@@ -85,7 +85,6 @@
   height: 32px;
   border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-300);
-  overflow: hidden;
   margin-left: 8px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -112,6 +111,12 @@
 
 #locale-switcher .navbar__item.dropdown {
   padding: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar__items--right #locale-switcher {
+    display: none !important;
+  }
 }
 
 #locale-switcher .navbar__link {
@@ -150,7 +155,7 @@
 
 /* Hide Docusaurus globe icon — replaced by flag emoji */
 #locale-switcher .navbar__link svg {
-  display: none !important;
+    display: none !important;
 }
 
 /* Mobile sidebar: restore normal flow for locale switcher */
@@ -159,12 +164,12 @@
   border: none;
   border-radius: 0;
   box-shadow: none !important;
+  height: auto;
 }
 
 .navbar-sidebar .locale-switcher__flag {
   padding: 0 4px 0 0;
 }
-
 /* ── Language dropdown popup ──────────────────────────────────── */
 .navbar__item.dropdown .dropdown__menu {
   background: #0a0a0a;
@@ -661,4 +666,10 @@ div[class*='announcementBar'] a:hover {
 [data-theme='light'] .navbar-github-stars:hover .navbar-github-stars__count {
   background: rgba(180, 130, 0, 0.14);
   color: #92670a !important;
+}
+
+@media (max-width: 768px) {
+  .version-banner {
+    display: none !important;
+  }
 }
