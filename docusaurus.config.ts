@@ -2,30 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-const GITHUB_REPO = 'egdev6/agent-teams-docs';
-
-async function fetchLatestRelease(): Promise<{ tag_name: string; html_url: string } | null> {
-  try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases`);
-    if (!res.ok) return null;
-    const releases: Array<{ tag_name: string; html_url: string; draft: boolean; prerelease: boolean }> = await res.json();
-    return releases.find(r => !r.draft && !r.prerelease) ?? null;
-  } catch {
-    return null;
-  }
-}
-
-export default async function createConfig(): Promise<Config> {
-  const latest = await fetchLatestRelease();
-
-  const locale = process.env.DOCUSAURUS_CURRENT_LOCALE ?? 'en';
-
-  const announcementContent = latest
-    ? locale === 'es'
-      ? `🚀 <b>¡Nueva versión disponible!</b> Descubre <a target="_blank" rel="noopener noreferrer" href="${latest.html_url}">Agent Teams ${latest.tag_name}</a> con el nuevo Router inteligente e integración con Orquestador.`
-      : `🚀 <b>New Version Available!</b> Check out <a target="_blank" rel="noopener noreferrer" href="${latest.html_url}">Agent Teams ${latest.tag_name}</a> with the new Smart Router and Orchestrator integration.`
-    : null;
-
+export default function createConfig(): Config {
   return {
   title: 'Agent Teams',
   tagline: 'Build, manage, and orchestrate AI agents with GitHub Copilot, Claude code or Codex inside VS Code',
@@ -118,15 +95,6 @@ export default async function createConfig(): Promise<Config> {
       disableSwitch: true,
       respectPrefersColorScheme: false,
     },
-    ...(announcementContent ? {
-      announcementBar: {
-        id: 'new_release',
-        content: announcementContent,
-        backgroundColor: '#0d0d0d',
-        textColor: '#ffffff',
-        isCloseable: false,
-      },
-    } : {}),
     navbar: {
       title: 'Agent Teams',
       logo: {
