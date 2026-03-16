@@ -71,6 +71,15 @@ Sync resolves the full composition (kit defaults + project profile + team overri
 
 The dashboard detects changes to YAML files automatically via file watching — the sync status card updates whenever you save an agent or team.
 
+### MCP Server sync
+
+If any agent in the team declares `mcpServers`, Agent Teams merges them into the project MCP config files during sync:
+
+- **Copilot target** → `.vscode/mcp.json` (`servers` key)
+- **Claude target** → `.mcp.json` at project root (`mcpServers` key)
+
+Servers are merged by `id`. Existing entries are never overwritten, so project-level overrides are always preserved. See [MCP Servers](./agents.md#mcp-servers) in the Agents reference.
+
 ---
 
 ## Merge Strategies

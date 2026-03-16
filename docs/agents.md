@@ -48,6 +48,7 @@ Defines when this agent is activated by the `@router`.
 |---|---|
 | **Workflow steps** | Ordered list of steps the agent follows when handling a task |
 | **Tools** | Capabilities the agent can use, each with an optional `when` condition |
+| **MCP Servers** | *(Collapsible)* MCP servers required by this agent. On sync they are merged (by `id`) into `.vscode/mcp.json` (Copilot) or `.mcp.json` (Claude). New entries are added; existing ones are never overwritten |
 
 ### Step 3 — Skills
 
@@ -73,6 +74,7 @@ Each skill card shows its ID, category, security level, and recommended roles. S
 | **Handoffs — Receives from** | Which agents can delegate to this one |
 | **Handoffs — Delegates to** | Which agents this one can hand off to |
 | **Handoffs — Escalates to** | Which agents or roles to escalate to when stuck |
+| **Engram** | *(Worker agents only, requires Engram configured)* Toggle **Autonomous task context** to enable direct dispatch — the worker recalls task context from Engram at session start and calls `complete_subtask` automatically when done |
 
 ### Step 5 — Output & Context
 
@@ -123,7 +125,7 @@ When agents are ready, sync them to generate the final markdown files used by Gi
 |---|---|
 | `router` | Receives all `@router` messages and delegates via `agent-teams-handoff` (single) or `agent-teams-dispatch-parallel` (multi-domain) |
 | `orchestrator` | Coordinates multi-step tasks across several worker agents within a domain |
-| `worker` | Handles a specific, focused domain task |
+| `worker` | Handles a specific, focused domain task. Can optionally operate in **autonomous mode** (see [`engram.mode`](#engram-autonomous-mode)) to accept direct dispatch without a router or orchestrator |
 | `aggregator` | Collects results from parallel orchestrators, detects conflicts, and returns a unified response |
 
 ---
@@ -186,6 +188,70 @@ context_packs:
 | `routing.keywords` | — | Words that trigger routing to this agent |
 | `routing.paths` | — | Glob patterns for file-based routing |
 | `context_packs` | — | Context pack IDs to embed in responses |
+| `engram.mode` | — | `default` or `autonomous`. Applies to `worker` agents only. See [Engram Autonomous Mode](#engram-autonomous-mode) |
+| `mcpServers` | — | List of MCP server definitions to merge into the project MCP config on sync. See [MCP Servers](#mcp-servers) |
+
+---
+
+## Engram Autonomous Mode
+
+Worker agents can be configured to operate in **autonomous mode** when [Engram](https://github.com/EngineeredMonkey/engram) is set up. This allows the worker to be dispatched directly — without going through a router or orchestrator — and manage its own task lifecycle.
+
+```yaml
+id: my-worker
+name: My Worker
+role: worker
+engram:
+  mode: autonomous
+```
+
+In this mode the worker:
+
+1. **Recalls task context from Engram at session start:**
+   - If the chat contains `[Handoff:{taskId}]` — retrieves the full task details written by the dispatcher.
+   - If the chat contains `[Parallel:{taskId}]` — retrieves its specific subtask instructions.
+   - Otherwise, loads domain patterns only.
+2. **Signals completion automatically** — after persisting its result to Engram, calls `complete_subtask` to notify the aggregator.
+3. **Receives the `complete-subtask` tool** automatically — no manual tool configuration required.
+
+> **When to use it:** choose autonomous mode for workers that are dispatched directly via `agent-teams-dispatch-parallel` in multi-domain flows where no intermediate orchestrator is needed. For standard router → orchestrator → worker flows, the default mode is sufficient.
+
+To enable it in the wizard, go to **Step 4 — Rules** and check **Engram → Autonomous task context** (only visible when Engram is configured and the role is `worker`).
+
+---
+
+## MCP Servers
+
+Agents can declare the MCP servers they depend on. When a team is synced, Agent Teams merges those servers into the project MCP configuration automatically — so every collaborator gets the right tools without manual setup.
+
+```yaml
+id: my-worker
+role: worker
+mcpServers:
+  - id: my-mcp-server
+    command: npx -y my-mcp-server
+    args:
+      - --port
+      - "3000"
+    env:
+      API_KEY: "${MY_API_KEY}"
+```
+
+**Merge behaviour:**
+- Copilot target → merged into `.vscode/mcp.json` under the `servers` key
+- Claude target → merged into `.mcp.json` at project root under the `mcpServers` key
+- Merge key is `id` — if a server with that `id` already exists in the file it is **never overwritten**, so project-level overrides are always preserved
+
+### MCP Server fields
+
+| Field | Required | Description |
+|---|---|---|
+| `id` | ✅ | Unique server identifier used as the merge key |
+| `command` | ✅ | Command to start the server (e.g. `npx -y my-mcp-server`) |
+| `args` | — | List of command-line arguments |
+| `env` | — | Environment variables passed to the server process |
+
+To configure MCP servers in the wizard, open **Step 2 — Workflow & Tools** and expand the **MCP Servers** collapsible section.
 
 ---
 

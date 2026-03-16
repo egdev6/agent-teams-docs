@@ -67,6 +67,15 @@ El sync resuelve la composición completa (valores por defecto del kit + perfil 
 
 El dashboard detecta cambios en los archivos YAML automáticamente mediante observación de archivos — la tarjeta de sync status se actualiza cada vez que guardas un agente o equipo.
 
+### Sync de Servidores MCP
+
+Si alguno de los agentes del equipo declara `mcpServers`, Agent Teams los fusiona en los archivos de configuración MCP del proyecto durante el sync:
+
+- **Destino Copilot** → `.vscode/mcp.json` (clave `servers`)
+- **Destino Claude** → `.mcp.json` en la raíz del proyecto (clave `mcpServers`)
+
+Los servidores se fusionan por `id`. Las entradas existentes nunca se sobreescriben, preservando siempre los overrides a nivel de proyecto. Ver [Servidores MCP](./agents.md#servidores-mcp) en la referencia de Agentes.
+
 ---
 
 ## Estrategias de Merge

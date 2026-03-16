@@ -6,6 +6,10 @@
 
 </div>
 
+<div style={{ textAlign: "center" }}>
+   <img width="768" alt="imagen" src="/img/docs/agent-teams.png" style={{ height: "auto" }} />
+</div>
+
 # Agent Teams
 
 **Estado:** 🧪 Beta | **Lanzamiento:** Marzo 2026 | [📖 Sitio de Documentación](https://agent-teams-docs.netlify.app)

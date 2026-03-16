@@ -20,7 +20,10 @@ Multiple domains (parallel dispatch):
   User Prompt  →  Router  →  Orchestrator A ┐
                                 Orchestrator B ┤ → Workers → Aggregator → Task Done
                                 Orchestrator C ┘
-```
+Direct dispatch (autonomous workers, no orchestrator needed):
+  User Prompt  →  Router  →  Worker A (autonomous) ┌
+                             Worker B (autonomous) ┤ → Aggregator → Task Done
+                             Worker C (autonomous) ┘```
 
 Each layer transforms the input in a specific way before passing it to the next. No layer skips steps or takes on responsibilities outside its scope.
 
@@ -128,6 +131,24 @@ Workers are the agents that actually do the work. Each worker is a domain specia
 | `docs-worker` | `documentation` | README updates, API docs, changelogs |
 
 > Workers are configured as `role: worker`. You can have as many workers as needed — each covering a specific domain or subdomain.
+
+### Autonomous Workers (Direct Dispatch)
+
+Workers can optionally operate in **autonomous mode** via `engram.mode: autonomous`. In this mode the worker is dispatched directly by the router — without an intermediate orchestrator — and manages its own task lifecycle:
+
+- Recalls task context from Engram at session start (using the `[Handoff:{taskId}]` or `[Parallel:{taskId}]` prefix injected by the router).
+- Persists its result and calls `complete_subtask` when done to notify the aggregator.
+- Automatically receives the `complete-subtask` tool; no manual configuration required.
+
+```yaml
+id: frontend-worker
+name: Frontend Worker
+role: worker
+engram:
+  mode: autonomous
+```
+
+Use autonomous mode when the work within a domain is self-contained and does not require orchestration. For tasks that need multi-step coordination within a domain, keep the standard orchestrator → worker flow.
 
 ---
 
@@ -348,5 +369,6 @@ handoffs:
 | Single "do everything" agent | Unscalable, context bloat, unpredictable output | Split by domain into multiple focused workers |
 | Parallel dispatch without an aggregator | Results are never merged; conflicts go undetected | Add a `role: aggregator` agent to your team |
 | Aggregator starts before all subtasks complete | Reads incomplete Engram state, produces wrong output | `agent-teams-complete-subtask` ensures the aggregator opens only after all subtasks signal completion |
+| Using `engram.mode: autonomous` for multi-step domain tasks | Autonomous workers have no orchestrator to sequence steps or retry failures | Use autonomous mode only for self-contained, single-step domain tasks |
 
 ---

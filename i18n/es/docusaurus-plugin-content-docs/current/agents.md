@@ -44,6 +44,7 @@ Define cuándo este agente es activado por el `@router`.
 |---|---|
 | **Pasos del workflow** | Lista ordenada de pasos que sigue el agente al gestionar una tarea |
 | **Herramientas** | Capacidades que puede usar el agente, cada una con una condición `when` opcional |
+| **Servidores MCP** | *(Desplegable)* Servidores MCP requeridos por este agente. En cada sync se fusionan (por `id`) en `.vscode/mcp.json` (Copilot) o `.mcp.json` (Claude). Las entradas nuevas se agregan; las existentes nunca se sobreescriben |
 
 ### Paso 3 — Skills
 
@@ -69,6 +70,7 @@ Cada tarjeta de skill muestra su ID, categoría, nivel de seguridad y roles reco
 | **Handoffs — Recibe de** | Qué agentes pueden delegar en este |
 | **Handoffs — Delega a** | A qué agentes puede delegar este |
 | **Handoffs — Escala a** | A qué agentes o roles escalar cuando está bloqueado |
+| **Engram** | *(Solo agentes worker, requiere Engram configurado)* Activa **Contexto de tarea autónomo** para habilitar el despacho directo — el worker recupera el contexto de tarea desde Engram al inicio de la sesión y llama a `complete_subtask` automáticamente al terminar |
 
 ### Paso 5 — Salida y Contexto
 
@@ -182,5 +184,71 @@ context_packs:
 | `routing.keywords` | — | Palabras que activan el routing hacia este agente |
 | `routing.paths` | — | Patrones glob para routing basado en archivo |
 | `context_packs` | — | IDs de context packs a incluir en las respuestas |
+| `engram.mode` | — | `default` o `autonomous`. Solo para agentes `worker`. Ver [Modo Autónomo de Engram](#modo-autónomo-de-engram) |
+| `mcpServers` | — | Lista de servidores MCP a fusionar en la configuración MCP del proyecto en cada sync. Ver [Servidores MCP](#servidores-mcp) |
+
+---
+
+## Modo Autónomo de Engram
+
+Los agentes worker pueden configurarse en **modo autónomo** cuando [Engram](https://github.com/EngineeredMonkey/engram) está configurado. Esto permite que el worker sea despachado directamente — sin pasar por un router u orchestrator — y gestione su propio ciclo de vida de tarea.
+
+```yaml
+id: my-worker
+name: My Worker
+role: worker
+engram:
+  mode: autonomous
+```
+
+En este modo el worker:
+
+1. **Recupera el contexto de tarea desde Engram al inicio de la sesión:**
+   - Si el chat contiene `[Handoff:{taskId}]` — recupera los detalles completos de la tarea escritos por el despachante.
+   - Si el chat contiene `[Parallel:{taskId}]` — recupera sus instrucciones específicas de subtarea.
+   - En caso contrario, carga solo los patrones de dominio.
+2. **Señala la complección automáticamente** — tras persistir su resultado en Engram, llama a `complete_subtask` para notificar al agregador.
+3. **Recibe la herramienta `complete-subtask` automáticamente** — no se requiere configuración manual de herramientas.
+
+> **Cuándo usarlo:** elige el modo autónomo para workers que se despachan directamente mediante `agent-teams-dispatch-parallel` en flujos multi-dominio donde no se necesita un orchestrator intermedio. Para flujos estándar router → orchestrator → worker, el modo por defecto es suficiente.
+
+Para activarlo en el wizard, ve al **Paso 4 — Reglas** y marca **Engram → Contexto de tarea autónomo** (solo visible cuando Engram está configurado y el rol es `worker`).
+
+---
+
+## Servidores MCP
+
+Los agentes pueden declarar los servidores MCP de los que dependen. Cuando se sincroniza un equipo, Agent Teams fusiona esos servidores en la configuración MCP del proyecto automáticamente — de modo que todos los colaboradores dispongan de las herramientas correctas sin configuración manual.
+
+```yaml
+id: my-worker
+role: worker
+mcpServers:
+  - id: my-mcp-server
+    command: npx -y my-mcp-server
+    args:
+      - --port
+      - "3000"
+    env:
+      API_KEY: "${MY_API_KEY}"
+```
+
+**Comportamiento de la fusión:**
+- Destino Copilot → se fusiona en `.vscode/mcp.json` bajo la clave `servers`
+- Destino Claude → se fusiona en `.mcp.json` en la raíz del proyecto bajo la clave `mcpServers`
+- La clave de fusión es `id` — si ya existe un servidor con ese `id` en el archivo **no se sobreescribe**, preservando siempre los overrides a nivel de proyecto
+
+### Campos de Servidor MCP
+
+| Campo | Requerido | Descripción |
+|---|---|---|
+| `id` | ✅ | Identificador único del servidor usado como clave de fusión |
+| `command` | ✅ | Comando para iniciar el servidor (p. ej. `npx -y my-mcp-server`) |
+| `args` | — | Lista de argumentos de línea de comandos |
+| `env` | — | Variables de entorno pasadas al proceso del servidor |
+
+Para configurar servidores MCP en el wizard, abre el **Paso 2 — Workflow y Herramientas** y expande la sección desplegable **Servidores MCP**.
+
+---
 
 
