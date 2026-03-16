@@ -104,20 +104,37 @@ export default function HeroBokeh() {
     c.width = w;
     c.height = h;
 
+    const isMobile = window.innerWidth < 768 || window.matchMedia('(pointer: coarse)').matches;
+    const orbCount   = isMobile ? 7  : 22;
+    const sparkCount = isMobile ? 3  : 12;
+    const TARGET_FPS = isMobile ? 30 : 60;
+    const FRAME_MS   = 1000 / TARGET_FPS;
+    let lastFrameTime = 0;
+
     const particles: Particle[] = [
-      ...Array.from({ length: 22 }, () => makeOrb(w, h, true)),
-      ...Array.from({ length: 12 }, () => makeSpark(w, h, true)),
+      ...Array.from({ length: orbCount },   () => makeOrb(w, h, true)),
+      ...Array.from({ length: sparkCount }, () => makeSpark(w, h, true)),
     ];
 
     let animId: number;
 
-    // Two slow focal glows: top-right and bottom-left
-    const foci = [
-      { baseX: 0.82, baseY: 0.12, t: 0,           speed: 0.00035, range: 0.045, color: '220, 10, 50' },
-      { baseX: 0.14, baseY: 0.80, t: Math.PI,      speed: 0.00028, range: 0.040, color: '180, 0, 60' },
-    ];
+    // Focal glows (skip second on mobile to save fill passes)
+    const foci = isMobile
+      ? [
+          { baseX: 0.82, baseY: 0.12, t: 0,      speed: 0.00035, range: 0.045, color: '220, 10, 50' },
+        ]
+      : [
+          { baseX: 0.82, baseY: 0.12, t: 0,      speed: 0.00035, range: 0.045, color: '220, 10, 50' },
+          { baseX: 0.14, baseY: 0.80, t: Math.PI, speed: 0.00028, range: 0.040, color: '180, 0, 60' },
+        ];
 
-    function draw() {
+    function draw(timestamp: number) {
+      if (timestamp - lastFrameTime < FRAME_MS) {
+        animId = requestAnimationFrame(draw);
+        return;
+      }
+      lastFrameTime = timestamp;
+
       cx.clearRect(0, 0, w, h);
 
       // Ambient light at the top (matching the original's light source)
@@ -178,7 +195,7 @@ export default function HeroBokeh() {
       animId = requestAnimationFrame(draw);
     }
 
-    draw();
+    animId = requestAnimationFrame(draw);
 
     function onResize() {
       w = c.offsetWidth;

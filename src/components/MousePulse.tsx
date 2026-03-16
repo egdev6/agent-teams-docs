@@ -27,6 +27,10 @@ export default function MousePulse() {
     const c = canvas;
     const cx = ctx;
 
+    // Skip mouse effects entirely on touch/mobile — no pointer to track
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     c.width = window.innerWidth;
     c.height = window.innerHeight;
 
