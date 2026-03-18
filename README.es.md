@@ -7,7 +7,7 @@
 </div>
 
 <div style={{ textAlign: "center" }}>
-   <img width="768" alt="imagen" src="/img/docs/agent-teams.png" style={{ height: "auto" }} />
+   <img width="1202" height="526" alt="agent-teams" src="https://github.com/user-attachments/assets/03e07e7e-a991-4b84-8395-c29acbeebb14" />
 </div>
 
 # Agent Teams
