@@ -60,6 +60,8 @@ The AgentSpec has `additionalProperties: false` — only the fields listed below
 | `context_packs` | string[] | `[]` | Context pack IDs to load at runtime. Pattern: `^[a-z0-9:_-]+$` |
 | `context_strategy` | object | — | Runtime context loading config (see below) |
 | `targets` | string[] | `["copilot","claude"]` | Platforms to sync to. Enum values: `copilot`, `claude` |
+| `engram` | object | — | Engram memory integration settings (see below). Semantically applies to `worker` agents. |
+| `mcpServers` | object[] | `[]` | MCP servers required by the agent. Merged into `.vscode/mcp.json` (copilot) or `.mcp.json` (claude) during sync. |
 
 ---
 
@@ -162,6 +164,53 @@ context_strategy:
   retrieval_mode: semantic  # semantic | glob | explicit  (default: semantic)
 ```
 
+### `engram` object
+
+Engram memory integration for workers. Only set when the agent should operate autonomously using persistent memory.
+
+```yaml
+engram:
+  mode: autonomous   # default | autonomous
+                     # autonomous: worker recalls task context from Engram at
+                     # session start and calls complete_subtask when done.
+```
+
+### `mcpServers` array
+
+MCP servers the agent requires. During sync, these are merged into `.vscode/mcp.json` (Copilot) or `.mcp.json` (Claude).
+
+```yaml
+mcpServers:
+  - id: github          # unique server key
+    command: npx        # executable to launch
+    args:               # optional launch arguments
+      - -y
+      - "@modelcontextprotocol/server-github"
+    env:                # optional environment variables
+      GITHUB_TOKEN: "${GITHUB_TOKEN}"
+  - id: linear
+    command: npx
+    args: ["-y", "@linear/mcp"]
+```
+
+### Permission → tool linkage
+
+The following permissions automatically add or remove tools from the agent's toolset in the wizard UI:
+
+| Permission | Effect |
+|------------|--------|
+| `can_edit_files: true` **or** `can_create_files: true` | `edit/editFiles` is added (and locked) to `tools` |
+
+Default locked tools per role (always present, cannot be removed in the wizard):
+
+| Role | Locked tool |
+|------|-------------|
+| `router` | `agent-teams-handoff` |
+| `orchestrator` | `search/codebase` |
+| `worker` | `search/codebase` |
+
+When generating a spec, include these tools explicitly unless the role is `router` (which would only need `agent-teams-handoff`).
+
 ---
 
 ## Role Semantics
@@ -205,6 +254,87 @@ Some schema fields are valid only for certain roles. These restrictions are enfo
 - Omit `constraints` entirely.
 - In `output`: include **only** `template` and, optionally, `mode` and `format_instructions`; never include `max_items` or `never_include`.
 - Set `domain` to `global` (routers are platform-wide by design).
+
+---
+
+## Importing Existing Agent Definitions
+
+When the input is an existing agent definition (not a natural-language description), apply the following rules to convert it into a valid AgentSpec YAML.
+
+### Format Detection
+
+Identify the source format before extracting fields:
+
+| Signal | Format |
+|--------|--------|
+| YAML frontmatter with `id`, `name`, `role`, `domain` + markdown sections | **Claude Code** (`.claude/agents/*.md`) |
+| YAML frontmatter with `name`, `description` only + markdown sections | **GitHub Copilot** (`.github/agents/*.agent.md`) |
+| Plain markdown with headings (no frontmatter) | **Unstructured markdown** |
+| YAML or JSON document with agent fields | **Other framework** (map best-effort) |
+
+### Field Extraction Map
+
+Extract fields from the source using this mapping:
+
+| AgentSpec field | Claude Code `.md` | Copilot `.agent.md` | Plain markdown |
+|-----------------|-------------------|---------------------|----------------|
+| `id` | frontmatter `id` | derive from `name` | derive from heading |
+| `name` | frontmatter `name` | frontmatter `name` | first `#` heading |
+| `role` | frontmatter `role` | infer from body | infer from body |
+| `domain` | frontmatter `domain` | infer from body | infer from body |
+| `description` | frontmatter `description` | frontmatter `description` | first paragraph |
+| `version` | frontmatter `version` | — | — |
+| `expertise` | "Specialises in:" line | "Specialises in:" line | expertise/skills section |
+| `intents` | "Handles intents:" line | "Handles intents:" line | infer from capabilities |
+| `workflow` | `## Workflow` ordered list | `## Workflow` ordered list | steps/procedure section |
+| `skills` | `## Skills` table | `## Skills` table | tools/skills section |
+| `constraints.always` | `**Always:**` list | `**Always:**` list | rules/constraints section |
+| `constraints.never` | `**Never:**` list | `**Never:**` list | restrictions section |
+| `output.template` | `## Output` Template line | `## Output` Template line | output/format section |
+| `output.mode` | `## Output` Mode line | `## Output` Mode line | — |
+| `output.format_instructions` | Format instructions line | Format instructions line | — |
+| `permissions` | `## Permissions` section | infer from described capabilities | infer from capabilities |
+| `mcpServers` | `## MCP Servers` section | tools referencing external services | external tool references |
+| `engram.mode` | `## Memory` section presence | `## Memory` section presence | memory/persistence section |
+
+### Inference Rules for Missing Fields
+
+When a required or important field cannot be directly extracted:
+
+- **`role`** — infer from agent purpose: if it routes/dispatches → `router`; if it coordinates multiple sub-tasks → `orchestrator`; otherwise → `worker`
+- **`domain`** — map technology/area keywords: frontend/UI/React → `frontend`; backend/API/server → `backend`; test/quality/coverage → `testing`; deploy/infra/docker → `devops`; tool/generator/scaffold → `tooling`; otherwise → `general`
+- **`intents`** — derive from the agent's described actions: extract verb-noun pairs and convert to `snake_case` (e.g. "reviews pull requests" → `review_pull_request`)
+- **`expertise`** — extract technology names, frameworks, and domain concepts mentioned anywhere in the source
+- **`permissions`** — infer from capabilities: if edits/creates files → `can_edit_files: true`; if runs commands/tests → `can_run_commands: true`; if delegates to other agents → `can_delegate: true`
+- **`scope.path_globs`** — extract file patterns or directories mentioned explicitly in the source
+- **`id`** — derive from `name` using `lowercase-kebab-case`; if it collides with an existing agent ID, append a numeric suffix
+
+### Clarification Protocol
+
+Before emitting the YAML, check for unresolved ambiguities. If **any** of the conditions below apply, **stop and ask the user** — do not guess:
+
+| Condition | What to ask |
+|-----------|-------------|
+| `role` cannot be determined from the source | "Should this agent be a `worker`, `orchestrator`, or `router`?" |
+| Two or more domains are equally plausible | "Should the domain be `{A}` or `{B}`?" |
+| A referenced skill is not in the workspace registry | "The source mentions `{skill}`. Is this available in your workspace, or should I omit it?" |
+| `id` derived from the name collides with an existing agent | "The id `{id}` already exists. Should I use `{id}-2`, or do you prefer another name?" |
+| `permissions` cannot be inferred (actions described are ambiguous) | "Does this agent need to edit files / run commands / delegate? I couldn't tell from the source." |
+| Source mentions an external service but lacks connection details | "The source references `{service}`. Should I add an `mcpServers` entry, and if so, what command/args should I use?" |
+| A required field (`id`, `name`, `description`) is absent and cannot be derived | "I couldn't find a {field} in the source. What should it be?" |
+| Two sections of the source contradict each other | "The source says `{A}` here but `{B}` there — which should I use?" |
+
+When asking, group all open questions into a **single message** — never ask one question, wait for the answer, then ask another. List each ambiguity with a label (e.g. **[role]**, **[domain]**) so the user can answer them all at once.
+
+Only proceed to emit YAML once every open question is resolved.
+
+### Import Constraints
+
+- Preserve the original agent's intent faithfully — only adapt structure, not meaning.
+- Do not silently drop capabilities: if a described capability has no direct AgentSpec field, map it to `constraints.always`, `expertise`, or `workflow`.
+- If the source document explicitly mentions external services (GitHub, Linear, Jira, Slack, etc.), add the corresponding `mcpServers` entries.
+- If the source mentions persistent memory, session context, or recall across conversations, set `engram.mode: autonomous`.
+- Always verify the generated id is unique in the workspace after import.
 
 ---
 

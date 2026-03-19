@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Star } from 'lucide-react';
+import { Star, Github } from 'lucide-react';
 import Link from '@docusaurus/Link';
 
 export default function GitHubStarsNavbarItem() {
@@ -32,8 +32,10 @@ export default function GitHubStarsNavbarItem() {
       aria-label="Star agent-teams-docs on GitHub"
     >
       <span className="navbar-github-stars__left">
-        <Star size={15} strokeWidth={2} fill="currentColor" className="navbar-github-stars__icon" />
-        <span>Star</span>
+        <Star size={18} strokeWidth={2} fill="#f5c518" color="#f5c518" style={{ marginLeft: 4 }} />
+        <div style={{ borderRadius: '50%', backgroundColor: 'transparent', border: '1px solid #FFFFFF', padding: '2px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Github size={15} strokeWidth={2} fill="#FFFFFF" color="#FFFFFF" />
+        </div>
       </span>
       <span className="navbar-github-stars__divider" />
       <span className="navbar-github-stars__count">
