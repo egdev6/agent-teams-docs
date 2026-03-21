@@ -80,5 +80,5 @@ output:
 engram:
   mode: autonomous
 targets:
-  - copilot
-  - claude
+  - github_copilot
+  - claude_code
