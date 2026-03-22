@@ -45,8 +45,10 @@ Define cuándo este agente es activado por el `@router`.
 | Campo | Descripción |
 |---|---|
 | **Pasos del workflow** | Lista ordenada de pasos que sigue el agente al gestionar una tarea |
-| **Herramientas** | Capacidades que puede usar el agente. Las herramientas integradas de VS Code (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`) se muestran como una cuadrícula de casillas. Las herramientas personalizadas o de extensión se añaden como filas de texto libre debajo. Cada herramienta tiene una condición `when` opcional |
+| **Herramientas** | Capacidades que puede usar el agente. Las herramientas integradas de VS Code (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`, `complete-subtask`) se muestran como una cuadrícula de casillas. Las herramientas personalizadas o de extensión se añaden como filas de texto libre debajo. Cada herramienta tiene una condición `when` opcional |
 | **Servidores MCP** | *(Desplegable)* Servidores MCP requeridos por este agente. En cada sync se fusionan (por `id`) en `.vscode/mcp.json` (Copilot) o `.mcp.json` (Claude). Las entradas nuevas se agregan; las existentes nunca se sobreescriben |
+
+> **Nombres de herramientas heredados:** Las specs de agente que referencian los nombres compuestos anteriores (`search/codebase`, `edit/editFiles`) se normalizan automáticamente a sus equivalentes cortos actuales (`search`, `edit`) durante el sync — no es necesario actualizar manualmente los archivos YAML existentes.
 
 ### Paso 3 — Skills
 

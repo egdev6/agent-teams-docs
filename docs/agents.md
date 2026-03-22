@@ -49,8 +49,10 @@ Defines when this agent is activated by the `@router`.
 | Field | Description |
 |---|---|
 | **Workflow steps** | Ordered list of steps the agent follows when handling a task |
-| **Tools** | Capabilities the agent can use. VS Code built-in tools (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`) are shown as a checkbox grid. Custom or extension tools are added as free-text rows below. Each tool has an optional `when` condition |
+| **Tools** | Capabilities the agent can use. VS Code built-in tools (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`, `complete-subtask`) are shown as a checkbox grid. Custom or extension tools are added as free-text rows below. Each tool has an optional `when` condition |
 | **MCP Servers** | *(Collapsible)* MCP servers required by this agent. On sync they are merged (by `id`) into `.vscode/mcp.json` (Copilot) or `.mcp.json` (Claude). New entries are added; existing ones are never overwritten |
+
+> **Legacy tool names:** Agent specs that reference the old compound names (`search/codebase`, `edit/editFiles`) are automatically normalized to their current short equivalents (`search`, `edit`) during sync — no manual update to existing YAML files is required.
 
 ### Step 3 — Skills
 
