@@ -12,6 +12,8 @@ This guide explains the recommended architecture for building a multi-agent syst
 
 ## The Pipeline
 
+<!-- TODO: screenshot — captura del panel de chat de Copilot mostrando una conversación real con @router delegando a un orquestador (o cualquier traza visual que muestre el flujo en acción). Nombre sugerido: architecture-pipeline-chat.png -->
+
 ```
 Single domain:
   User Prompt  →  Router  →  Orchestrator  →  Worker(s)  →  Task Done
@@ -226,6 +228,8 @@ Task done.
 
 ## Architecture Diagram
 
+<!-- TODO: screenshot — diagrama renderizado del flujo single-domain (imagen exportada o captura de la herramienta de diagramas). Puede reemplazar o acompañar el ASCII art. Nombre sugerido: architecture-single-domain.png -->
+
 ### Single domain
 
 ```
@@ -257,6 +261,8 @@ Task done.
                                │   Task Done ✓    │
                                └──────────────────┘
 ```
+
+<!-- TODO: screenshot — diagrama renderizado del flujo multi-domain con fan-out paralelo. Nombre sugerido: architecture-parallel-dispatch.png -->
 
 ### Multiple domains (parallel dispatch)
 

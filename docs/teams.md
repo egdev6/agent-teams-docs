@@ -32,6 +32,10 @@ Click **Create** to save the team. The file `.agent-teams/teams/<id>.yml` is cre
 
 Dashboard → **Team Manager** lists all teams with their name, description, agent count, and active status. Click any team card to open it.
 
+The page header has two action buttons: **Create Team** (opens the wizard) and **Design a new team with AI** (opens `@team-builder` in Copilot Chat).
+
+Teams whose source spec was modified after the last successful sync show a **Not synced** badge in the Team Manager. Sync the team to clear the badge.
+
 ### Edit a Team
 
 Dashboard → **Team Manager** → select team → **Edit**
@@ -59,24 +63,56 @@ The dashboard home page Stats card always shows which team is currently active.
 
 ## Syncing a Team
 
-Sync resolves the full composition (kit defaults + project profile + team overrides) and writes the final agent markdown files to `.github/agents/`.
+Sync resolves the full composition (kit defaults + project profile + team overrides) and writes the final output files for each configured sync target.
 
 1. Dashboard home → **Sync Status** card shows a breakdown of pending changes:
-   - `create` — new agent file will be written
-   - `update` — existing agent file will be updated
+   - `create` — new file will be written
+   - `update` — existing file will be updated
    - `skip` — no changes detected, file left as-is
 2. Click **Sync** to apply all changes
 
 <img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
 
-The dashboard detects changes to YAML files automatically via file watching — the sync status card updates whenever you save an agent or team.
+The dashboard detects changes to agent and team YAML files automatically — the sync status card updates whenever you save a file.
+
+### Output per target
+
+Each sync target writes its output to a different location:
+
+| Target | Output |
+|---|---|
+| **Claude Code** | `.claude/agents/<id>.md` per agent + `AGENTS.md` at root |
+| **Codex** | `AGENTS.md` at project root |
+| **Gemini CLI** | `GEMINI.md` at project root |
+| **OpenAI Agents SDK** | `AGENTS.md` at project root |
+| **GitHub Copilot** | `.github/agents/<id>.agent.md` per agent |
+
+For targets that generate a single root file (`AGENTS.md`, `GEMINI.md`), context packs are inlined directly into that file by priority: essential packs are always included, standard packs are included up to the configured character budget, and reference packs are listed as links at the bottom.
+
+### Previewing changes before sync (CLI)
+
+Use `--dry-run` to see exactly what would change without writing any files:
+
+```bash
+agent-teams team:sync --team my-team --dry-run
+```
+
+The output is colour-coded and grouped by target:
+
+```
+  + .claude/agents/frontend-agent.md    [create]
+  ~ .claude/agents/backend-agent.md     [update]
+  - .claude/agents/legacy-agent.md      [delete]
+```
+
+Add `--no-diff` to suppress the per-file detail and show only the summary.
 
 ### MCP Server sync
 
 If any agent in the team declares `mcpServers`, Agent Teams merges them into the project MCP config files during sync:
 
 - **Copilot target** → `.vscode/mcp.json` (`servers` key)
-- **Claude target** → `.mcp.json` at project root (`mcpServers` key)
+- **Claude Code target** → `.mcp.json` at project root (`mcpServers` key)
 
 Servers are merged by `id`. Existing entries are never overwritten, so project-level overrides are always preserved. See [MCP Servers](./agents.md#mcp-servers) in the Agents reference.
 

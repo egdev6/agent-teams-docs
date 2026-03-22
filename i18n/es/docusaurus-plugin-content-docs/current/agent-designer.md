@@ -1,32 +1,45 @@
 
-# Diseñador de Agentes
+# Diseñador de Agentes y Team Builder
 
 **Estado:** ✅ Disponible
 
-El Diseñador de Agentes es un **agente de herramientas** integrado que genera un AgentSpec YAML válido a partir de una descripción en lenguaje natural. En vez de completar manualmente el asistente de creación de agentes, simplemente describes lo que necesitas en lenguaje sencillo y obtienes una especificación lista para usar en segundos.
+`@agent-designer` y `@team-builder` son agentes integrados incluidos con la extensión. Están disponibles inmediatamente después de la instalación — no requieren copia desde el marketplace ni configuración manual.
 
 ---
 
 
-## Qué hace
+## Diseñador de Agentes
 
 El Diseñador de Agentes lee el contexto de tu espacio de trabajo — agentes existentes, habilidades instaladas y la pila tecnológica de tu proyecto — y produce una especificación que encaja naturalmente en la arquitectura de tu equipo. Hace lo siguiente:
 
 - Infiera el `role`, `domain`, `expertise` e `intents` correctos a partir de tu descripción
+- Sugiere hasta 3 habilidades relevantes del workspace y las agrega en `skills` con condiciones `when` claras
 - Evita colisiones con IDs de agentes existentes
 - Solo referencia habilidades que realmente están instaladas en el espacio de trabajo
 - Emite exactamente un bloque YAML con delimitadores — sin texto explicativo ni marcadores de posición
 
+Además, admite **importar** definiciones de agentes existentes desde otros formatos (Claude Code `.md`, Copilot `.agent.md`, markdown plano) y convertirlos a un `AgentSpec` YAML válido.
+
 ---
 
 
-## Cómo usarlo
+## Team Builder
 
-Antes de invocar `@agent-designer`, instálalo desde el marketplace de este repositorio copiando los archivos empaquetados dentro de la carpeta `.agent-teams` de tu proyecto:
+El Team Builder es un agente orquestador que diseña tu equipo de agentes completo desde cero:
 
-1. Copia `marketplace/agents/agent-designer.yml` en `.agent-teams/agents/`
-2. Copia `marketplace/skills/agent-spec-authoring/` en `.agent-teams/skills/`
-3. Recarga Agent Teams o vuelve a abrir el dashboard para que detecte el nuevo agente y la nueva habilidad
+1. **Lee el contexto de tu proyecto** — README, `project.profile.yml`, manifiestos de paquetes, estructura de directorios
+2. **Propone tarjetas descriptivas de agentes** — una por agente, con rol, dominio, intenciones, rutas de alcance, context packs, skills y handoffs
+3. **Espera tu confirmación** antes de continuar
+4. **Distribuye el trabajo a los workers de `@agent-designer`** vía Engram — un worker por agente propuesto, todos en paralelo
+5. **Verifica la coherencia entre agentes** — IDs únicos, referencias de handoff válidas, sin delegaciones circulares
+6. **Escribe el archivo de binding del equipo** en `.agent-teams/teams/<teamId>.yml`
+
+> **Recomendado:** usa un modelo potente (p. ej. Claude Sonnet) para obtener mejores resultados. El Team Builder está disponible directamente desde la página de inicio del dashboard a través de la tarjeta **„Diseña tu primer equipo“** cuando no existe ningún equipo en el workspace.
+
+---
+
+
+## Usar el Diseñador de Agentes
 
 ### Paso 1 — Invoca al agente en Copilot Chat o Claude
 
@@ -57,6 +70,17 @@ El agente produce un solo bloque de código YAML. Puedes:
 1. **Copiar → Asistente de creación de agentes** — pega el YAML en la pestaña **Raw YAML** dentro del asistente
 2. **Guardar directamente** — coloca el archivo en `.agent-teams/agents/tu-agente.yml` y el dashboard lo detectará en el próximo refresco
 3. **Iterar** — pide al agente que ajuste campos específicos: `refina las restricciones para que también escale cuando se modifique una API pública`
+
+### Importar una definición de agente existente
+
+Proporciona el contenido de un archivo de agente existente en cualquier formato compatible y el Diseñador lo convertirá:
+
+```
+@agent-designer convierte este agente de Claude Code a YAML de AgentSpec:
+<pega aquí el contenido del archivo .md>
+```
+
+El agente extrae cada campo mapeeable, normaliza los valores a las convenciones de AgentSpec (nombres de rol, intenciones en snake_case, permisos) y envía un único mensaje de aclaración agrupado para todo lo que no pueda resolver antes de emitir el YAML.
 
 ---
 
@@ -135,8 +159,8 @@ output:
   mode: detailed
   max_items: 10
 targets:
-  - copilot
-  - claude
+  - github_copilot
+  - claude_code
 ```
 
 ---
@@ -144,7 +168,9 @@ targets:
 
 ## La habilidad agent-spec-authoring
 
-La precisión del Diseñador de Agentes proviene de la habilidad **`agent-spec-authoring`** instalada en tu espacio de trabajo. Esta habilidad proporciona el esquema completo de AgentSpec — todos los campos válidos, tipos, reglas de validación y semántica de roles — para que el agente siempre produzca especificaciones que pasen la validación.
+La habilidad `agent-spec-authoring` está **incluida con la extensión** — no requiere instalación manual ni configuración en el workspace. Se inyecta automáticamente en cada sesión de `@agent-designer`. Proporciona el esquema completo de AgentSpec — todos los campos válidos, tipos, reglas de validación y semántica de roles — para que el agente siempre produzca especificaciones que pasen la validación.
+
+> **Override local:** si existe una habilidad con el id `agent-spec-authoring` en `.agent-teams/skills/agent-spec-authoring/`, tiene prioridad sobre la versión incluida automáticamente.
 
 ### Campos requeridos
 
@@ -176,9 +202,9 @@ La precisión del Diseñador de Agentes proviene de la habilidad **`agent-spec-a
 | `skills` | IDs de habilidades del registro del espacio de trabajo |
 | `tools` | Capacidades del entorno (`github`, `terminal`, etc.) con `when` opcional |
 | `constraints` | Reglas de comportamiento `always` / `never` / `escalate` |
-| `targets` | Plataformas a sincronizar: `copilot`, `claude` (por defecto: ambas) |
+| `targets` | Plataformas a sincronizar: `github_copilot`, `claude_code` (por defecto: ambas) |
 
-> Para la referencia completa del esquema incluyendo sub-objetos, consulta el archivo `SKILL.md` dentro de `marketplace/skills/agent-spec-authoring/`.
+> Para la referencia completa del esquema incluyendo sub-objetos, consulta el archivo `SKILL.md` dentro de `marketplace/skills/agent-spec-authoring/` o la copia incluida en la extensión.
 
 ---
 

@@ -5,12 +5,6 @@
   "homepage.layout.description": {
     "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot dentro de VS Code. Crea kits de agentes reutilizables, configura perfiles de proyecto y ejecuta un panel embebido de 12 páginas."
   },
-  "homepage.hero.title": {
-    "message": "Orquesta"
-  },
-  "homepage.hero.titleHighlight": {
-    "message": "Agentes IA en VS Code"
-  },
   "homepage.hero.cta.getStarted": {
     "message": "Comenzar"
   },
@@ -27,13 +21,13 @@
     "message": "Panel de 12 páginas"
   },
   "homepage.feature.dashboard.desc": {
-    "message": "Gestiona todo tu flujo de IA desde un panel embebido: agentes, equipos, habilidades y paquetes de contexto, sin salir de VS Code."
+    "message": "Gestiona todo tu flujo de IA desde un panel embebido: agentes, equipos, habilidades y paquetes de contexto, sin salir de VS Code. Los agentes de IA aparecen en el momento exacto de cada paso del onboarding."
   },
   "homepage.feature.wizard.title": {
-    "message": "Asistente de agentes"
+    "message": "Creación guiada por IA"
   },
   "homepage.feature.wizard.desc": {
-    "message": "De cero a un agente listo para producción en minutos: identidad, alcance, flujos de trabajo, habilidades y reglas, todo preconfigurado."
+    "message": "Cuatro agentes integrados cubren el ciclo completo: auto-configura el perfil, diseña el equipo, genera las specs de agentes y recibe análisis de mejora — todo desde lenguaje natural."
   },
   "homepage.feature.router.title": {
     "message": "Router inteligente"

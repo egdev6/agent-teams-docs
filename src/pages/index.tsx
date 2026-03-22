@@ -69,16 +69,16 @@ const features: FeatureItem[] = [
     description: translate({ id: 'homepage.feature.dashboard.desc', message: 'A VS Code panel with dedicated views for agents, teams, skills, and context packs. Browse live state and edit configs without opening a file manually.' }),
     bullets: [
       '12 views: agents, teams, skills & more',
-      'Edits sync instantly to disk',
+      'AI agents surfaced at each onboarding step',
     ],
     href: '/docs/dashboard',
   },
   {
-    title: translate({ id: 'homepage.feature.wizard.title', message: 'Agent Wizard' }),
+    title: translate({ id: 'homepage.feature.wizard.title', message: 'AI-Guided Creation' }),
     icon: <Bot size={22} className={styles.featureSvgIcon} />,
-    description: translate({ id: 'homepage.feature.wizard.desc', message: 'A guided 6-step form that outputs a fully wired agent file — persona, skills, output rules, and scope configured in one go.' }),
-    bullets: ['Zero manual YAML or markdown editing', 'From blank to running agent in minutes'],
-    href: '/docs/agent-designer',
+    description: translate({ id: 'homepage.feature.wizard.desc', message: 'Four bundled AI agents guide the full setup lifecycle — auto-configure your profile, design the team, generate agent specs, and get advisory analysis — all from plain language.' }),
+    bullets: ['@agent-designer & @team-builder built in', '@project-configurator & @consultant included'],
+    href: '/docs/ai-setup-flow',
   },
   {
     title: translate({ id: 'homepage.feature.router.title', message: 'Smart Router' }),

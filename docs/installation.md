@@ -12,7 +12,7 @@ description: How to install Agent Teams in VS Code — download the .vsix from t
 
 | Requirement | Minimum version |
 |---|---|
-| VS Code | 1.85.0 |
+| VS Code | 1.112.0 |
 | Node.js | 18.0.0 |
 
 ---
@@ -67,7 +67,7 @@ To use Agent Teams in a project, initialize a profile first:
 
 ### The panel doesn't open
 
-- Ensure VS Code is version ≥ 1.85.0 (`Help → About`).
+- Ensure VS Code is version ≥ 1.112.0 (`Help → About`).
 - Try reloading: Command Palette → `Developer: Reload Window`.
 - Verify the extension is enabled in the Extensions panel (search "Agent Teams").
 

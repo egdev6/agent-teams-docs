@@ -43,8 +43,12 @@
     "message": "AI Tooling",
     "description": "The label for category 'AI Tooling' in sidebar 'docsSidebar'"
   },
-  "sidebar.docsSidebar.doc.Agent Designer": {
-    "message": "Agent Designer",
-    "description": "The label for the doc item 'Agent Designer' in sidebar 'docsSidebar', linking to the doc agent-designer"
+  "sidebar.docsSidebar.doc.AI Setup Flow": {
+    "message": "Flujo de Configuración con IA",
+    "description": "The label for the doc item 'AI Setup Flow' in sidebar 'docsSidebar', linking to the doc ai-setup-flow"
+  },
+  "sidebar.docsSidebar.doc.Agent Designer & Team Builder": {
+    "message": "Agent Designer y Team Builder",
+    "description": "The label for the doc item 'Agent Designer & Team Builder' in sidebar 'docsSidebar', linking to the doc agent-designer"
   }
 }

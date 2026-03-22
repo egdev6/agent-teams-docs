@@ -8,7 +8,7 @@
 
 | Requisito | Versión mínima |
 |---|---|
-| VS Code | 1.85.0 |
+| VS Code | 1.112.0 |
 | Node.js | 18.0.0 |
 
 ---
@@ -63,7 +63,7 @@ Para usar Agent Teams en un proyecto, inicializa primero un perfil:
 
 ### El panel no se abre
 
-- Verifica que VS Code sea versión ≥ 1.85.0 (`Ayuda → Acerca de`).
+- Verifica que VS Code sea versión ≥ 1.112.0 (`Ayuda → Acerca de`).
 - Prueba a recargar: Paleta de Comandos → `Developer: Reload Window`.
 - Comprueba que la extensión está habilitada en el panel de Extensions (busca "Agent Teams").
 

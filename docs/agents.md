@@ -14,6 +14,8 @@ Agents are the core building block of Agent Teams. Each agent is a GitHub Copilo
 
 Open the dashboard and navigate to **Agent Manager** → **Create Agent**, or use the **Quick Actions** card on the home page.
 
+The Agent Manager page header also provides a **Design a new agent with AI** button that opens `@agent-designer` directly in Copilot Chat — useful when you want AI to draft the spec first.
+
 The wizard guides you through 6 steps:
 
 <img width="1171" alt="imagen" src="/img/docs/agents-overview.png" style={{ height: "auto" }} />
@@ -47,7 +49,7 @@ Defines when this agent is activated by the `@router`.
 | Field | Description |
 |---|---|
 | **Workflow steps** | Ordered list of steps the agent follows when handling a task |
-| **Tools** | Capabilities the agent can use, each with an optional `when` condition |
+| **Tools** | Capabilities the agent can use. VS Code built-in tools (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`) are shown as a checkbox grid. Custom or extension tools are added as free-text rows below. Each tool has an optional `when` condition |
 | **MCP Servers** | *(Collapsible)* MCP servers required by this agent. On sync they are merged (by `id`) into `.vscode/mcp.json` (Copilot) or `.mcp.json` (Claude). New entries are added; existing ones are never overwritten |
 
 ### Step 3 — Skills
@@ -59,7 +61,7 @@ Browse and add skills from two sources:
 - **Project skills** — skills defined in your local `skills.registry.yml`
 - **Community registry** — install skills from the shared registry directly from this step
 
-Each skill card shows its ID, category, security level, and recommended roles. Select the skills relevant to this agent's purpose.
+Each skill card shows its **title**, category, security level, and recommended roles. Select the skills relevant to this agent's purpose.
 
 ### Step 4 — Rules
 
@@ -74,7 +76,7 @@ Each skill card shows its ID, category, security level, and recommended roles. S
 | **Handoffs — Receives from** | Which agents can delegate to this one |
 | **Handoffs — Delegates to** | Which agents this one can hand off to |
 | **Handoffs — Escalates to** | Which agents or roles to escalate to when stuck |
-| **Engram** | *(Worker agents only, requires Engram configured)* Toggle **Autonomous task context** to enable direct dispatch — the worker recalls task context from Engram at session start and calls `complete_subtask` automatically when done |
+| **Engram** | Toggle **Autonomous task context** to enable direct dispatch. Available for all roles — the hint text updates to describe the behaviour for the current role. Workers recall task context from Engram at session start and call `complete_subtask` automatically when done. **Per-agent opt-in:** an agent that declares `engram` in its `mcpServers` list receives Engram memory features even when no global Engram MCP server is configured for the workspace — enabling self-contained agents that bootstrap on a fresh machine |
 
 ### Step 5 — Output & Context
 
@@ -97,7 +99,9 @@ A live preview of the agent configuration appears in the right sidebar throughou
 
 ### View All Agents
 
-Dashboard → **Agent Manager** shows all loaded agents grouped by role (Router, Orchestrator, Worker). Click any agent to open it for editing.
+Dashboard → **Agent Manager** shows all loaded agents organized into three tabs — **Router**, **Orchestrator**, and **Worker** — each showing a live count. An empty-state message is shown per tab when no agents of that role exist.
+
+The page header has two action buttons: **Create Agent** (opens the wizard) and **Design a new agent with AI** (opens `@agent-designer` in Copilot Chat).
 
 ### Edit an Agent
 
@@ -106,6 +110,10 @@ Dashboard → **Agent Manager** shows all loaded agents grouped by role (Router,
 3. Save — changes are written back to the YAML spec file
 
 <img width="1183" alt="imagen" src="/img/docs/agents-forms.png" style={{ height: "auto" }} />
+
+### Not Synced Badge
+
+Agents whose source spec was modified after the last successful sync show a **Not synced** badge (orange indicator) in the Agent Manager card. Sync the team to clear the badge.
 
 ### Sync Agents to `.github/agents/`
 
@@ -188,7 +196,7 @@ context_packs:
 | `routing.keywords` | — | Words that trigger routing to this agent |
 | `routing.paths` | — | Glob patterns for file-based routing |
 | `context_packs` | — | Context pack IDs to embed in responses |
-| `engram.mode` | — | `default` or `autonomous`. Applies to `worker` agents only. See [Engram Autonomous Mode](#engram-autonomous-mode) |
+| `engram.mode` | — | `default` or `autonomous`. See [Engram Autonomous Mode](#engram-autonomous-mode) |
 | `mcpServers` | — | List of MCP server definitions to merge into the project MCP config on sync. See [MCP Servers](#mcp-servers) |
 
 ---
@@ -216,7 +224,7 @@ In this mode the worker:
 
 > **When to use it:** choose autonomous mode for workers that are dispatched directly via `agent-teams-dispatch-parallel` in multi-domain flows where no intermediate orchestrator is needed. For standard router → orchestrator → worker flows, the default mode is sufficient.
 
-To enable it in the wizard, go to **Step 4 — Rules** and check **Engram → Autonomous task context** (only visible when Engram is configured and the role is `worker`).
+To enable it in the wizard, go to **Step 4 — Rules** and check **Engram → Autonomous task context** (requires Engram configured).
 
 ---
 

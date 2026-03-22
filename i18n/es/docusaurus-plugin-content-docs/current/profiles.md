@@ -18,7 +18,7 @@ Si no existe ningún perfil todavía, la página de inicio del dashboard muestra
 
 ## Rellenar el Perfil
 
-El editor se divide en siete secciones:
+El editor agrupa sus ajustes en siete secciones de acordeón desplegables. Haz clic en cualquier encabezado de sección para expandirlo o contraerlo — cada encabezado muestra un resumen en tiempo real de los valores actuales para revisar el perfil completo de un vistazo sin abrir cada panel.
 
 ### Información Básica
 
@@ -54,15 +54,28 @@ Mapeos de comandos con nombre usados en las variables de template (`{{command:bu
 
 Selecciona qué context packs están activos para este proyecto. Se incrustan en cada agente que pertenece a este proyecto, salvo que se sobreescriba a nivel de equipo.
 
+Usa el botón **Preview** para simular el algoritmo de presupuesto antes de sincronizar. La vista previa muestra:
+
+- Una barra de progreso con los caracteres utilizados frente al `agents_md_budget` configurado (8 000 chars por defecto)
+- Packs **Inlined** (verde) — packs esenciales siempre incluidos; packs estándar incluidos hasta agotar el presupuesto
+- Packs **Referenced** (ámbar) — packs estándar que superan el presupuesto, más todos los packs de referencia; aparecen como encabezados en el archivo de contexto raíz sin contenido completo
+- Una nota separada para **GitHub Copilot** — Copilot no tiene límite de presupuesto y copia todos los packs seleccionados como archivos individuales en `.github/context/`
+
+La vista previa se actualiza automáticamente cada vez que marcas o desmarcar un pack mientras el panel está abierto.
+
 ### Destinos de Sync
 
-Elige a qué herramientas de IA se sincronizarán los agentes de este proyecto:
+Elige a qué herramientas de IA se sincronizarán los agentes de este proyecto. Cada destino genera su salida en la ubicación esperada por cada herramienta:
 
-| Destino | Descripción |
-|---|---|
-| **Claude Code** | Genera archivos de agente para Anthropic Claude Code |
-| **Codex** | Genera archivos de agente para OpenAI Codex |
-| **GitHub Copilot** | Genera archivos markdown en `.github/agents/` para GitHub Copilot |
+| Destino | Salida | Descripción |
+|---|---|---|
+| **Claude Code** | `.claude/agents/` + `AGENTS.md` | Archivos por agente y un archivo de contexto raíz para Claude Code |
+| **Codex** | `AGENTS.md` | Archivo de contexto raíz para OpenAI Codex |
+| **Gemini CLI** | `GEMINI.md` | Archivo de contexto raíz para Gemini CLI. Los context packs se incluyen por prioridad (esenciales siempre, estándar hasta el presupuesto, referencia como enlaces) |
+| **OpenAI Agents SDK** | `AGENTS.md` | Archivo de contexto raíz para OpenAI Agents SDK. Mismo comportamiento de inlining que Gemini |
+| **GitHub Copilot** | `.github/agents/` | Archivos markdown por agente y archivo de instrucciones de Copilot |
+
+Cada destino tiene un toggle opcional **Añadir a .gitignore** que aparece cuando el destino está activado. Úsalo para excluir la salida de ese destino del control de versiones.
 
 ### Gitignore
 
@@ -78,15 +91,24 @@ Haz clic en **Save** al final del editor. El perfil se escribe en `.agent-teams/
 
 ## Importar / Exportar
 
-La página **Import / Export** del dashboard gestiona el catálogo global de agentes almacenado en el almacenamiento global de VS Code. Esto es independiente del perfil de proyecto — te permite hacer copias de seguridad y compartir todo tu catálogo de agentes y equipos entre workspaces.
+La página **Import / Export** del dashboard gestiona tanto el catálogo global de agentes (almacenado en el almacenamiento global de VS Code) como el perfil del proyecto. Esto es independiente de guardar el perfil — permite hacer copias de seguridad y compartir configuración entre workspaces.
 
 <img width="1644" alt="imagen" src="/img/docs/profiles-editor.png" style={{ height: "auto" }} />
 
+### Catálogo (JSON)
+
 | Acción | Descripción |
 |---|---|
-| **Export** | Guarda el catálogo completo en un archivo JSON a elegir |
+| **Export** | Guarda el catálogo completo en un archivo JSON que elijas |
 | **Import** | Fusiona las entradas de un archivo JSON en el catálogo existente (no destructivo) |
-| **Reset** | Elimina permanentemente el catálogo completo — usar con precaución |
+| **Reset** | Elimina permanentemente todo el catálogo — úsalo con precaución |
+
+### Perfil (ZIP)
+
+| Acción | Descripción |
+|---|---|
+| **Export Profile as ZIP** | Empaqueta el directorio `.agent-teams/` completo — agentes, equipos, context packs, skills y configuración del perfil — en un archivo ZIP portable |
+| **Import Profile from ZIP** | Restaura un ZIP exportado anteriormente en el workspace actual. Los archivos que ya existen solicitan confirmación antes de ser sobreescritos |
 
 ---
 
@@ -95,13 +117,14 @@ La página **Import / Export** del dashboard gestiona el catálogo global de age
 El dashboard escribe y lee este formato automáticamente. También puedes abrir `.agent-teams/project.profile.yml` directamente en VS Code.
 
 ```yaml
-id: my-project
-name: My Project
+project:
+  id: my-project
+  name: My Project
+  version: "1.0.0"
 
 technologies:
-  - react
-  - typescript
-  - nodejs
+  typescript: true
+  react: true
 
 paths:
   src: src/
@@ -116,6 +139,13 @@ commands:
 context_packs:
   - project-conventions
 
+sync_targets:
+  - claude_code
+  - gemini
+
+gitignore_targets:
+  - gemini
+
 overrides:
   vitest-worker:
     context_packs:
@@ -126,12 +156,15 @@ overrides:
 
 | Campo | Requerido | Descripción |
 |---|---|---|
-| `id` | ✅ | Identificador del proyecto (kebab-case) |
-| `name` | ✅ | Nombre del proyecto |
+| `project.id` | ✅ | Identificador del proyecto (kebab-case) |
+| `project.name` | ✅ | Nombre del proyecto |
+| `project.version` | ✅ | Cadena de versión |
 | `technologies` | — | Flags de tecnología para condicionales en templates (`{{#if technology:react}}`) |
 | `paths` | — | Mapeos de rutas con nombre para variables de template (`{{path:src}}`) |
 | `commands` | — | Mapeos de comandos con nombre para variables de template (`{{command:build}}`) |
 | `context_packs` | — | Context packs por defecto aplicados a todos los agentes del proyecto |
+| `sync_targets` | — | Plataformas de destino. Valores válidos: `claude_code`, `codex`, `gemini`, `openai`, `github_copilot`. Por defecto `claude_code` y `github_copilot` si se omite |
+| `gitignore_targets` | — | Subconjunto de `sync_targets` cuyas rutas de salida se añaden al `.gitignore` |
 | `overrides` | — | Overrides a nivel de campo por agente aplicados en el proyecto (menor prioridad que los overrides del equipo) |
 
 

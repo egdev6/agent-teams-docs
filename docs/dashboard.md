@@ -32,6 +32,12 @@ The main dashboard page shows a live summary of your workspace:
 | **Sync Status** | Breakdown of pending changes (agents to create / update / skip) with a one-click sync button |
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
+| **Configure Your Project** | Shown when no profile exists. Two options: **"Auto-configure with AI"** (opens `@project-configurator`) and **"Configure manually"** (opens the Profile Editor form) |
+| **Design your first team** | Shown when a profile is configured but no teams exist yet. Opens `@team-builder` directly in Copilot Chat. Only visible when there are no teams in the workspace |
+| **Consultant** | Shown when a profile, an active team, and at least one agent all exist. Opens `@consultant` for advisory analysis of your team's coverage and health |
+| **Team Agents** | When an active team exists, shows agents grouped by role. Header has **"Design with AI"** (opens `@agent-designer`) and **"Create manually"** (opens the wizard) |
+
+> See [AI Setup Flow](ai-setup-flow.md) for a walkthrough of the full AI-guided onboarding experience.
 
 <img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
 
@@ -73,7 +79,7 @@ Manage the context packs available in your workspace. Toggle packs on or off, ad
 
 ### Import / Export
 
-Back up and share your global agent catalog. Export to JSON, import from a file, or reset the catalog. See [Profile Editor — Import / Export](profiles.md#import--export) for details.
+Back up and share your global agent catalog, and export or import your entire project profile as a ZIP. See [Profile Editor — Import / Export](profiles.md#import--export) for details.
 
 ---
 

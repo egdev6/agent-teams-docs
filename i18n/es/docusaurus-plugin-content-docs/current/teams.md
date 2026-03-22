@@ -28,6 +28,10 @@ Haz clic en **Create** para guardar el equipo. El archivo `.agent-teams/teams/<i
 
 Dashboard → **Team Manager** lista todos los equipos con su nombre, descripción, número de agentes y estado activo. Haz clic en cualquier tarjeta de equipo para abrirlo.
 
+El encabezado de la página tiene dos botones: **Create Team** (abre el wizard) y **Design a new team with AI** (abre `@team-builder` en Copilot Chat).
+
+Los equipos cuya especificación de origen fue modificada después del último sync exitoso muestran una insignia **No sincronizado** en el Team Manager. Sincroniza el equipo para eliminar la insignia.
+
 ### Editar un Equipo
 
 Dashboard → **Team Manager** → selecciona equipo → **Edit**
@@ -55,24 +59,56 @@ La tarjeta de estadísticas en la página de inicio del dashboard siempre muestr
 
 ## Sincronizar un Equipo
 
-El sync resuelve la composición completa (valores por defecto del kit + perfil de proyecto + overrides del equipo) y escribe los archivos markdown finales de agentes en `.github/agents/`.
+El sync resuelve la composición completa (valores por defecto del kit + perfil de proyecto + overrides del equipo) y escribe los archivos de salida para cada destino de sync configurado.
 
 1. Página de inicio del dashboard → la tarjeta **Sync Status** muestra un desglose de cambios pendientes:
-   - `create` — se escribirá un nuevo archivo de agente
-   - `update` — el archivo de agente existente será actualizado
+   - `create` — se escribirá un nuevo archivo
+   - `update` — el archivo existente será actualizado
    - `skip` — no se detectaron cambios, el archivo se deja como está
 2. Haz clic en **Sync** para aplicar todos los cambios
 
 <img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
 
-El dashboard detecta cambios en los archivos YAML automáticamente mediante observación de archivos — la tarjeta de sync status se actualiza cada vez que guardas un agente o equipo.
+El dashboard detecta cambios en los archivos de agentes y equipos automáticamente — la tarjeta de sync status se actualiza cada vez que guardas un archivo.
+
+### Salida por destino
+
+Cada destino de sync escribe su salida en una ubicación diferente:
+
+| Destino | Salida |
+|---|---|
+| **Claude Code** | `.claude/agents/<id>.md` por agente + `AGENTS.md` en la raíz |
+| **Codex** | `AGENTS.md` en la raíz del proyecto |
+| **Gemini CLI** | `GEMINI.md` en la raíz del proyecto |
+| **OpenAI Agents SDK** | `AGENTS.md` en la raíz del proyecto |
+| **GitHub Copilot** | `.github/agents/<id>.agent.md` por agente |
+
+Los destinos que generan un único archivo raíz (`AGENTS.md`, `GEMINI.md`) incluyen los context packs directamente en ese archivo por prioridad: los packs esenciales siempre se incluyen, los estándar hasta el presupuesto de caracteres configurado, y los de referencia se listan como enlaces al final.
+
+### Vista previa de cambios antes de sincronizar (CLI)
+
+Usa `--dry-run` para ver exactamente qué cambiaría sin escribir ningún archivo:
+
+```bash
+agent-teams team:sync --team mi-equipo --dry-run
+```
+
+La salida está codificada por colores y agrupada por destino:
+
+```
+  + .claude/agents/frontend-agent.md    [create]
+  ~ .claude/agents/backend-agent.md     [update]
+  - .claude/agents/legacy-agent.md      [delete]
+```
+
+Añade `--no-diff` para suprimir el detalle por archivo y mostrar solo el resumen.
 
 ### Sync de Servidores MCP
 
 Si alguno de los agentes del equipo declara `mcpServers`, Agent Teams los fusiona en los archivos de configuración MCP del proyecto durante el sync:
 
 - **Destino Copilot** → `.vscode/mcp.json` (clave `servers`)
-- **Destino Claude** → `.mcp.json` en la raíz del proyecto (clave `mcpServers`)
+- **Destino Claude Code** → `.mcp.json` en la raíz del proyecto (clave `mcpServers`)
 
 Los servidores se fusionan por `id`. Las entradas existentes nunca se sobreescriben, preservando siempre los overrides a nivel de proyecto. Ver [Servidores MCP](./agents.md#servidores-mcp) en la referencia de Agentes.
 

@@ -48,7 +48,8 @@ const sidebars: SidebarsConfig = {
       className: 'sidebar-new-badge',
       collapsed: false,
       items: [
-        { type: 'doc', id: 'agent-designer', label: 'Agent Designer' },
+        { type: 'doc', id: 'ai-setup-flow', label: 'AI Setup Flow' },
+        { type: 'doc', id: 'agent-designer', label: 'Agent Designer & Team Builder' },
       ],
     },
   ],

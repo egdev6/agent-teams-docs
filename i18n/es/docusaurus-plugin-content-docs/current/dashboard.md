@@ -28,6 +28,12 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 | **Estado del Sync** | Desglose de cambios pendientes (agentes a crear / actualizar / omitir) con botón de sync directo |
 | **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
 | **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
+| **Configura tu proyecto** | Visible cuando no existe ningún perfil. Dos opciones: **"Auto-configurar con IA"** (abre `@project-configurator`) y **"Configurar manualmente"** (abre el formulario del Profile Editor) |
+| **Diseña tu primer equipo** | Visible cuando el perfil está configurado pero no existe ningún equipo. Abre `@team-builder` directamente en Copilot Chat. Solo aparece cuando no hay ningún equipo en el workspace |
+| **Consultant** | Visible cuando existen perfil, equipo activo y al menos un agente. Abre `@consultant` para análisis de asesoría sobre la cobertura y salud del equipo |
+| **Team Agents** | Cuando existe un equipo activo, muestra los agentes agrupados por rol. La cabecera incluye **"Diseñar con IA"** (abre `@agent-designer`) y **"Crear manualmente"** (abre el wizard) |
+
+> Consulta [Flujo de Configuración con IA](ai-setup-flow) para un recorrido completo por la experiencia de onboarding guiada por IA.
 
 <img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
 
@@ -69,7 +75,7 @@ Gestiona los context packs disponibles en tu workspace. Activa o desactiva packs
 
 ### Import / Export
 
-Haz copias de seguridad y comparte tu catálogo global de agentes. Exporta a JSON, importa desde un archivo o reinicia el catálogo. Ver [Editor de Perfiles — Importar / Exportar](profiles#importar--exportar) para más detalles.
+Haz copias de seguridad y comparte tu catálogo global de agentes, y exporta o importa el perfil completo del proyecto como ZIP. Ver [Editor de Perfiles — Importar / Exportar](profiles#importar--exportar) para más detalles.
 
 ---
 

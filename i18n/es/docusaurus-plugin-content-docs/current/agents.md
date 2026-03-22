@@ -10,6 +10,8 @@ Los agentes son el bloque fundamental de Agent Teams. Cada agente es un particip
 
 Abre el dashboard y navega a **Agent Manager** → **Create Agent**, o usa la tarjeta de **Acciones Rápidas** en la página de inicio.
 
+El encabezado de la página Agent Manager también incluye el botón **Design a new agent with AI** que abre `@agent-designer` directamente en Copilot Chat — útil cuando quieres que la IA redacte la especificación primero.
+
 El wizard te guía a través de 6 pasos:
 
 <img width="1171" alt="imagen" src="/img/docs/agents-overview.png" style={{ height: "auto" }} />
@@ -43,7 +45,7 @@ Define cuándo este agente es activado por el `@router`.
 | Campo | Descripción |
 |---|---|
 | **Pasos del workflow** | Lista ordenada de pasos que sigue el agente al gestionar una tarea |
-| **Herramientas** | Capacidades que puede usar el agente, cada una con una condición `when` opcional |
+| **Herramientas** | Capacidades que puede usar el agente. Las herramientas integradas de VS Code (`read`, `edit`, `search`, `execute`, `browser`, `agent`, `web`, `todo`, `vscode`) se muestran como una cuadrícula de casillas. Las herramientas personalizadas o de extensión se añaden como filas de texto libre debajo. Cada herramienta tiene una condición `when` opcional |
 | **Servidores MCP** | *(Desplegable)* Servidores MCP requeridos por este agente. En cada sync se fusionan (por `id`) en `.vscode/mcp.json` (Copilot) o `.mcp.json` (Claude). Las entradas nuevas se agregan; las existentes nunca se sobreescriben |
 
 ### Paso 3 — Skills
@@ -55,7 +57,7 @@ Explora y añade skills de dos fuentes:
 - **Skills del proyecto** — skills definidas en tu `skills.registry.yml` local
 - **Registro comunitario** — instala skills del registro compartido directamente desde este paso
 
-Cada tarjeta de skill muestra su ID, categoría, nivel de seguridad y roles recomendados. Selecciona las skills relevantes para el propósito de este agente.
+Cada tarjeta de skill muestra su **título**, categoría, nivel de seguridad y roles recomendados. Selecciona las skills relevantes para el propósito de este agente.
 
 ### Paso 4 — Reglas
 
@@ -70,7 +72,7 @@ Cada tarjeta de skill muestra su ID, categoría, nivel de seguridad y roles reco
 | **Handoffs — Recibe de** | Qué agentes pueden delegar en este |
 | **Handoffs — Delega a** | A qué agentes puede delegar este |
 | **Handoffs — Escala a** | A qué agentes o roles escalar cuando está bloqueado |
-| **Engram** | *(Solo agentes worker, requiere Engram configurado)* Activa **Contexto de tarea autónomo** para habilitar el despacho directo — el worker recupera el contexto de tarea desde Engram al inicio de la sesión y llama a `complete_subtask` automáticamente al terminar |
+| **Engram** | Activa **Contexto de tarea autónomo** para habilitar el despacho directo. Disponible para todos los roles — el texto descriptivo del toggle se actualiza para describir el comportamiento según el rol actual. Los workers recuperan el contexto de tarea desde Engram al inicio de la sesión y llaman a `complete_subtask` automáticamente al terminar. **Opt-in por agente:** un agente que declara `engram` en su lista `mcpServers` recibe las funciones de memoria Engram aunque no haya un servidor MCP de Engram configurado globalmente en el workspace — permitiendo agentes autónomos que arrancan en una máquina sin configuración previa |
 
 ### Paso 5 — Salida y Contexto
 
@@ -93,7 +95,9 @@ Una vista previa en tiempo real de la configuración del agente aparece en el pa
 
 ### Ver Todos los Agentes
 
-Dashboard → **Agent Manager** muestra todos los agentes cargados agrupados por rol (Router, Orchestrator, Worker). Haz clic en cualquier agente para abrirlo en modo edición.
+Dashboard → **Agent Manager** muestra todos los agentes cargados organizados en tres pestañas — **Router**, **Orchestrator** y **Worker** — cada una con un contador en tiempo real. Se muestra un mensaje de estado vacío por pestaña cuando no hay agentes de ese rol.
+
+El encabezado de la página tiene dos botones: **Create Agent** (abre el wizard) y **Design a new agent with AI** (abre `@agent-designer` en Copilot Chat).
 
 ### Editar un Agente
 
@@ -102,6 +106,10 @@ Dashboard → **Agent Manager** muestra todos los agentes cargados agrupados por
 3. Guarda — los cambios se escriben de vuelta en el archivo YAML de la spec
 
 <img width="1183" alt="imagen" src="/img/docs/agents-forms.png" style={{ height: "auto" }} />
+
+### Insignia "No sincronizado"
+
+Los agentes cuya especificación de origen fue modificada después del último sync exitoso muestran una insignia **No sincronizado** (indicador naranja) en la tarjeta del Agent Manager. Sincroniza el equipo para eliminar la insignia.
 
 ### Sincronizar Agentes a `.github/agents/`
 
@@ -184,7 +192,7 @@ context_packs:
 | `routing.keywords` | — | Palabras que activan el routing hacia este agente |
 | `routing.paths` | — | Patrones glob para routing basado en archivo |
 | `context_packs` | — | IDs de context packs a incluir en las respuestas |
-| `engram.mode` | — | `default` o `autonomous`. Solo para agentes `worker`. Ver [Modo Autónomo de Engram](#modo-autónomo-de-engram) |
+| `engram.mode` | — | `default` o `autonomous`. Ver [Modo Autónomo de Engram](#modo-autónomo-de-engram) |
 | `mcpServers` | — | Lista de servidores MCP a fusionar en la configuración MCP del proyecto en cada sync. Ver [Servidores MCP](#servidores-mcp) |
 
 ---
@@ -212,7 +220,7 @@ En este modo el worker:
 
 > **Cuándo usarlo:** elige el modo autónomo para workers que se despachan directamente mediante `agent-teams-dispatch-parallel` en flujos multi-dominio donde no se necesita un orchestrator intermedio. Para flujos estándar router → orchestrator → worker, el modo por defecto es suficiente.
 
-Para activarlo en el wizard, ve al **Paso 4 — Reglas** y marca **Engram → Contexto de tarea autónomo** (solo visible cuando Engram está configurado y el rol es `worker`).
+Para activarlo en el wizard, ve al **Paso 4 — Reglas** y marca **Engram → Contexto de tarea autónomo** (requiere Engram configurado).
 
 ---
 

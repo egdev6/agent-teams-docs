@@ -22,7 +22,7 @@ If no profile exists yet, the dashboard home page shows a **Configure project pr
 
 ## Filling Out the Profile
 
-The editor is divided into seven sections:
+The editor groups its settings into seven collapsible accordion sections. Click any section header to expand or collapse it — each header shows a live summary of the current values so you can scan the whole profile at a glance without opening every panel.
 
 ### Basic Information
 
@@ -58,15 +58,28 @@ Named command mappings used in template variables (`{{command:build}}`).
 
 Select which context packs are active for this project. These are embedded in every agent that belongs to this project unless overridden at team level.
 
+Use the **Preview** button to simulate the budget algorithm before syncing. The preview shows:
+
+- A progress bar with characters used vs the configured `agents_md_budget` (default 8 000 chars)
+- **Inlined** packs (green) — essential packs always inlined; standard packs inlined until the budget is exhausted
+- **Referenced** packs (amber) — standard packs that overflow the budget, plus all reference packs; listed in the root context file as headings without full content
+- A separate **GitHub Copilot** note — Copilot has no budget limit and copies all selected packs as individual files under `.github/context/`
+
+The preview refreshes automatically whenever you check or uncheck a pack while the panel is open.
+
 ### Sync Targets
 
-Choose which AI tools this project's agents should be synced to:
+Choose which AI tools this project's agents should be synced to. Each target generates its output in the expected location for that tool:
 
-| Target | Description |
-|---|---|
-| **Claude Code** | Generates agent files for Anthropic Claude Code |
-| **Codex** | Generates agent files for OpenAI Codex |
-| **GitHub Copilot** | Generates `.github/agents/` markdown files for GitHub Copilot |
+| Target | Output | Description |
+|---|---|---|
+| **Claude Code** | `.claude/agents/` + `AGENTS.md` | Per-agent files and a root context file for Claude Code |
+| **Codex** | `AGENTS.md` | Root context file for OpenAI Codex |
+| **Gemini CLI** | `GEMINI.md` | Root context file for Gemini CLI. Context packs are inlined by priority (essential always, standard up to budget, reference as links) |
+| **OpenAI Agents SDK** | `AGENTS.md` | Root context file for OpenAI Agents SDK. Same inlining behaviour as Gemini |
+| **GitHub Copilot** | `.github/agents/` | Per-agent markdown files and a Copilot instructions file |
+
+Each target has an optional **Add to .gitignore** toggle that appears when the target is enabled. Use it to exclude that target's output from version control — useful when you want generated files to stay local.
 
 ### Gitignore
 
@@ -82,15 +95,24 @@ Click **Save** at the bottom of the editor. The profile is written to `.agent-te
 
 ## Import / Export
 
-The **Import / Export** page in the dashboard manages the global agent catalog stored in VS Code global storage. This is separate from the project profile — it lets you back up and share your entire agent and team catalog across workspaces.
+The **Import / Export** page in the dashboard manages both the global agent catalog (stored in VS Code global storage) and the project profile. This is separate from saving the profile — it lets you back up and share configuration across workspaces.
 
 <img width="1644" alt="imagen" src="/img/docs/profiles-editor.png" style={{ height: "auto" }} />
+
+### Catalog (JSON)
 
 | Action | Description |
 |---|---|
 | **Export** | Saves the full catalog to a JSON file you choose |
 | **Import** | Merges entries from a JSON file into the existing catalog (non-destructive) |
 | **Reset** | Permanently deletes the entire catalog — use with caution |
+
+### Profile (ZIP)
+
+| Action | Description |
+|---|---|
+| **Export Profile as ZIP** | Packages the entire `.agent-teams/` directory — agents, teams, context packs, skills, and profile config — into a portable ZIP file |
+| **Import Profile from ZIP** | Restores a previously exported ZIP into the current workspace. Files that already exist prompt for confirmation before being overwritten |
 
 ---
 
@@ -99,13 +121,14 @@ The **Import / Export** page in the dashboard manages the global agent catalog s
 The dashboard writes and reads this format automatically. You can also open `.agent-teams/project.profile.yml` directly in VS Code.
 
 ```yaml
-id: my-project
-name: My Project
+project:
+  id: my-project
+  name: My Project
+  version: "1.0.0"
 
 technologies:
-  - react
-  - typescript
-  - nodejs
+  typescript: true
+  react: true
 
 paths:
   src: src/
@@ -120,6 +143,13 @@ commands:
 context_packs:
   - project-conventions
 
+sync_targets:
+  - claude_code
+  - gemini
+
+gitignore_targets:
+  - gemini
+
 overrides:
   vitest-worker:
     context_packs:
@@ -130,12 +160,15 @@ overrides:
 
 | Field | Required | Description |
 |---|---|---|
-| `id` | ✅ | Project identifier (kebab-case) |
-| `name` | ✅ | Project display name |
+| `project.id` | ✅ | Project identifier (kebab-case) |
+| `project.name` | ✅ | Project display name |
+| `project.version` | ✅ | Version string |
 | `technologies` | — | Technology flags for template conditionals (`{{#if technology:react}}`) |
 | `paths` | — | Named path mappings for template variables (`{{path:src}}`) |
 | `commands` | — | Named command mappings for template variables (`{{command:build}}`) |
 | `context_packs` | — | Default context packs applied to all agents in this project |
+| `sync_targets` | — | Platforms to sync to. Valid values: `claude_code`, `codex`, `gemini`, `openai`, `github_copilot`. Defaults to `claude_code` and `github_copilot` if omitted |
+| `gitignore_targets` | — | Subset of `sync_targets` whose output paths are added to `.gitignore` |
 | `overrides` | — | Per-agent field overrides applied at project level (lower priority than team overrides) |
 
 ---
