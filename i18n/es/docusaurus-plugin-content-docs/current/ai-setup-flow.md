@@ -4,7 +4,7 @@ description: Cuatro agentes de IA integrados guían la configuración completa d
 
 # Flujo de Configuración con IA
 
-**Estado:** ✅ Disponible
+**Estado:** Próximamente
 
 Agent Teams incluye cuatro agentes de IA integrados que cubren todo el ciclo de vida del proyecto, desde la configuración inicial hasta la evolución continua del equipo. El dashboard muestra cada uno de forma contextual — solo cuando es relevante para tu estado actual.
 
