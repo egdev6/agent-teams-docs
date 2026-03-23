@@ -4,7 +4,7 @@ description: Agent Designer and Team Builder are built-in agents that generate v
 
 # Agent Designer & Team Builder
 
-**Status:** ✅ Available
+**Status:** Coming soon
 
 `@agent-designer` and `@team-builder` are built-in agents bundled with the extension. They are available immediately after installation — no marketplace copy or manual setup required.
 
