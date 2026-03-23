@@ -4,7 +4,7 @@ description: Four bundled AI agents guide you through the complete project setup
 
 # AI Setup Flow
 
-**Status:** ✅ Available
+**Status:** Coming soon
 
 Agent Teams includes four bundled AI agents that cover the entire project lifecycle, from initial setup to ongoing team evolution. The dashboard surfaces each one contextually — only when it is relevant to your current state.
 
