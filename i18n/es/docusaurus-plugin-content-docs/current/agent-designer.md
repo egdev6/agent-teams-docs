@@ -1,7 +1,7 @@
 
 # Diseñador de Agentes y Team Builder
 
-**Estado:** ✅ Disponible
+**Estado:** Proximamente
 
 `@agent-designer` y `@team-builder` son agentes integrados incluidos con la extensión. Están disponibles inmediatamente después de la instalación — no requieren copia desde el marketplace ni configuración manual.
 
