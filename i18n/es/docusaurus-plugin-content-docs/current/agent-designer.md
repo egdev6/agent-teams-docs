@@ -1,9 +1,12 @@
+---
+description: El Diseñador de Agentes es un agente integrado que genera AgentSpec YAMLs válidos a partir de lenguaje natural. Disponible inmediatamente tras instalar la extensión.
+---
 
-# Diseñador de Agentes y Team Builder
+# Diseñador de Agentes
 
 **Estado:** ✅ Disponible
 
-`@agent-designer` y `@team-builder` son agentes integrados incluidos con la extensión. Están disponibles inmediatamente después de la instalación — no requieren copia desde el marketplace ni configuración manual.
+`@agent-designer` es un agente integrado incluido con la extensión. Está disponible inmediatamente después de la instalación — no requiere copia desde el marketplace ni configuración manual.
 
 ---
 
@@ -23,31 +26,20 @@ Además, admite **importar** definiciones de agentes existentes desde otros form
 ---
 
 
-## Team Builder
-
-El Team Builder es un agente orquestador que diseña tu equipo de agentes completo desde cero:
-
-1. **Lee el contexto de tu proyecto** — README, `project.profile.yml`, manifiestos de paquetes, estructura de directorios
-2. **Propone tarjetas descriptivas de agentes** — una por agente, con rol, dominio, intenciones, rutas de alcance, context packs, skills y handoffs
-3. **Espera tu confirmación** antes de continuar
-4. **Distribuye el trabajo a los workers de `@agent-designer`** vía Engram — un worker por agente propuesto, todos en paralelo
-5. **Verifica la coherencia entre agentes** — IDs únicos, referencias de handoff válidas, sin delegaciones circulares
-6. **Escribe el archivo de binding del equipo** en `.agent-teams/teams/<teamId>.yml`
-
-> **Recomendado:** usa un modelo potente (p. ej. Claude Sonnet) para obtener mejores resultados. El Team Builder está disponible directamente desde la página de inicio del dashboard a través de la tarjeta **„Diseña tu primer equipo“** cuando no existe ningún equipo en el workspace.
-
----
-
-
 ## Usar el Diseñador de Agentes
 
-### Paso 1 — Invoca al agente en Copilot Chat o Claude
+### Paso 1 — Invoca al agente
 
-Dirígete al agente directamente con `@agent-designer` (Copilot) o menciónalo por nombre en tu conversación con Claude:
+La sintaxis de invocación depende de tu herramienta de IA:
 
-```
-@agent-designer diseña un agente que revise pull requests de TypeScript en busca de problemas de seguridad y tests faltantes
-```
+- **GitHub Copilot Chat** — usa el chat participant `@agent-designer`:
+  ```
+  @agent-designer diseña un agente que revise pull requests de TypeScript en busca de problemas de seguridad y tests faltantes
+  ```
+- **Claude Code** — usa el slash command `/agent-designer`:
+  ```
+  /agent-designer diseña un agente que revise pull requests de TypeScript en busca de problemas de seguridad y tests faltantes
+  ```
 
 ### Paso 2 — Describe lo que necesitas
 
@@ -76,7 +68,12 @@ El agente produce un solo bloque de código YAML. Puedes:
 Proporciona el contenido de un archivo de agente existente en cualquier formato compatible y el Diseñador lo convertirá:
 
 ```
+# Copilot
 @agent-designer convierte este agente de Claude Code a YAML de AgentSpec:
+<pega aquí el contenido del archivo .md>
+
+# Claude Code
+/agent-designer convierte este agente de Claude Code a YAML de AgentSpec:
 <pega aquí el contenido del archivo .md>
 ```
 
@@ -90,7 +87,11 @@ El agente extrae cada campo mapeeable, normaliza los valores a las convenciones 
 **Entrada:**
 
 ```
+# Copilot
 @agent-designer crea un agente worker que revise pull requests en un proyecto backend con TypeScript + Node.js
+
+# Claude Code
+/agent-designer crea un agente worker que revise pull requests en un proyecto backend con TypeScript + Node.js
 ```
 
 **Salida:**

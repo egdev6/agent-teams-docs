@@ -14,7 +14,7 @@ The Skills Browser lets you explore and manage agent skills. Skills describe the
 
 Dashboard → sidebar → **Skills**
 
-<img width="1169" alt="imagen" src="/img/docs/skills-browser-overview.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Skills Browser main view showing both tabs (Project Skills and Explore), the search bar, category filter chips, and a grid of skill cards each displaying the skill ID, category badge, and description. Suggested filename: skills-browser-overview.png -->
 
 The browser has two tabs:
 
@@ -47,7 +47,7 @@ Browse skills published to the shared community registry and install them direct
 - Click **Install** on any skill card to add it to your project's `skills.registry.yml`
 - Use pagination to browse through the full catalog
 
-<img width="1184" alt="imagen" src="/img/docs/skills-browser-install.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Skills Browser Explore tab showing the community registry with skill cards, each having an "Install" button, pagination controls at the bottom, and a skill being installed with a loading or success state. Suggested filename: skills-browser-install.png -->
 
 ---
 
@@ -78,7 +78,7 @@ Skills are assigned to agents through the agent editor:
 3. Search and select skills from the project registry or install new ones from the community
 4. Save
 
-<img width="1171" alt="imagen" src="/img/docs/skills-browser-apply.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Agent wizard Step 3 (Skills) showing the skill browser inline inside the wizard, with some skills already selected (checked) and the community install option visible below the project skills list. Suggested filename: skills-browser-apply.png -->
 
 You can also assign skills during initial agent creation — the same skills step appears in the Create Agent wizard.
 

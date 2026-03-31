@@ -12,7 +12,7 @@ This guide explains the recommended architecture for building a multi-agent syst
 
 ## The Pipeline
 
-<!-- TODO: screenshot — captura del panel de chat de Copilot mostrando una conversación real con @router delegando a un orquestador (o cualquier traza visual que muestre el flujo en acción). Nombre sugerido: architecture-pipeline-chat.png -->
+<!-- IMAGE: Screenshot — GitHub Copilot Chat panel showing a real conversation where the user sends a message to @router and the router delegates to an orchestrator, with the orchestrator's response visible. Captures the pipeline in action end-to-end. Suggested filename: architecture-pipeline-chat.png -->
 
 ```
 Single domain:
@@ -228,7 +228,7 @@ Task done.
 
 ## Architecture Diagram
 
-<!-- TODO: screenshot — diagrama renderizado del flujo single-domain (imagen exportada o captura de la herramienta de diagramas). Puede reemplazar o acompañar el ASCII art. Nombre sugerido: architecture-single-domain.png -->
+<!-- IMAGE: Diagram — Rendered visual of the single-domain flow: User Prompt → Router → Orchestrator → Workers A/B/C → Task Done. Should replace or complement the ASCII art above, using boxes and arrows for clarity. Suggested filename: architecture-single-domain.png -->
 
 ### Single domain
 
@@ -262,7 +262,7 @@ Task done.
                                └──────────────────┘
 ```
 
-<!-- TODO: screenshot — diagrama renderizado del flujo multi-domain con fan-out paralelo. Nombre sugerido: architecture-parallel-dispatch.png -->
+<!-- IMAGE: Diagram — Rendered visual of the multi-domain parallel dispatch flow: User Prompt → Router → Orchestrators A/B/C (in parallel) → Workers → Aggregator → Task Done. Should replace or complement the ASCII art below. Suggested filename: architecture-parallel-dispatch.png -->
 
 ### Multiple domains (parallel dispatch)
 
@@ -362,6 +362,8 @@ handoffs:
 ```
 
 ---
+
+<!-- IMAGE: Screenshot — Agent Teams dashboard Team Agents card showing a fully configured team with Router, Orchestrator, and Worker agents each in their respective role sections, illustrating the layer structure in the real UI. Suggested filename: architecture-team-overview.png -->
 
 ## Common Anti-Patterns
 

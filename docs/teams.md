@@ -14,7 +14,7 @@ A team is a curated selection of agents — sourced from kits and/or individual 
 
 Dashboard → **Team Manager** → **Create Team**, or use the **Quick Actions** card on the home page.
 
-<img width="1160" alt="imagen" src="/img/docs/teams-overview.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Team Manager page listing all teams with their name, description, agent count, and active status badge. The Create Team and Design a new team with AI buttons are visible in the page header. Suggested filename: teams-overview.png -->
 
 The wizard has three sections:
 
@@ -49,7 +49,7 @@ The edit page provides four actions:
 | **Delete** | Permanently remove this team |
 | **Set as Active** | Mark this team as the active team for sync operations |
 
-<img width="1320" alt="imagen" src="/img/docs/teams-creation.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Team Edit page showing the Basics section (name and description fields), the Members section with a list of agents to select, and the action buttons (Save, Cancel, Delete, Set as Active) at the bottom. Suggested filename: teams-creation.png -->
 
 ### Setting the Active Team
 
@@ -71,7 +71,7 @@ Sync resolves the full composition (kit defaults + project profile + team overri
    - `skip` — no changes detected, file left as-is
 2. Click **Sync** to apply all changes
 
-<img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Sync Status card on the dashboard home page showing a breakdown of pending changes with create/update/skip counts per file, and the Sync button ready to apply them. Suggested filename: teams-sync.png -->
 
 The dashboard detects changes to agent and team YAML files automatically — the sync status card updates whenever you save a file.
 
@@ -119,6 +119,8 @@ Servers are merged by `id`. Existing entries are never overwritten, so project-l
 ---
 
 ## Merge Strategies
+
+<!-- IMAGE: Diagram — Visual showing the three-layer priority stack: Kit defaults (bottom) → Project profile (middle) → Team overrides (top), with arrows indicating which layer wins under each of the four strategies (team-priority, profile-priority, kit-priority, explicit-only). Suggested filename: teams-merge-strategies.png -->
 
 When multiple sources define the same agent field (kit default, project profile, team override), the Merge Engine resolves the conflict using one of four strategies:
 

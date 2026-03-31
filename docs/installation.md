@@ -30,7 +30,7 @@ description: How to install Agent Teams in VS Code — download the .vsix from t
 7. Navigate to the downloaded file and select it.
 8. Click **Reload** when prompted.
 
-<img width="782" alt="imagen" src="/img/docs/installation-vsix.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — VS Code Extensions panel showing the ··· menu open with "Install from VSIX…" highlighted, and the file picker selecting the downloaded .vsix file. Suggested filename: installation-vsix.png -->
 
 ---
 
@@ -44,7 +44,7 @@ After installation:
 2. Type and run **`Agent Teams: Open Dashboard`**.
 3. The Agent Teams panel opens on the right side of the editor.
 
-<img width="186" alt="imagen" src="/img/docs/installation-open-dashboard.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — VS Code Command Palette with "Agent Teams: Open Dashboard" typed and selected, showing the extension command. Suggested filename: installation-open-dashboard.png -->
 
 ---
 
@@ -59,7 +59,7 @@ To use Agent Teams in a project, initialize a profile first:
    - Define named commands (e.g. `build`, `test`, `lint`).
 3. A `.agent-teams/project.profile.yml` file is created at the workspace root.
 
-<img width="898" alt="imagen" src="/img/docs/installation-init-profile.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Agent Teams Profile initialization wizard open in the VS Code panel, showing the technology selector, path mappings, and commands fields being filled in for a new project. Suggested filename: installation-init-profile.png -->
 
 ---
 

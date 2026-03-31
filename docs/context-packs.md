@@ -18,7 +18,7 @@ Dashboard → sidebar → **Context Packs**
 
 ## Overview
 
-<!-- TODO: screenshot — página completa de Context Packs en el dashboard mostrando la lista de packs con sus toggles, selectores de prioridad y el indicador del budget. Nombre sugerido: context-packs-overview.png -->
+<!-- IMAGE: Screenshot — Context Packs page in the dashboard showing the full list of packs with their toggle switches, priority selectors (essential/standard/reference), and the agents.md budget indicator in the header. Suggested filename: context-packs-overview.png -->
 
 The page shows all context packs available in your workspace. Each pack displays:
 
@@ -36,7 +36,7 @@ The header shows the current **agents.md budget** — a character budget that co
 
 Click the toggle next to any pack to enable or disable it. Disabled packs are not embedded in agent specs during sync.
 
-<!-- TODO: screenshot — detalle de una fila de pack con el toggle en estado habilitado y otro en deshabilitado, para mostrar la diferencia visual. Nombre sugerido: context-packs-toggle.png -->
+<!-- IMAGE: Screenshot — Close-up of two pack rows side by side: one with the toggle enabled (on) and one with it disabled (off), highlighting the visual difference between active and inactive packs. Suggested filename: context-packs-toggle.png -->
 
 ### Adjust Priority
 
@@ -58,7 +58,7 @@ Click **Save** to persist your toggle and priority selections. Changes take effe
 
 ## Creating a New Pack
 
-<!-- TODO: screenshot — sección "Create Pack" en la parte inferior de la página con el campo de nombre y el selector de prioridad antes de hacer clic en Create. Nombre sugerido: context-packs-create.png -->
+<!-- IMAGE: Screenshot — "Create Pack" section at the bottom of the Context Packs page, showing the pack name input field and priority selector filled in before clicking Create. Suggested filename: context-packs-create.png -->
 
 1. In the **Create Pack** section at the bottom of the page, enter a pack name and select a priority
 2. Click **Create** — the pack is added to your workspace registry
@@ -66,6 +66,8 @@ Click **Save** to persist your toggle and priority selections. Changes take effe
 You can then add content to the pack by editing the generated file directly in VS Code.
 
 ---
+
+<!-- IMAGE: Screenshot — Agent wizard Step 5 (Output & Context) showing the Context Packs multi-select with some packs already assigned to the agent and the project-level packs listed separately. Suggested filename: context-packs-agent-assignment.png -->
 
 ## Importing a Markdown File as a Pack
 

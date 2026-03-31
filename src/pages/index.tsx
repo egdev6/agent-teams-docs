@@ -6,7 +6,7 @@ import Heading from '@theme/Heading';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import clsx from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
-import { Bot, GitMerge, LayoutDashboard, BrainCircuit, Blocks, Package, MessageSquareText, Workflow, Puzzle, Brain } from 'lucide-react';
+import { Bot, Layers, Database, BrainCircuit, Blocks, Package, MessageSquareText, Workflow, Puzzle, Brain } from 'lucide-react';
 
 import styles from './index.module.css';
 import FeatureCard from '../components/FeatureCard';
@@ -64,14 +64,14 @@ type FeatureItem = {
 
 const features: FeatureItem[] = [
   {
-    title: translate({ id: 'homepage.feature.dashboard.title', message: '12-Page Dashboard' }),
-    icon: <LayoutDashboard size={22} className={styles.featureSvgIcon} />,
-    description: translate({ id: 'homepage.feature.dashboard.desc', message: 'A VS Code panel with dedicated views for agents, teams, skills, and context packs. Browse live state and edit configs without opening a file manually.' }),
+    title: translate({ id: 'homepage.feature.models.title', message: 'Multi-Model Support' }),
+    icon: <Layers size={22} className={styles.featureSvgIcon} />,
+    description: translate({ id: 'homepage.feature.models.desc', message: 'Works with GitHub Copilot, Claude Code, Codex, Gemini, and any OpenAI-compatible model — no lock-in, one extension for all your agents.' }),
     bullets: [
-      '12 views: agents, teams, skills & more',
-      'AI agents surfaced at each onboarding step',
+      'GitHub Copilot, Claude Code & Codex ready',
+      'OpenAI, Gemini & custom models supported',
     ],
-    href: '/docs/dashboard',
+    href: '/docs/installation',
   },
   {
     title: translate({ id: 'homepage.feature.wizard.title', message: 'AI-Guided Creation' }),
@@ -81,10 +81,10 @@ const features: FeatureItem[] = [
     href: '/docs/ai-setup-flow',
   },
   {
-    title: translate({ id: 'homepage.feature.router.title', message: 'Smart Router' }),
-    icon: <GitMerge size={22} className={styles.featureSvgIcon} />,
-    description: translate({ id: 'homepage.feature.router.desc', message: "Type @router + any task. It scores your prompt against every agent profile — factoring in your open file — and delegates automatically." }),
-    bullets: ['Scores intent across all team agents', 'Active file used as routing context'],
+    title: translate({ id: 'homepage.feature.memory.title', message: 'Shared Memory' }),
+    icon: <Database size={22} className={styles.featureSvgIcon} />,
+    description: translate({ id: 'homepage.feature.memory.desc', message: 'Every agent — router, orchestrator, or worker — injects shared Engram memory automatically. Context survives conversations, context resets, and session changes.' }),
+    bullets: ['Injected into router, orchestrator & workers', 'Context persists across sessions & resets'],
     href: '/docs/agent-architecture',
   },
   {
@@ -178,7 +178,7 @@ function HomepageHero({ heroRef, buttonsRef }: { heroRef: React.RefObject<HTMLEl
         
         <p className={styles.heroSubtitle}>
           <Translate id="homepage.hero.tagline">
-            Build, manage, and orchestrate AI agent teams with GitHub Copilot, Claude Code or Codex in VSCode.
+            Build, manage, and orchestrate AI agent teams directly inside VS Code.
           </Translate>
         </p>
 

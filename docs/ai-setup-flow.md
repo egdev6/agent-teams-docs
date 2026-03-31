@@ -1,32 +1,48 @@
 ---
-description: Four bundled AI agents guide you through the complete project setup — configuration, team design, agent creation, and ongoing advisory — each surfaced in the dashboard at the right moment.
+description: Three bundled AI agents guide you through the complete project setup — configuration, agent creation, and ongoing advisory — each surfaced in the dashboard at the right moment.
 ---
 
 # AI Setup Flow
 
 **Status:** ✅ Available
 
-Agent Teams includes four bundled AI agents that cover the entire project lifecycle, from initial setup to ongoing team evolution. The dashboard surfaces each one contextually — only when it is relevant to your current state.
+Agent Teams includes three bundled AI agents that cover the entire project lifecycle, from initial setup to ongoing team evolution. The dashboard surfaces each one contextually — only when it is relevant to your current state.
+
+> **Invocation syntax** — the bundled agents work in both GitHub Copilot Chat and Claude Code, but the syntax differs by platform:
+>
+> | Platform | Syntax | Example |
+> |---|---|---|
+> | **GitHub Copilot Chat** | `@agent-name` (chat participant) | `@project-configurator` |
+> | **Claude Code** | `/agent-name` (slash command) | `/project-configurator` |
+>
+> The rest of this document shows both forms where invocation is mentioned. Use whichever matches your active AI tool.
 
 ---
 
-## The Four-Agent Flow
+## The Three-Agent Flow
 
 ```
-@project-configurator  →  @team-builder  →  @agent-designer  →  @consultant
-   (configure)              (design team)      (create agents)     (advise & evolve)
+# GitHub Copilot Chat
+@project-configurator  →  @agent-designer  →  @consultant
+
+# Claude Code
+/project-configurator  →  /agent-designer  →  /consultant
+
+      (configure)           (create agents)    (advise & evolve)
 ```
 
 Each agent is independent and can be used on its own, but together they form a progressive onboarding path that takes you from zero to a fully configured, AI-ready workspace.
+
+The flow is intentionally incremental: start with a minimal set of focused agents, then let `@consultant` identify gaps and guide you through adding more. This avoids front-loading a complex team structure that consumes unnecessary tokens before you know what you actually need.
 
 ---
 
 ## Step 1 — Project Configurator
 
-**When:** no `project.profile.yml` exists yet  
-**Access:** dashboard home → **"Auto-configure with AI"** button, or invoke directly with `@project-configurator`
+**When:** no `project.profile.yml` exists yet
+**Access:** dashboard home → **"Auto-configure with AI"** button, or invoke directly — `@project-configurator` (Copilot) / `/project-configurator` (Claude Code)
 
-<!-- TODO: screenshot — tarjeta "Configure Your Project" en el dashboard home cuando no existe perfil, mostrando el botón "Auto-configure with AI". Nombre sugerido: ai-setup-step1-configurator-card.png -->
+<!-- IMAGE: Screenshot — Dashboard home page in its initial state (no profile configured), showing the "Configure Your Project" card with the "Auto-configure with AI" primary button and the "Configure manually" secondary option. Suggested filename: ai-setup-step1-configurator-card.png -->
 
 `@project-configurator` performs an exhaustive, technology-agnostic analysis of your repository to auto-generate a complete `project.profile.yml` and a set of atomized context packs with real, codebase-derived content.
 
@@ -68,40 +84,29 @@ After you confirm the proposal, the agent writes:
 
 ---
 
-## Step 2 — Team Builder
+## Step 2 — Agent Designer
 
-**When:** profile configured, no teams exist yet  
-**Access:** dashboard home → **"Design your first team"** card, or `@team-builder`
+**When:** profile configured, you want to create or edit an agent
+**Access:** Team Agents card → **"Design with AI"** button (primary), or `@agent-designer` (Copilot) / `/agent-designer` (Claude Code)
 
-<!-- TODO: screenshot — tarjeta "Design your first team" en el dashboard home cuando el perfil ya existe pero aún no hay ningún equipo. Nombre sugerido: ai-setup-step2-team-builder-card.png -->
-
-Once a profile exists, `@team-builder` uses its `technologies` and context packs as direct input — skipping its own stack detection phase. It reads the available packs from `.agent-teams/context-packs/` and maps them to the right agents by domain when proposing the team composition.
-
-See [Agent Designer & Team Builder](agent-designer.md#team-builder) for the full workflow.
-
----
-
-## Step 3 — Agent Designer
-
-**When:** active team exists, you want to add or edit an agent  
-**Access:** Team Agents card → **"Design with AI"** button (primary), or `@agent-designer`
-
-<!-- TODO: screenshot — cabecera de la tarjeta Team Agents mostrando el botón primario "Design with AI" junto al botón secundario "Create manually". Nombre sugerido: ai-setup-step3-design-with-ai-button.png -->
+<!-- IMAGE: Screenshot — Team Agents card header on the dashboard home page showing the primary "Design with AI" button and the secondary "Create manually" button side by side. Suggested filename: ai-setup-step2-design-with-ai-button.png -->
 
 The "Design with AI" button is the primary action in the Team Agents card header and in the empty-state when no agents exist yet. The previous **"Create manually"** flow remains available as the secondary option.
 
-See [Agent Designer & Team Builder](agent-designer.md#agent-designer) for the full workflow.
+`@agent-designer` reads your workspace context — existing agents, installed skills, and the project profile generated in step 1 — and produces a focused, validated AgentSpec. Start with one or two agents covering your core workflows; you can always add more later guided by `@consultant`.
+
+See [Agent Designer](agent-designer.md#agent-designer) for the full workflow.
 
 ---
 
-## Step 4 — Consultant
+## Step 3 — Consultant
 
-**When:** profile + active team + at least one agent all exist  
-**Access:** dashboard home → **"Consult your team"** card, or `@consultant`
+**When:** profile + at least one agent exist
+**Access:** dashboard home → **"Consult your team"** card, or `@consultant` (Copilot) / `/consultant` (Claude Code)
 
-<!-- TODO: screenshot — tarjeta "Consult your team" en el dashboard home una vez que el perfil, equipo y agentes existen. Nombre sugerido: ai-setup-step4-consultant-card.png -->
+<!-- IMAGE: Screenshot — Dashboard home page in its fully configured state, showing the "Consult your team" card with the Consultant CTA, alongside the active team's agents in the Team Agents section. Suggested filename: ai-setup-step4-consultant-card.png -->
 
-`@consultant` is a read-only advisory agent. It analyses the current state of your team against the project profile and provides structured recommendations. It **never modifies any file** — execution always defers to `@agent-designer` or `@team-builder`.
+`@consultant` is a read-only advisory agent. It analyses the current state of your team against the project profile and provides structured recommendations. It **never modifies any file** — execution always defers to `@agent-designer`.
 
 ### What it analyses
 
@@ -117,33 +122,34 @@ See [Agent Designer & Team Builder](agent-designer.md#agent-designer) for the fu
 - **Skill assignments** — skills from `skills.registry.yml` that should be added to specific existing agents, with `when` conditions
 - **Next steps** — every response closes with explicit pointers: "To add `data-engineer` → open `@agent-designer`"
 
+This advisory loop is how the team grows incrementally: add agents one at a time as `@consultant` identifies real gaps, rather than trying to design the full team upfront.
+
 ---
 
 ## Dashboard Surfacing
 
-<!-- TODO: screenshot — visión general del dashboard home mostrando alguno de los estados de la tabla de abajo (idealmente el estado inicial sin perfil). Si se tienen capturas de varios estados, incluir la más representativa. Nombre sugerido: ai-setup-dashboard-states.png -->
+<!-- IMAGE: Screenshot — Dashboard home page showing the initial state (no profile) with the "Configure Your Project" card as the primary CTA. Alternatively, a composite of two states (no profile vs. fully configured) to illustrate the progression. Suggested filename: ai-setup-dashboard-states.png -->
 
 The dashboard home page shows the right agent CTA at each stage:
 
 | State | Card shown | Primary action |
 |---|---|---|
-| No profile | Configure Your Project | **Auto-configure with AI** → `@project-configurator` |
+| No profile | Configure Your Project | **Auto-configure with AI** → `@project-configurator` (Copilot) / `/project-configurator` (Claude Code) |
 | No profile | Configure Your Project | Configure manually → Profile Editor |
-| Profile ✓, no teams | Design your first team | Design your team → `@team-builder` |
-| Profile ✓, active team | Team Agents header & empty state | **Design with AI** → `@agent-designer` |
-| Profile ✓, active team | Team Agents header & empty state | Create manually → Agent Wizard |
-| Profile ✓, team ✓, agents > 0 | Consultant | **Consult your team** → `@consultant` |
+| Profile ✓ | Team Agents header & empty state | **Design with AI** → `@agent-designer` (Copilot) / `/agent-designer` (Claude Code) |
+| Profile ✓ | Team Agents header & empty state | Create manually → Agent Wizard |
+| Profile ✓, agents > 0 | Consultant | **Consult your team** → `@consultant` (Copilot) / `/consultant` (Claude Code) |
 
 ---
 
-## Using All Four Together
+## Using All Three Together
 
 A typical first-time setup with a new repository:
 
 1. **Install the extension** → dashboard opens with the "Configure Your Project" card
-2. Click **"Auto-configure with AI"** → `@project-configurator` scans your repo, proposes the profile and context packs → confirm → files written
-3. Dashboard detects the new profile → shows **"Design your first team"** → click it → `@team-builder` reads your profile and context packs, proposes agent composition → confirm → fans out to `@agent-designer` workers, generates all specs, writes team binding
+2. Click **"Auto-configure with AI"** → `@project-configurator` (Copilot) or `/project-configurator` (Claude Code) scans your repo, proposes the profile and context packs → confirm → files written
+3. Dashboard detects the new profile → Team Agents card shows **"Design with AI"** → click it → `@agent-designer` / `/agent-designer` reads your profile and existing agents, produces a focused AgentSpec → save → repeat for each initial agent you need
 4. Sync once → agents deployed to your target platforms
-5. As the project grows, open **"Consult your team"** → `@consultant` identifies new coverage gaps → follow its "Next steps" pointers to open `@agent-designer` for each new agent
+5. As the project grows, open **"Consult your team"** → `@consultant` / `/consultant` identifies coverage gaps → follow its "Next steps" pointers to open `@agent-designer` / `/agent-designer` for each new agent
 
-All four agents work on any project type or language — the entire flow is technology-agnostic.
+All three agents work on any project type or language — the entire flow is technology-agnostic.

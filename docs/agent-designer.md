@@ -1,12 +1,12 @@
 ---
-description: Agent Designer and Team Builder are built-in agents that generate valid AgentSpec YAMLs and full team compositions from natural language. Available immediately after installing the extension.
+description: Agent Designer is a built-in agent that generates valid AgentSpec YAMLs from natural language. Available immediately after installing the extension.
 ---
 
-# Agent Designer & Team Builder
+# Agent Designer
 
 **Status:** ✅ Available
 
-`@agent-designer` and `@team-builder` are built-in agents bundled with the extension. They are available immediately after installation — no marketplace copy or manual setup required.
+`@agent-designer` is a built-in agent bundled with the extension. It is available immediately after installation — no marketplace copy or manual setup required.
 
 ---
 
@@ -24,34 +24,22 @@ It also supports **importing** existing agent definitions from other formats (Cl
 
 ---
 
-## Team Builder
-
-<!-- TODO: screenshot — tarjeta "Design your first team" del dashboard cuando aún no existen equipos en el workspace. Nombre sugerido: agent-designer-team-builder-card.png -->
-
-The Team Builder is an orchestrator agent that designs your full agent team from scratch:
-
-1. **Reads your project context** — README, `project.profile.yml`, package manifests, directory structure
-2. **Proposes agent explanation cards** — one per agent, with role, domain, intents, scope paths, context packs, skills, and handoffs
-3. **Waits for your confirmation** before proceeding
-4. **Fans out to `@agent-designer` workers** via Engram — one worker per proposed agent, all running in parallel
-5. **Verifies cross-agent coherence** — unique IDs, valid handoff references, no circular delegations
-6. **Writes the team binding file** to `.agent-teams/teams/<teamId>.yml`
-
-> **Recommended:** use a capable model (e.g. Claude Sonnet) for best results. The Team Builder is available directly from the dashboard home page via the **"Design your first team"** card when no teams exist in the workspace.
-
----
-
 ## Using the Agent Designer
 
-### Step 1 — Invoke the agent in Copilot Chat or Claude
+### Step 1 — Invoke the agent
 
-<!-- TODO: screenshot — ventana de Copilot Chat con el mensaje `@agent-designer design an agent...` y la respuesta del agente generando el YAML. Nombre sugerido: agent-designer-chat-invocation.png -->
+<!-- IMAGE: Screenshot — GitHub Copilot Chat or Claude conversation showing the user invoking `@agent-designer design an agent that reviews TypeScript pull requests…` and the agent responding with a fenced YAML code block as output. Suggested filename: agent-designer-chat-invocation.png -->
 
-Address the agent directly with `@agent-designer` (Copilot) or mention it by name in your Claude conversation:
+The invocation syntax depends on your AI tool:
 
-```
-@agent-designer design an agent that reviews TypeScript pull requests for security issues and missing tests
-```
+- **GitHub Copilot Chat** — use the `@agent-designer` chat participant:
+  ```
+  @agent-designer design an agent that reviews TypeScript pull requests for security issues and missing tests
+  ```
+- **Claude Code** — use the `/agent-designer` slash command:
+  ```
+  /agent-designer design an agent that reviews TypeScript pull requests for security issues and missing tests
+  ```
 
 ### Step 2 — Describe what you need
 
@@ -80,7 +68,12 @@ The agent outputs a single YAML code block. You can:
 Provide the content of an existing agent file from any supported format and the Agent Designer will convert it:
 
 ```
+# Copilot
 @agent-designer convert this Claude Code agent to AgentSpec YAML:
+<paste the .md file content here>
+
+# Claude Code
+/agent-designer convert this Claude Code agent to AgentSpec YAML:
 <paste the .md file content here>
 ```
 
@@ -93,7 +86,11 @@ The agent extracts every mappable field, normalises values to AgentSpec conventi
 **Input:**
 
 ```
+# Copilot
 @agent-designer create a worker agent that reviews pull requests in a TypeScript + Node.js backend project
+
+# Claude Code
+/agent-designer create a worker agent that reviews pull requests in a TypeScript + Node.js backend project
 ```
 
 **Output:**
@@ -208,7 +205,7 @@ The `agent-spec-authoring` skill is **bundled with the extension** — no manual
 
 > For the full schema reference including sub-object definitions, see the `SKILL.md` inside `marketplace/skills/agent-spec-authoring/` or the bundled copy in the extension.
 
-<!-- TODO: screenshot — captura del Raw YAML tab dentro del wizard de creación de agente donde se pega el YAML generado. Nombre sugerido: agent-designer-raw-yaml-tab.png -->
+<!-- IMAGE: Screenshot — Agent creation wizard open on the "Raw YAML" tab, showing the generated YAML pasted into the editor with syntax highlighting. Illustrates the workflow of copying from @agent-designer into the wizard. Suggested filename: agent-designer-raw-yaml-tab.png -->
 
 ---
 

@@ -9,7 +9,7 @@
     "message": "Comenzar"
   },
   "homepage.hero.tagline": {
-    "message": "Crea, gestiona y orquesta agentes de IA con GitHub Copilot, Claude Code o Codex dentro de VS Code"
+    "message": "Crea, gestiona y orquesta equipos de agentes IA directamente desde VS Code."
   },
   "homepage.hero.cta.viewOnGitHub": {
     "message": "Ver en GitHub"
@@ -17,11 +17,11 @@
   "homepage.features.title": {
     "message": "Todo lo que necesitas para construir un equipo de agentes IA en VS Code"
   },
-  "homepage.feature.dashboard.title": {
-    "message": "Panel de 12 páginas"
+  "homepage.feature.models.title": {
+    "message": "Soporte multi-modelo"
   },
-  "homepage.feature.dashboard.desc": {
-    "message": "Gestiona todo tu flujo de IA desde un panel embebido: agentes, equipos, habilidades y paquetes de contexto, sin salir de VS Code. Los agentes de IA aparecen en el momento exacto de cada paso del onboarding."
+  "homepage.feature.models.desc": {
+    "message": "Compatible con GitHub Copilot, Claude Code, Codex, Gemini y cualquier modelo compatible con OpenAI — sin dependencias, una sola extensión para todos tus agentes."
   },
   "homepage.feature.wizard.title": {
     "message": "Creación guiada por IA"
@@ -29,11 +29,11 @@
   "homepage.feature.wizard.desc": {
     "message": "Cuatro agentes integrados cubren el ciclo completo: auto-configura el perfil, diseña el equipo, genera las specs de agentes y recibe análisis de mejora — todo desde lenguaje natural."
   },
-  "homepage.feature.router.title": {
-    "message": "Router inteligente"
+  "homepage.feature.memory.title": {
+    "message": "Memoria compartida"
   },
-  "homepage.feature.router.desc": {
-    "message": "Deja de adivinar qué agente usar. El router puntúa tu prompt y delega automáticamente al agente más adecuado según el contexto."
+  "homepage.feature.memory.desc": {
+    "message": "Cada agente — router, orquestador o worker — inyecta automáticamente la memoria compartida de Engram. El contexto sobrevive conversaciones, reinicios de contexto y cambios de sesión."
   },
   "homepage.feature.teams.title": {
     "message": "Equipos y Kits"

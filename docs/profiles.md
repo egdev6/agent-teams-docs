@@ -16,7 +16,7 @@ Dashboard → sidebar → **Profile Editor**
 
 If no profile exists yet, the dashboard home page shows a **Configure project profile** prompt. Click it to open the editor directly.
 
-<img width="898" alt="imagen" src="/img/docs/profiles-wizard.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Profile Editor open in the dashboard showing the seven collapsible accordion sections (Basic Information, Technologies, Paths, Commands, Context Packs, Sync Targets, Gitignore) with one section expanded. Suggested filename: profiles-wizard.png -->
 
 ---
 
@@ -58,6 +58,8 @@ Named command mappings used in template variables (`{{command:build}}`).
 
 Select which context packs are active for this project. These are embedded in every agent that belongs to this project unless overridden at team level.
 
+<!-- IMAGE: Screenshot — Context Packs section inside the Profile Editor showing the Preview panel open, with the character budget progress bar, green "Inlined" packs list, and amber "Referenced" packs list. Suggested filename: profiles-context-packs-preview.png -->
+
 Use the **Preview** button to simulate the budget algorithm before syncing. The preview shows:
 
 - A progress bar with characters used vs the configured `agents_md_budget` (default 8 000 chars)
@@ -97,7 +99,7 @@ Click **Save** at the bottom of the editor. The profile is written to `.agent-te
 
 The **Import / Export** page in the dashboard manages both the global agent catalog (stored in VS Code global storage) and the project profile. This is separate from saving the profile — it lets you back up and share configuration across workspaces.
 
-<img width="1644" alt="imagen" src="/img/docs/profiles-editor.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Import/Export page in the dashboard showing the Catalog (JSON) section with Export/Import/Reset buttons and the Profile (ZIP) section with Export Profile as ZIP and Import Profile from ZIP buttons. Suggested filename: profiles-editor.png -->
 
 ### Catalog (JSON)
 

@@ -14,11 +14,11 @@ The Agent Teams dashboard is an embedded React SPA that opens as a VS Code panel
 
 Click the Agent Teams icon in the VS Code sidebar:
 
-<img width="174" alt="imagen" src="/img/docs/dashboard-icon.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — VS Code sidebar activity bar with the Agent Teams icon highlighted, showing how to locate and click it to open the dashboard panel. Suggested filename: dashboard-icon.png -->
 
 Or use the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<img width="768" alt="imagen" src="/img/docs/dashboard-command.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — VS Code Command Palette with "Agent Teams: Open Dashboard" typed and the matching command entry highlighted in the dropdown list. Suggested filename: dashboard-command.png -->
 
 ---
 
@@ -32,14 +32,14 @@ The main dashboard page shows a live summary of your workspace:
 | **Sync Status** | Breakdown of pending changes (agents to create / update / skip) with a one-click sync button |
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
-| **Configure Your Project** | Shown when no profile exists. Two options: **"Auto-configure with AI"** (opens `@project-configurator`) and **"Configure manually"** (opens the Profile Editor form) |
-| **Design your first team** | Shown when a profile is configured but no teams exist yet. Opens `@team-builder` directly in Copilot Chat. Only visible when there are no teams in the workspace |
-| **Consultant** | Shown when a profile, an active team, and at least one agent all exist. Opens `@consultant` for advisory analysis of your team's coverage and health |
-| **Team Agents** | When an active team exists, shows agents grouped by role. Header has **"Design with AI"** (opens `@agent-designer`) and **"Create manually"** (opens the wizard) |
+| **Configure Your Project** | Shown when no profile exists. Two options: **"Auto-configure with AI"** (opens `@project-configurator` in Copilot / `/project-configurator` in Claude Code) and **"Configure manually"** (opens the Profile Editor form) |
+| **Design your first team** | Shown when a profile is configured but no teams exist yet. Opens `@team-builder` (Copilot) / `/team-builder` (Claude Code). Only visible when there are no teams in the workspace |
+| **Consultant** | Shown when a profile, an active team, and at least one agent all exist. Opens `@consultant` (Copilot) / `/consultant` (Claude Code) for advisory analysis of your team's coverage and health |
+| **Team Agents** | When an active team exists, shows agents grouped by role. Header has **"Design with AI"** (opens `@agent-designer` in Copilot / `/agent-designer` in Claude Code) and **"Create manually"** (opens the wizard) |
 
 > See [AI Setup Flow](ai-setup-flow.md) for a walkthrough of the full AI-guided onboarding experience.
 
-<img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Full Agent Teams dashboard home page showing the Stats card, Sync Status card, Quick Actions card, and the Team Agents section with agents grouped by role. Suggested filename: dashboard-overview.png -->
 
 ---
 
@@ -47,7 +47,7 @@ The main dashboard page shows a live summary of your workspace:
 
 Use the sidebar icons or the Quick Actions card to move between pages:
 
-<img width="1637" alt="imagen" src="/img/docs/dashboard-actions.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Agent Teams dashboard with the sidebar navigation visible, showing all page icons (Profile Editor, Team Manager, Agent Manager, Skills Browser, Context Packs, Import/Export) and the Quick Actions card with shortcut buttons. Suggested filename: dashboard-actions.png -->
 
 ### Profile Editor
 
@@ -96,7 +96,7 @@ The stats card updates automatically when agents or teams change:
 | **Total Teams** | Number of teams registered in the global catalog |
 | **Total Agents** | Number of agents registered in the global catalog |
 
-<img width="1628" alt="imagen" src="/img/docs/dashboard-status.png" style={{ height: "auto" }} />
+<!-- IMAGE: Screenshot — Stats card on the dashboard home page showing Profile Status (active), Team Selected name, Engram status, Skills count, Total Teams, and Total Agents — all with their current values. Suggested filename: dashboard-status.png -->
 
 ---
 
@@ -114,6 +114,8 @@ If Agent Teams finds agents or teams on disk that are **not yet registered** in 
 > **Persistence:** Entities captured this way are stored in the catalog as explicit imports (`source: import`). This means they survive future workspace operations — even if you delete the YAML file from disk, the catalog retains the last known data.
 
 ### Warning badge
+
+<!-- IMAGE: Screenshot — Stats card close-up showing a numbered warning badge (e.g. "2") on the Total Agents tile, with a tooltip open listing the affected file IDs and their validation errors. Suggested filename: dashboard-stats-warning-badge.png -->
 
 If one or more entities have a structural problem that prevents capture, a small numbered badge appears on the **Total Agents** or **Total Teams** stat card.
 

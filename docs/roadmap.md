@@ -10,6 +10,8 @@ Este documento recoge las mejoras identificadas para las próximas releases, pri
 
 ---
 
+<!-- IMAGE: Diagram — Visual roadmap timeline showing v1.2 (completed), v1.3 (in progress), v1.4, and v2.0 milestones with their key deliverables, using color-coding to distinguish completed, in-progress, and planned items. Suggested filename: roadmap-timeline.png -->
+
 ## Criterios de priorización
 
 | Criterio | Descripción |

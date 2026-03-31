@@ -261,4 +261,190 @@ Para configurar servidores MCP en el wizard, abre el **Paso 2 — Workflow y Her
 
 ---
 
+## Target GitHub Copilot
+
+Cuando `github_copilot` está incluido en `targets` del agente (valor por defecto), la sincronización genera un archivo `.md` en `.github/agents/` conforme al formato de agente de VS Code Copilot.
+
+### Frontmatter
+
+| Campo | Descripción |
+|---|---|
+| `name` | Nombre de visualización del agente (del campo `name` del spec) |
+| `description` | Descripción de una línea mostrada en Copilot Chat |
+| `tools` | Lista de herramientas que el agente puede invocar (auto-generada — ver más abajo) |
+| `user-invocable` | `false` para workers con `receivesFrom` (subagentes no destinados a invocación directa) |
+
+### Auto-inyección de herramientas
+
+El campo `tools` del frontmatter se construye automáticamente a partir de tres fuentes:
+
+1. **Herramientas estándar del workflow** — inyectadas por rol para que el agente pueda ejecutar los pasos del body lean:
+
+   | Rol | Auto-inyectado |
+   |---|---|
+   | Todos los roles | `read`, `search` |
+   | Worker | + `edit` |
+   | Orchestrator | + `todo` |
+
+2. **Herramientas Engram** — `engram/*` se inyecta siempre que el agente use Engram (vía `mcpServers` o `tools`). Se añaden herramientas de despacho adicionales según el rol:
+
+   | Rol | Herramientas adicionales |
+   |---|---|
+   | Router, Orchestrator | `egdev6.agent-teams/agent-teams-handoff`, `egdev6.agent-teams/agent-teams-dispatch-parallel` |
+   | Worker con `receivesFrom` | `egdev6.agent-teams/agent-teams-complete-subtask` |
+
+3. **Herramientas explícitas del spec** — cualquier herramienta listada en el campo `tools` del spec (p. ej. `execute`, herramientas MCP personalizadas) se añade al final tras normalización.
+
+> **`complete-subtask` pertenece a los workers, no a los orchestrators.** Los workers que reciben sub-tareas despachadas llaman a `complete-subtask` para señalizar el fan-in de vuelta al orchestrator. El orchestrator despacha y espera — nunca llama `complete-subtask` él mismo.
+
+### Memoria
+
+La memoria persistente para los agentes de Copilot la proporciona **Engram MCP**, configurado vía `.vscode/mcp.json`. El frontmatter `tools` incluye `engram/*` automáticamente cuando Engram está activo. Los pasos del body siguen el mismo patrón condensado de sesión que el target Claude Code (`mem_session_start` al inicio, `mem_save` + `mem_session_end` al final).
+
+### Estructura del body
+
+El body generado usa el mismo formato lean que el target Claude Code:
+
+```
+You are the <name> agent.
+
+## Role
+- <expertise o scope topics>
+
+## Constraints          ← solo si está definido en el spec
+- <reglas always>
+- Do not <reglas never>
+- Escalate when: <reglas escalate>
+
+## Approach
+1. Start Engram session: call `mem_session_start`, then `mem_context` to load recent context.
+2–N. <pasos del workflow>
+N+1. Save to Engram: call `mem_save` with key from `mem_suggest_topic_key`, then `mem_session_end`.
+
+## Delegates to         ← solo para orchestrators y routers
+- `<agent-id>`
+
+## Output Format
+- <bullets derivados de output.template>
+```
+
+Los orchestrators reciben además un paso de despacho inyectado tras "Assign each sub-task":
+
+```
+For each delegation: use `egdev6.agent-teams/agent-teams-handoff` (single agent) or
+`egdev6.agent-teams/agent-teams-dispatch-parallel` (parallel) — do NOT respond until
+all invocations complete.
+```
+
+Y la sección "Delegates to" incluye instrucciones de despacho con ambas herramientas, más una nota de que son los workers (no el orchestrator) quienes llaman a `complete-subtask` al terminar.
+
+---
+
+## Target Claude Code
+
+Cuando `claude_code` está incluido en `targets` del agente, la sincronización genera un archivo `.md` en `.claude/agents/` conforme al formato de subagente de Claude Code.
+
+### Diferencias respecto al formato GitHub Copilot
+
+| Aspecto | GitHub Copilot | Claude Code |
+|---|---|---|
+| Frontmatter `name` | Nombre de visualización | Slug (campo `id`) — usado para `@agent-<name>` y `--agent` |
+| Body | System prompt lean: Role → Constraints → Approach → Output Format | System prompt lean: Role → Constraints → Approach → Output Format |
+| Frontmatter `tools` | Auto-inyectado por rol + Engram + tools del spec | Solo se emite si está declarado explícitamente en `tools` (traducido a nombres Claude) |
+| Herramientas de despacho | `agent-teams-handoff`, `agent-teams-dispatch-parallel` | `dispatch_task` (Claude Code SDK) |
+| Fan-in | `agent-teams-complete-subtask` (worker) | `complete_subtask` (worker) |
+| Campo `id` | Emitido | No emitido (Claude Code no lo reconoce) |
+| Config Engram | `.vscode/mcp.json` (workspace) | `mcpServers` en el frontmatter del agente (scoped al subagente) |
+
+### Campos específicos de Claude Code
+
+Estos campos solo se usan al sincronizar al target `claude_code`. Todos son opcionales — omitirlos hace que Claude Code herede el valor por defecto de la sesión.
+
+| Campo | Tipo | Emitido como | Notas |
+|---|---|---|---|
+| `claude_model` | `inherit \| sonnet \| opus \| haiku` | `model` | Omitir o `inherit` para usar el modelo de la sesión |
+| `claude_max_turns` | entero ≥ 1 | `maxTurns` | Omitir para usar el valor por defecto de Claude Code |
+| `claude_effort` | `low \| medium \| high \| max` | `effort` | Omitir para heredar de la sesión |
+| `claude_permission_mode` | `default \| acceptEdits \| dontAsk \| bypassPermissions` | `permissionMode` | Omitir para usar `default` |
+| `claude_disallowed_tools` | string[] | `disallowedTools` | Herramientas a denegar sobre el conjunto heredado |
+| `claude_background` | boolean | `background` | Ejecutar el subagente como tarea en segundo plano |
+| `claude_mcp_servers` | object[] | `mcpServers` | Servidores MCP con scope solo a este subagente (ver más abajo) |
+
+> **`claude_mcp_servers` vs `mcpServers`:** `mcpServers` fusiona servidores en el archivo de configuración del workspace (`.mcp.json`). `claude_mcp_servers` scopea servidores solo a este subagente — aparecen en el campo `mcpServers` del frontmatter del agente y se conectan al iniciar el subagente y se desconectan al terminar.
+
+#### Campos de `claude_mcp_servers`
+
+| Campo | Requerido | Descripción |
+|---|---|---|
+| `name` | ✅ | Nombre / clave del servidor |
+| `type` | — | `stdio \| http \| sse \| ws` |
+| `command` | — | Ejecutable a lanzar |
+| `args` | — | Argumentos de línea de comandos |
+| `env` | — | Variables de entorno |
+
+### Traducción de nombres de herramientas
+
+El wizard y el spec YAML usan nombres de herramientas de VS Code. Durante la sincronización a `claude_code`, se traducen automáticamente a sus equivalentes de Claude Code:
+
+| Nombre en spec / wizard | Herramienta(s) Claude Code emitidas |
+|---|---|
+| `read` | `Read` |
+| `edit` | `Edit` |
+| `search` | `Grep`, `Glob` |
+| `execute` | `Bash` |
+| `browser` | `WebFetch` |
+| `web` | `WebSearch` |
+| `agent` | `Agent` |
+| `todo` | `TodoWrite` |
+| `engram/*`, `egdev6.*`, `complete-subtask`, `vscode` | *(omitidos — herramientas MCP o exclusivas de extensión)* |
+
+Si no hay herramientas traducibles, la línea `tools:` del frontmatter se omite completamente y el subagente hereda todas las herramientas disponibles.
+
+### Memoria
+
+La memoria persistente para los agentes de Claude Code la proporciona exclusivamente **Engram MCP**. El campo nativo `memory:` de Claude Code no se usa — Engram cubre la misma capacidad con características más ricas (búsqueda semántica, contexto entre agentes, seguimiento de sesiones).
+
+Cuando Engram está activo, el body generado incluye pasos de sesión condensados:
+- **Inicio:** `mem_session_start` + `mem_context`
+- **Fin:** `mem_save` + `mem_session_end`
+
+### Estructura del body de Claude Code
+
+El body generado sigue el mismo patrón lean que el target GitHub Copilot (ver arriba), con estas diferencias en los nombres de herramientas:
+
+- Despacho: `dispatch_task` MCP tool (en lugar de `agent-teams-handoff` / `agent-teams-dispatch-parallel`)
+- Fan-in: `complete_subtask` (llamado por los workers, en lugar de `agent-teams-complete-subtask`)
+- Engram scoped vía `mcpServers` en el frontmatter del agente (no requiere `.vscode/mcp.json`)
+
+Ejemplo de spec para un worker Claude Code con todos los campos opcionales:
+
+```yaml
+id: engram-dashboard-worker
+name: Engram Dashboard Worker
+role: worker
+description: Use proactively for React/TypeScript work in the Engram dashboard, especially stats views, observation filtering, and files under src/pages/engram-dashboard/.
+claude_model: sonnet
+claude_max_turns: 10
+claude_effort: high
+claude_permission_mode: acceptEdits
+claude_disallowed_tools:
+  - Bash
+claude_background: false
+targets:
+  - claude_code
+```
+
+`claude_mcp_servers` ejemplo (scoped al subagente, no fusionado en la config del workspace):
+
+```yaml
+claude_mcp_servers:
+  - name: my-data-server
+    type: stdio
+    command: npx -y my-data-mcp
+    env:
+      API_KEY: "${MY_API_KEY}"
+```
+
+---
+
 

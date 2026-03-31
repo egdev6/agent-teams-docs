@@ -28,10 +28,10 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 | **Estado del Sync** | Desglose de cambios pendientes (agentes a crear / actualizar / omitir) con botón de sync directo |
 | **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
 | **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
-| **Configura tu proyecto** | Visible cuando no existe ningún perfil. Dos opciones: **"Auto-configurar con IA"** (abre `@project-configurator`) y **"Configurar manualmente"** (abre el formulario del Profile Editor) |
-| **Diseña tu primer equipo** | Visible cuando el perfil está configurado pero no existe ningún equipo. Abre `@team-builder` directamente en Copilot Chat. Solo aparece cuando no hay ningún equipo en el workspace |
-| **Consultant** | Visible cuando existen perfil, equipo activo y al menos un agente. Abre `@consultant` para análisis de asesoría sobre la cobertura y salud del equipo |
-| **Team Agents** | Cuando existe un equipo activo, muestra los agentes agrupados por rol. La cabecera incluye **"Diseñar con IA"** (abre `@agent-designer`) y **"Crear manualmente"** (abre el wizard) |
+| **Configura tu proyecto** | Visible cuando no existe ningún perfil. Dos opciones: **"Auto-configurar con IA"** (abre `@project-configurator` en Copilot / `/project-configurator` en Claude Code) y **"Configurar manualmente"** (abre el formulario del Profile Editor) |
+| **Diseña tu primer equipo** | Visible cuando el perfil está configurado pero no existe ningún equipo. Abre `@team-builder` (Copilot) / `/team-builder` (Claude Code). Solo aparece cuando no hay ningún equipo en el workspace |
+| **Consultant** | Visible cuando existen perfil, equipo activo y al menos un agente. Abre `@consultant` (Copilot) / `/consultant` (Claude Code) para análisis de asesoría sobre la cobertura y salud del equipo |
+| **Team Agents** | Cuando existe un equipo activo, muestra los agentes agrupados por rol. La cabecera incluye **"Diseñar con IA"** (abre `@agent-designer` en Copilot / `/agent-designer` en Claude Code) y **"Crear manualmente"** (abre el wizard) |
 
 > Consulta [Flujo de Configuración con IA](ai-setup-flow) para un recorrido completo por la experiencia de onboarding guiada por IA.
 

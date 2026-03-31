@@ -6,9 +6,7 @@
 
 </div>
 
-<div style={{ textAlign: "center" }}>
-   <img width="1202" height="526" alt="agent-teams" src="https://github.com/user-attachments/assets/03e07e7e-a991-4b84-8395-c29acbeebb14" />
-</div>
+<!-- IMAGE: Hero banner — Captura de pantalla o composición visual a ancho completo mostrando el dashboard de Agent Teams abierto en VS Code con un equipo activo, agentes listados por rol y la tarjeta Sync Status visible. Debe transmitir el producto completo de un vistazo (1202×526px). Nombre sugerido: agent-teams-hero.png -->
 
 # Agent Teams
 
@@ -76,6 +74,8 @@ Estamos en fase beta activa. Tu feedback da forma a la release estable de v1.0.
 Consulta la [Guía de Instalación](docs/installation.es.md) para detalles completos y resolución de problemas.
 
 ---
+
+<!-- IMAGE: GIF o vídeo corto — Grabación de pantalla del flujo principal: abrir el dashboard → crear un agente con el wizard → asignar skills → sincronizar a los targets → usar @router en Copilot Chat. Aproximadamente 30–60 segundos. Nombre sugerido: agent-teams-demo.gif -->
 
 ## 📚 Documentación
 
