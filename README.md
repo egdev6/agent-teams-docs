@@ -8,7 +8,9 @@
 
 <!-- IMAGE: Hero banner — Full-width screenshot or composed graphic showing the Agent Teams dashboard open in VS Code with an active team, agents listed by role, and the Sync Status card visible. Should convey the full product at a glance (1202×526px). Suggested filename: agent-teams-hero.png -->
 
-# Age**Status:***Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
+# Agent Teams
+
+**Status:** 🧪 Beta | **Released:** Marzo 2026 | [📖 Documentation site](https://agent-teams-docs.netlify.app)
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 
