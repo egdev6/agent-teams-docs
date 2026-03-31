@@ -32,7 +32,7 @@ Click **Create** to save the team. The file `.agent-teams/teams/<id>.yml` is cre
 
 Dashboard → **Team Manager** lists all teams with their name, description, agent count, and active status. Click any team card to open it.
 
-The page header has two action buttons: **Create Team** (opens the wizard) and **Design a new team with AI** (opens `@team-builder` in Copilot Chat).
+The page header has two action buttons: **Create Team** (opens the wizard) and **Design a new team with AI** (opens `@agent-designer` in Copilot Chat).
 
 Teams whose source spec was modified after the last successful sync show a **Not synced** badge in the Team Manager. Sync the team to clear the badge.
 

@@ -95,7 +95,7 @@ The "Design with AI" button is the primary action in the Team Agents card header
 
 `@agent-designer` reads your workspace context — existing agents, installed skills, and the project profile generated in step 1 — and produces a focused, validated AgentSpec. Start with one or two agents covering your core workflows; you can always add more later guided by `@consultant`.
 
-See [Agent Designer](agent-designer.md#agent-designer) for the full workflow.
+See [Agent Designer](agent-designer.md#using-the-agent-designer) for the full workflow.
 
 ---
 

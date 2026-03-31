@@ -49,7 +49,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         { type: 'doc', id: 'ai-setup-flow', label: 'AI Setup Flow' },
-        { type: 'doc', id: 'agent-designer', label: 'Agent Designer & Team Builder' },
+        { type: 'doc', id: 'agent-designer', label: 'Agent Designer' },
       ],
     },
   ],

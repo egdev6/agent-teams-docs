@@ -14,7 +14,7 @@ El encabezado de la página Agent Manager también incluye el botón **Design a 
 
 El wizard te guía a través de 6 pasos:
 
-<img width="1171" alt="imagen" src="/img/docs/agents-overview.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Wizard de creación de agentes mostrando las 6 pestañas de pasos (Identidad, Alcance, Workflow y Herramientas, Skills, Reglas, Salida y Contexto) con la vista previa YAML en vivo en el panel lateral derecho. Nombre sugerido: agents-overview.png -->
 
 ### Paso 0 — Identidad
 
@@ -107,7 +107,7 @@ El encabezado de la página tiene dos botones: **Create Agent** (abre el wizard)
 2. Los 6 pasos del wizard están disponibles para modificación
 3. Guarda — los cambios se escriben de vuelta en el archivo YAML de la spec
 
-<img width="1183" alt="imagen" src="/img/docs/agents-forms.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Página Agent Manager mostrando la lista de agentes organizados por pestañas de rol (Router, Orchestrator, Worker), con una tarjeta de agente expandida mostrando su botón Edit y la insignia "No sincronizado". Nombre sugerido: agents-forms.png -->
 
 ### Insignia "No sincronizado"
 
@@ -152,7 +152,7 @@ Usa `@router` para que la extensión seleccione automáticamente el agente más 
 
 El router puntúa los agentes por palabras clave de intención, patrones de ruta de archivo, vocabulario de dominio y rol — y delega al que obtiene mayor puntuación.
 
-<img width="535" alt="imagen" src="/img/docs/agents-status.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Panel de GitHub Copilot Chat en VS Code mostrando @router y un agente personalizado (@my-agent) como participantes de chat seleccionables, con una conversación activa donde el router delega a un worker. Nombre sugerido: agents-status.png -->
 
 ---
 

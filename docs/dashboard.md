@@ -33,7 +33,7 @@ The main dashboard page shows a live summary of your workspace:
 | **Engram Banner** | First-time configuration prompt — only shown if the Engram memory extension is not set up |
 | **Quick Actions** | Shortcut buttons to the most common pages (Create Agent, Create Team, Open Profile) |
 | **Configure Your Project** | Shown when no profile exists. Two options: **"Auto-configure with AI"** (opens `@project-configurator` in Copilot / `/project-configurator` in Claude Code) and **"Configure manually"** (opens the Profile Editor form) |
-| **Design your first team** | Shown when a profile is configured but no teams exist yet. Opens `@team-builder` (Copilot) / `/team-builder` (Claude Code). Only visible when there are no teams in the workspace |
+| **Design your first team** | Shown when a profile is configured but no teams exist yet. Opens `@agent-designer` (Copilot) / `/agent-designer` (Claude Code). Only visible when there are no teams in the workspace |
 | **Consultant** | Shown when a profile, an active team, and at least one agent all exist. Opens `@consultant` (Copilot) / `/consultant` (Claude Code) for advisory analysis of your team's coverage and health |
 | **Team Agents** | When an active team exists, shows agents grouped by role. Header has **"Design with AI"** (opens `@agent-designer` in Copilot / `/agent-designer` in Claude Code) and **"Create manually"** (opens the wizard) |
 

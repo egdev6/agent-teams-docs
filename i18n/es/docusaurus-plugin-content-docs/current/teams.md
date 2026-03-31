@@ -10,7 +10,7 @@ Un equipo es una selección curada de agentes — provenientes de kits y/o specs
 
 Dashboard → **Team Manager** → **Create Team**, o usa la tarjeta de **Acciones Rápidas** en la página de inicio.
 
-<img width="1160" alt="imagen" src="/img/docs/teams-overview.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Página Team Manager listando todos los equipos con su nombre, descripción, número de agentes y estado activo. Los botones Create Team y Design a new team with AI son visibles en el encabezado. Nombre sugerido: teams-overview.png -->
 
 El wizard tiene tres secciones:
 
@@ -28,7 +28,7 @@ Haz clic en **Create** para guardar el equipo. El archivo `.agent-teams/teams/<i
 
 Dashboard → **Team Manager** lista todos los equipos con su nombre, descripción, número de agentes y estado activo. Haz clic en cualquier tarjeta de equipo para abrirlo.
 
-El encabezado de la página tiene dos botones: **Create Team** (abre el wizard) y **Design a new team with AI** (abre `@team-builder` en Copilot Chat).
+El encabezado de la página tiene dos botones: **Create Team** (abre el wizard) y **Design a new team with AI** (abre `@agent-designer` en Copilot Chat).
 
 Los equipos cuya especificación de origen fue modificada después del último sync exitoso muestran una insignia **No sincronizado** en el Team Manager. Sincroniza el equipo para eliminar la insignia.
 
@@ -45,7 +45,7 @@ La página de edición ofrece cuatro acciones:
 | **Delete** | Elimina permanentemente este equipo |
 | **Set as Active** | Marca este equipo como equipo activo para las operaciones de sync |
 
-<img width="1320" alt="imagen" src="/img/docs/teams-creation.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Página de edición de equipo mostrando la sección Básicos (nombre y descripción), la sección Miembros con la lista de agentes seleccionables, y los botones de acción (Save, Cancel, Delete, Set as Active) al final. Nombre sugerido: teams-creation.png -->
 
 ### Establecer el Equipo Activo
 
@@ -67,7 +67,7 @@ El sync resuelve la composición completa (valores por defecto del kit + perfil 
    - `skip` — no se detectaron cambios, el archivo se deja como está
 2. Haz clic en **Sync** para aplicar todos los cambios
 
-<img width="1327" alt="imagen" src="/img/docs/teams-sync.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Tarjeta Sync Status en la página de inicio del dashboard mostrando el desglose de cambios pendientes con conteos de create/update/skip por archivo, y el botón Sync listo para aplicarlos. Nombre sugerido: teams-sync.png -->
 
 El dashboard detecta cambios en los archivos de agentes y equipos automáticamente — la tarjeta de sync status se actualiza cada vez que guardas un archivo.
 

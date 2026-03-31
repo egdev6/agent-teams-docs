@@ -10,11 +10,11 @@ El dashboard de Agent Teams es una SPA React embebida que se abre como panel de 
 
 Haz clic en el icono de Agent Teams en el panel lateral de VS Code:
 
-<img width="174" alt="imagen" src="/img/docs/dashboard-icon.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Barra de actividad del panel lateral de VS Code con el icono de Agent Teams resaltado, mostrando cómo localizarlo y hacer clic para abrir el panel del dashboard. Nombre sugerido: dashboard-icon.png -->
 
 O usa la Paleta de Comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **`Agent Teams: Open Dashboard`**
 
-<img width="768" alt="imagen" src="/img/docs/dashboard-command.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Paleta de Comandos de VS Code con "Agent Teams: Open Dashboard" escrito y la entrada de comando correspondiente resaltada en la lista desplegable. Nombre sugerido: dashboard-command.png -->
 
 ---
 
@@ -29,13 +29,13 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 | **Banner de Engram** | Aviso de configuración inicial — solo se muestra si la extensión de memoria Engram no está configurada |
 | **Acciones Rápidas** | Botones de acceso rápido a las páginas más comunes (Crear Agente, Crear Equipo, Abrir Perfil) |
 | **Configura tu proyecto** | Visible cuando no existe ningún perfil. Dos opciones: **"Auto-configurar con IA"** (abre `@project-configurator` en Copilot / `/project-configurator` en Claude Code) y **"Configurar manualmente"** (abre el formulario del Profile Editor) |
-| **Diseña tu primer equipo** | Visible cuando el perfil está configurado pero no existe ningún equipo. Abre `@team-builder` (Copilot) / `/team-builder` (Claude Code). Solo aparece cuando no hay ningún equipo en el workspace |
+| **Diseña tu primer equipo** | Visible cuando el perfil está configurado pero no existe ningún equipo. Abre `@agent-designer` (Copilot) / `/agent-designer` (Claude Code). Solo aparece cuando no hay ningún equipo en el workspace |
 | **Consultant** | Visible cuando existen perfil, equipo activo y al menos un agente. Abre `@consultant` (Copilot) / `/consultant` (Claude Code) para análisis de asesoría sobre la cobertura y salud del equipo |
 | **Team Agents** | Cuando existe un equipo activo, muestra los agentes agrupados por rol. La cabecera incluye **"Diseñar con IA"** (abre `@agent-designer` en Copilot / `/agent-designer` en Claude Code) y **"Crear manualmente"** (abre el wizard) |
 
 > Consulta [Flujo de Configuración con IA](ai-setup-flow) para un recorrido completo por la experiencia de onboarding guiada por IA.
 
-<img width="1668" alt="imagen" src="/img/docs/dashboard-overview.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Página de inicio completa del dashboard de Agent Teams mostrando la tarjeta de Estadísticas, la tarjeta de Estado del Sync, la tarjeta de Acciones Rápidas y la sección Team Agents con los agentes agrupados por rol. Nombre sugerido: dashboard-overview.png -->
 
 ---
 
@@ -43,7 +43,7 @@ La página principal del dashboard muestra un resumen en tiempo real del workspa
 
 Usa los iconos del panel lateral o las Acciones Rápidas para moverte entre páginas:
 
-<img width="1637" alt="imagen" src="/img/docs/dashboard-actions.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Dashboard de Agent Teams con la navegación lateral visible, mostrando todos los iconos de página (Profile Editor, Team Manager, Agent Manager, Skills Browser, Context Packs, Import/Export) y la tarjeta de Acciones Rápidas con sus botones de acceso directo. Nombre sugerido: dashboard-actions.png -->
 
 ### Profile Editor
 
@@ -88,7 +88,7 @@ La tarjeta de estadísticas se actualiza automáticamente cuando cambian agentes
 - **Estado del sync** — `Al día` o `X cambios pendientes`.
 - **Engram** — `Conectado` o `No configurado`.
 
-<img width="1628" alt="imagen" src="/img/docs/dashboard-status.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Tarjeta de estadísticas en la página de inicio del dashboard mostrando el equipo activo, total de agentes, estado del sync y estado de Engram con sus valores actuales. Nombre sugerido: dashboard-status.png -->
 
 ---
 

@@ -91,7 +91,7 @@ El botón "Diseñar con IA" es la acción primaria en la cabecera de la tarjeta 
 
 `@agent-designer` lee el contexto de tu workspace — agentes existentes, skills instaladas y el perfil del proyecto generado en el paso 1 — y produce un AgentSpec enfocado y validado. Empieza con uno o dos agentes que cubran tus flujos de trabajo principales; podrás añadir más después guiado por `@consultant`.
 
-Ver [Diseñador de Agentes](agent-designer.md#diseñador-de-agentes) para el flujo completo.
+Ver [Diseñador de Agentes](agent-designer.md#usar-el-diseñador-de-agentes) para el flujo completo.
 
 ---
 

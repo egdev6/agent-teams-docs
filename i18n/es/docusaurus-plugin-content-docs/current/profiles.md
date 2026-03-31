@@ -12,7 +12,7 @@ Dashboard → panel lateral → **Profile Editor**
 
 Si no existe ningún perfil todavía, la página de inicio del dashboard muestra un aviso **Configura el perfil del proyecto**. Haz clic en él para abrir el editor directamente.
 
-<img width="898" alt="imagen" src="/img/docs/profiles-wizard-es.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Profile Editor abierto en el dashboard mostrando las siete secciones de acordeón desplegables (Información Básica, Tecnologías, Rutas, Comandos, Context Packs, Destinos de Sync, Gitignore) con una sección expandida. Nombre sugerido: profiles-wizard-es.png -->
 
 ---
 
@@ -93,7 +93,7 @@ Haz clic en **Save** al final del editor. El perfil se escribe en `.agent-teams/
 
 La página **Import / Export** del dashboard gestiona tanto el catálogo global de agentes (almacenado en el almacenamiento global de VS Code) como el perfil del proyecto. Esto es independiente de guardar el perfil — permite hacer copias de seguridad y compartir configuración entre workspaces.
 
-<img width="1644" alt="imagen" src="/img/docs/profiles-editor.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Página Import/Export del dashboard mostrando la sección Catálogo (JSON) con los botones Export/Import/Reset y la sección Perfil (ZIP) con los botones Export Profile as ZIP e Import Profile from ZIP. Nombre sugerido: profiles-editor.png -->
 
 ### Catálogo (JSON)
 

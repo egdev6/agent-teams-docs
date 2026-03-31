@@ -26,7 +26,7 @@
 7. Navega hasta el archivo descargado y selecciónalo.
 8. Haz clic en **Reload** cuando se te solicite.
 
-<img width="782" alt="imagen" src="/img/docs/installation-vsix.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Panel de Extensions de VS Code con el menú ··· abierto y "Install from VSIX…" resaltado, y el selector de archivos apuntando al archivo .vsix descargado. Nombre sugerido: installation-vsix.png -->
 
 ---
 
@@ -40,7 +40,7 @@ Tras la instalación:
 2. Escribe y ejecuta **`Agent Teams: Open Dashboard`**.
 3. El panel de Agent Teams se abre en el lado derecho del editor.
 
-<img width="186" alt="imagen" src="/img/docs/installation-open-dashboard-es.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Paleta de Comandos de VS Code con "Agent Teams: Open Dashboard" escrito y seleccionado, mostrando el comando de la extensión. Nombre sugerido: installation-open-dashboard-es.png -->
 
 ---
 
@@ -55,7 +55,7 @@ Para usar Agent Teams en un proyecto, inicializa primero un perfil:
    - Define comandos con nombre (p. ej. `build`, `test`, `lint`).
 3. Se crea el archivo `.agent-teams/project.profile.yml` en la raíz del workspace.
 
-<img width="898" alt="imagen" src="/img/docs/installation-init-profile-es.png" style={{ height: "auto" }} />
+<!-- IMAGEN: Captura — Wizard de inicialización de perfil de Agent Teams abierto en el panel de VS Code, mostrando el selector de tecnologías, los mapeos de rutas y los campos de comandos siendo rellenados para un nuevo proyecto. Nombre sugerido: installation-init-profile-es.png -->
 
 ---
 

@@ -6,7 +6,7 @@ import Heading from '@theme/Heading';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 import clsx from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
-import { Bot, Layers, Database, BrainCircuit, Blocks, Package, MessageSquareText, Workflow, Puzzle, Brain } from 'lucide-react';
+import { Bot, Layers, Database, BrainCircuit, Blocks, Package, MessageSquareText, Workflow, Puzzle, Brain, GitMerge } from 'lucide-react';
 
 import styles from './index.module.css';
 import FeatureCard from '../components/FeatureCard';
