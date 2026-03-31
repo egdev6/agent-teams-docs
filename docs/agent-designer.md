@@ -4,7 +4,7 @@ description: Agent Designer is a built-in agent that generates valid AgentSpec Y
 
 # Agent Designer
 
-**Status:** ✅ Available
+**Status:** Coming soon
 
 `@agent-designer` is a built-in agent bundled with the extension. It is available immediately after installation — no marketplace copy or manual setup required.
 

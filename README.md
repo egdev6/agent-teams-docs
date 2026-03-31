@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -8,9 +8,7 @@
 
 <!-- IMAGE: Hero banner — Full-width screenshot or composed graphic showing the Agent Teams dashboard open in VS Code with an active team, agents listed by role, and the Sync Status card visible. Should convey the full product at a glance (1202×526px). Suggested filename: agent-teams-hero.png -->
 
-# Agent Teams
-
-**Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
+# Age**Status:***Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
 
 🇬🇧 English | [🇪🇸 Español](README.es.md)
 
@@ -135,4 +133,8 @@ Thanks to everyone who has contributed to this project!
 [issues-shield]: https://img.shields.io/github/issues/egdev6/agent-teams-docs.svg?style=for-the-badge
 [issues-url]: https://github.com/egdev6/agent-teams-docs/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/egdev6
+ds.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/egdev6
+elds.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/egdev6

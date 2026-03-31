@@ -4,7 +4,7 @@ description: El Diseñador de Agentes es un agente integrado que genera AgentSpe
 
 # Diseñador de Agentes
 
-**Estado:** ✅ Disponible
+**Estado:** Proximamente
 
 `@agent-designer` es un agente integrado incluido con la extensión. Está disponible inmediatamente después de la instalación — no requiere copia desde el marketplace ni configuración manual.
 
