@@ -31,7 +31,7 @@ We are in active beta. Your feedback shapes the v1.0 stable release.
 5. Select the downloaded `.vsix` file.
 6. Reload VS Code when prompted.
 
-> **Requires:** VS Code ≥ 1.85.0 and Node.js ≥ 18.0.0
+> **Requires:** VS Code ≥ 1.113.0 and Node.js ≥ 18.0.0
 
 ### What to Test
 
