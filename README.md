@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
   
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -12,15 +12,15 @@
 
 # Agent Teams
 
-**Status:** 🧪 Beta | **Released:** March 2026 | [📖 Documentation Site](https://agent-teams-docs.netlify.app)
+**Status:** ðŸ§ª Beta | **Released:** March 2026 | [ðŸ“– Documentation Site](https://agent-teams-docs.netlify.app)
 
-🇬🇧 English | [🇪🇸 Español](README.es.md)
+ðŸ‡¬ðŸ‡§ English | [ðŸ‡ªðŸ‡¸ EspaÃ±ol](README.es.md)
 
-Complete system for creating, managing, and orchestrating AI agents with GitHub Copilot, Claude code or Codex inside VS Code. Build reusable agent kits, configure project profiles, and run a 12-page embedded dashboard — all without leaving your editor.
+Complete system for creating, managing, and orchestrating AI agents with GitHub Copilot, Claude code or Codex inside VS Code. Build reusable agent kits, configure project profiles, and run a 12-page embedded dashboard â€” all without leaving your editor.
 
 ---
 
-## 🧪 Beta Testing
+## ðŸ§ª Beta Testing
 
 We are in active beta. Your feedback shapes the v1.0 stable release.
 
@@ -29,11 +29,11 @@ We are in active beta. Your feedback shapes the v1.0 stable release.
 1. Download the latest `.vsix` file from the [Releases](https://github.com/egdev6/agent-teams-docs/releases) page.
 2. Open **VS Code**.
 3. Go to the **Extensions** panel (`Ctrl+Shift+X` / `Cmd+Shift+X`).
-4. Click the **`···`** menu (top-right of the panel) → **Install from VSIX…**
+4. Click the **`Â·Â·Â·`** menu (top-right of the panel) â†’ **Install from VSIXâ€¦**
 5. Select the downloaded `.vsix` file.
 6. Reload VS Code when prompted.
 
-> **Requires:** VS Code ≥ 1.85.0 and Node.js ≥ 18.0.0
+> **Requires:** VS Code â‰¥ 1.85.0 and Node.js â‰¥ 18.0.0
 
 ### What to Test
 
@@ -41,13 +41,13 @@ Focused areas we want feedback on:
 
 | Area | What to try | Priority |
 |---|---|---|
-| **Dashboard** | Open the panel, navigate all pages, check the stats card | 🔴 High |
-| **Agents** | Use the wizard to create an agent, edit it, reload | 🔴 High |
-| **Teams** | Create a team, assign agents, run sync to `.github/agents/` | 🔴 High |
-| **Chat Participants** | Use `@router` and a direct `@<agentId>` in Copilot Chat | 🔴 High |
-| **Profiles** | Open Profile Editor, use auto-detect, fill all sections, save | 🟡 Medium |
-| **Skills Browser** | Open the skills browser, browse categories, install a community skill | 🟡 Medium |
-| **Context Packs** | Toggle packs, adjust priorities, create a new pack, import markdown | 🟡 Medium |
+| **Dashboard** | Open the panel, navigate all pages, check the stats card | ðŸ”´ High |
+| **Agents** | Use the wizard to create an agent, edit it, reload | ðŸ”´ High |
+| **Teams** | Create a team, assign agents, run sync to `.github/agents/` | ðŸ”´ High |
+| **Chat Participants** | Use `@router` and a direct `@<agentId>` in Copilot Chat | ðŸ”´ High |
+| **Profiles** | Open Profile Editor, use auto-detect, fill all sections, save | ðŸŸ¡ Medium |
+| **Skills Browser** | Open the skills browser, browse categories, install a community skill | ðŸŸ¡ Medium |
+| **Context Packs** | Toggle packs, adjust priorities, create a new pack, import markdown | ðŸŸ¡ Medium |
 
 ### How to Report a Bug
 
@@ -61,49 +61,49 @@ Focused areas we want feedback on:
 
 ---
 
-## 📦 Quick Installation
+## ðŸ“¦ Quick Installation
 
 | Requirement | Minimum version |
 |---|---|
-| VS Code | 1.85.0 |
+| VS Code | 1.113.0 |
 | Node.js | 18.0.0 |
 
 1. Download the `.vsix` from [Releases](https://github.com/egdev6/agent-teams-docs/releases).
-2. In VS Code: **Extensions** → **`···`** → **Install from VSIX…** → select the file.
+2. In VS Code: **Extensions** â†’ **`Â·Â·Â·`** â†’ **Install from VSIXâ€¦** â†’ select the file.
 3. Reload VS Code.
-4. Open Command Palette (`Ctrl+Shift+P`) → run **`Agent Teams: Open Dashboard`**.
+4. Open Command Palette (`Ctrl+Shift+P`) â†’ run **`Agent Teams: Open Dashboard`**.
 
 See the [Installation Guide](docs/installation.md) for full details and troubleshooting.
 
 ---
 
-## 📚 Documentation
+## ðŸ“š Documentation
 
 | Guide | Description | Status |
 |---|---|---|
-| [Installation](docs/installation.md) | Requirements, VSIX install, troubleshooting | ✅ |
-| [Dashboard](docs/dashboard.md) | Panel overview, navigation, first-time setup workflow | ✅ |
-| [Agents](docs/agents.md) | Create agents with the 6-step wizard, edit, manage, sync | ✅ |
-| [Teams](docs/teams.md) | Create and configure teams, set active team, sync | ✅ |
-| [Profile Editor](docs/profiles.md) | Project profile, auto-detect technologies, import/export | ✅ |
-| [Skills Browser](docs/skills-browser.md) | Browse and install skills, community registry | ✅ |
-| [Context Packs](docs/context-packs.md) | Manage context packs, priorities, import markdown | ✅ |
-| [Agent Architecture](docs/agent-architecture.md) | Ideal multi-agent pipeline: prompt → router → orchestrator → worker | ✅ |
+| [Installation](docs/installation.md) | Requirements, VSIX install, troubleshooting | âœ… |
+| [Dashboard](docs/dashboard.md) | Panel overview, navigation, first-time setup workflow | âœ… |
+| [Agents](docs/agents.md) | Create agents with the 6-step wizard, edit, manage, sync | âœ… |
+| [Teams](docs/teams.md) | Create and configure teams, set active team, sync | âœ… |
+| [Profile Editor](docs/profiles.md) | Project profile, auto-detect technologies, import/export | âœ… |
+| [Skills Browser](docs/skills-browser.md) | Browse and install skills, community registry | âœ… |
+| [Context Packs](docs/context-packs.md) | Manage context packs, priorities, import markdown | âœ… |
+| [Agent Architecture](docs/agent-architecture.md) | Ideal multi-agent pipeline: prompt â†’ router â†’ orchestrator â†’ worker | âœ… |
 
 ---
 
-## 🗺️ Project Status
+## ðŸ—ºï¸ Project Status
 
-**Current version:** 1.0.0 (Beta) — March 2026
+**Current version:** 1.0.0 (Beta) â€” March 2026
 
 ### What's working
 
 - Embedded 12-page React dashboard (SPA inside VS Code webview)
-- Kits & Teams three-layer architecture (Core → Kits → Profile → Team)
+- Kits & Teams three-layer architecture (Core â†’ Kits â†’ Profile â†’ Team)
 - Agent Composer with 4 merge strategies + dry-run mode
 - Dynamic Context Pack template engine with variables, conditionals, and loops
 - Skills Registry with 9 categories and role-based recommendations
-- Dynamic chat participants — one per loaded agent — via Copilot Chat
+- Dynamic chat participants â€” one per loaded agent â€” via Copilot Chat
 
 ### Known limitations (Beta)
 
@@ -114,7 +114,7 @@ See the [Installation Guide](docs/installation.md) for full details and troubles
 
 ---
 
-## 👥 Contributors
+## ðŸ‘¥ Contributors
 
 Thanks to everyone who has contributed to this project!
 
@@ -123,9 +123,9 @@ Thanks to everyone who has contributed to this project!
 
 ---
 
-## 📄 License & Support
+## ðŸ“„ License & Support
 
-**License:** Private © 2026
+**License:** Private Â© 2026
 
 - **Issues:** [github.com/egdev6/agent-teams-docs/issues](https://github.com/egdev6/agent-teams-docs/issues)
 
@@ -136,3 +136,4 @@ Thanks to everyone who has contributed to this project!
 [issues-url]: https://github.com/egdev6/agent-teams-docs/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/egdev6
+
