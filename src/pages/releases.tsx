@@ -1,3 +1,4 @@
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import Translate from '@docusaurus/Translate';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
@@ -129,7 +130,7 @@ function getDescription(release: GitHubRelease): string {
   return firstLine?.replace(/\*\*|__|\[([^\]]+)\]\([^)]+\)/g, '$1').trim() ?? release.name;
 }
 
-export default function Releases() {
+function ReleasesContent() {
   const [releases, setReleases] = useState<GitHubRelease[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
@@ -155,7 +156,7 @@ export default function Releases() {
   const [latestRelease, ...previousReleases] = releases;
 
   return (
-    <Layout title='Releases' description='Releases and changelog for Agent Teams'>
+    <>
       {/* Full-width hero flush to header */}
       {latestRelease && (
         <div className={styles.latestReleaseHero}>
@@ -227,6 +228,14 @@ export default function Releases() {
           </>
         )}
       </main>
+    </>
+  );
+}
+
+export default function Releases() {
+  return (
+    <Layout title='Releases' description='Releases and changelog for Agent Teams'>
+      <BrowserOnly>{() => <ReleasesContent />}</BrowserOnly>
     </Layout>
   );
 }
